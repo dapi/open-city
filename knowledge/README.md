@@ -15,7 +15,10 @@ status: active
 
 Raw sources never override canonical project or studio documents automatically.
 
-Действующий разбор архива OpenCity: [выводы из чатов](research/open-city-chat-archive-findings.md).
+Действующий разбор архива OpenCity:
+
+- [краткие выводы из чатов](research/open-city-chat-archive-findings.md);
+- [полный сценарный пласт и карта источников](research/open-city-chat-archive/README.md).
 
 Последний редакционный совет: [ревью выпусков 001–004](research/editorial-review-issues-001-004.md).
 

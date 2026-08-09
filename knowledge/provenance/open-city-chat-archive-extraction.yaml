@@ -1,0 +1,49 @@
+schema_version: 1
+doc_kind: research
+doc_function: manifest
+context: knowledge_provenance
+purpose: Зафиксировать происхождение полного извлечения полезного материала из архива ChatGPT OpenCity.
+status: active
+research_status: completed
+source_root: ../sources/chatgpt/open-city/archive
+captured_at: 2026-08-09T07:53:13Z
+verified_at: 2026-08-09T07:53:13Z
+verification_method: sha256_manifest_and_message_uuid_trace
+audience: humans_and_agents
+
+source_snapshot:
+  chat_count: 3
+  current_path_messages: 723
+  all_message_nodes: 891
+  local_artifacts_ok: 49
+  server_artifacts_unrecoverable: 3
+  files_in_archive: 58
+  sha256_manifest_digest: 2723a721daf526b25bd5ee5749f57018eb5518c838ffff4621339d1fac842c83
+
+immutability:
+  archive_modified_during_extraction: false
+  rule: Исходный архив не редактируется; исправления вносятся только в производные представления.
+
+derived_outputs:
+  - ../research/open-city-chat-archive/README.md
+  - ../research/open-city-chat-archive/scenario-bank.yaml
+  - ../research/open-city-chat-archive/scene-library.md
+  - ../research/open-city-chat-archive/creative-language.md
+  - ../research/open-city-chat-archive/legacy-and-conflicts.md
+  - ../research/open-city-chat-archive/artifact-catalog.md
+  - ../research/open-city-chat-archive/source-map.yaml
+  - ../research/open-city-chat-archive/transcripts/README.md
+
+markdown_projection:
+  generator: ../../scripts/chatgpt-export/convert-to-markdown.py
+  files: 4
+  current_path_messages: 723
+  saved_branch_messages: 168
+  unique_message_nodes: 891
+  reproducibility_check: python3 scripts/chatgpt-export/convert-to-markdown.py --check
+
+authority_boundary:
+  raw_archive: primary_evidence
+  markdown_transcripts: derived_search_projection
+  research_cards: derived_interpretation
+  project_canon: governed_source_of_truth

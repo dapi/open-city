@@ -7,6 +7,12 @@ deps:
 validate:
 	$(PYTHON) scripts/validate/repository.py
 
+chat-archive-markdown:
+	python3 scripts/chatgpt-export/convert-to-markdown.py
+
+chat-archive-markdown-check:
+	python3 scripts/chatgpt-export/convert-to-markdown.py --check
+
 test:
 	$(PYTHON) -m unittest discover -s tests -p 'test_*.py'
 

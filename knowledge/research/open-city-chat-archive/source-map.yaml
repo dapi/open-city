@@ -1,0 +1,60 @@
+schema_version: 1
+doc_kind: research
+doc_function: reference
+context: knowledge_provenance
+purpose: Точные ссылки из производных материалов на сообщения архива ChatGPT OpenCity.
+status: active
+
+chats:
+  MAIN:
+    conversation_id: 69077bb5-15c0-8327-a692-409c0d5bf1ea
+    title: Главная
+    normalized: ../../sources/chatgpt/open-city/archive/chats/69077bb5-15c0-8327-a692-409c0d5bf1ea.json
+    raw: ../../sources/chatgpt/open-city/archive/chats/69077bb5-15c0-8327-a692-409c0d5bf1ea.raw.json
+  PRODUCER:
+    conversation_id: 69078091-5838-8333-8e33-e18b3a431b33
+    title: Эпотажный продюсер-консультант
+    normalized: ../../sources/chatgpt/open-city/archive/chats/69078091-5838-8333-8e33-e18b3a431b33.json
+    raw: ../../sources/chatgpt/open-city/archive/chats/69078091-5838-8333-8e33-e18b3a431b33.raw.json
+  ROLES:
+    conversation_id: 69086e59-db2c-8325-b5c2-da4d3bf58181
+    title: Роли сотрудников OpenCity
+    normalized: ../../sources/chatgpt/open-city/archive/chats/69086e59-db2c-8325-b5c2-da4d3bf58181.json
+    raw: ../../sources/chatgpt/open-city/archive/chats/69086e59-db2c-8325-b5c2-da4d3bf58181.raw.json
+
+messages:
+  MAIN-001: {chat: MAIN, branch: current, index: 1, id: 39bdd848-2f43-4baf-b909-d4a8c71c32e0, subject: initial_plot_pool}
+  MAIN-003: {chat: MAIN, branch: current, index: 3, id: c017f015-a5ce-4d51-9960-b869b01d3303, subject: first_open_city_episode_pool}
+  MAIN-047: {chat: MAIN, branch: current, index: 47, id: a9ce34e5-c9c6-4f9a-9bb8-822a90943dc3, subject: five_new_episode_concepts}
+  MAIN-057: {chat: MAIN, branch: current, index: 57, id: 00bdbe57-09d8-4a35-b068-505952627af8, subject: early_scenario_library}
+  MAIN-061: {chat: MAIN, branch: current, index: 61, id: 73dfc386-a514-44d6-b8f1-990901c49346, subject: vote_for_neural_network_script}
+  MAIN-063: {chat: MAIN, branch: current, index: 63, id: 64fcbdfb-b59f-420a-b0d0-b6f0691936d0, subject: pilot_retro_and_new_ideas}
+  MAIN-337: {chat: MAIN, branch: current, index: 337, id: ba9a1165-be79-42ef-84a0-e766365d7e58, subject: ironic_apathy_tone}
+  MAIN-339: {chat: MAIN, branch: current, index: 339, id: a772745a-3b0d-47cb-a1e7-a616823fa0c3, subject: slightly_aware_already_used_to_it}
+  MAIN-343: {chat: MAIN, branch: current, index: 343, id: 4b071c83-9b5b-4af5-b35f-2e1db1e5c380, subject: origin_of_opencity_prologue}
+  MAIN-351: {chat: MAIN, branch: current, index: 351, id: 8da0c417-c0e6-4ed7-8b8b-428217872dbc, subject: flepik_dramatic_function}
+  MAIN-353: {chat: MAIN, branch: current, index: 353, id: bc5f45a6-be16-4243-8db3-308e1173834a, subject: legacy_flepik_bible}
+  MAIN-540: {chat: MAIN, branch: current, index: 540, id: 1da0b2b4-841c-4125-b3e3-12cbe68928ab, subject: telegram_bots_storybook}
+  MAIN-542: {chat: MAIN, branch: current, index: 542, id: 833eac7c-ee5f-49b1-bac0-75aeeba5736c, subject: telegram_bots_five_frames}
+  MAIN-573: {chat: MAIN, branch: current, index: 573, id: 02ab18da-eefd-46a9-9420-6e18f3920b57, subject: argument_scene_input_from_user}
+  MAIN-578: {chat: MAIN, branch: current, index: 578, id: c51aaf50-80eb-4c02-b046-b236fdb17956, subject: argument_production_scene}
+  MAIN-580: {chat: MAIN, branch: current, index: 580, id: c87b5322-ce28-438a-b32a-6f4d5e989306, subject: argument_comic_script}
+  MAIN-BRANCH-PILOT-FINAL: {chat: MAIN, branch: saved_non_current, id: 4230db7d-2242-48d7-ac48-5ef031d90fb3, subject: legacy_pilot_final_dialogue}
+  MAIN-PASSPORT: {chat: MAIN, branch: current, index: 9, id: 480f779d-c0ab-4c2e-971f-81e243b616c4, subject: early_project_passport}
+
+  PRODUCER-048: {chat: PRODUCER, branch: current, index: 48, id: e9e63675-9440-43a8-8e78-0e4bd5393dc6, subject: old_weekly_content_plan}
+  PRODUCER-050: {chat: PRODUCER, branch: current, index: 50, id: 146b913d-01f0-48f6-908a-807b69404da6, subject: old_content_plan_table}
+  PRODUCER-075: {chat: PRODUCER, branch: current, index: 75, id: 531a0353-cac4-4a82-8c6a-1f0c8d18b21a, subject: probability_collapse}
+  PRODUCER-084: {chat: PRODUCER, branch: current, index: 84, id: ad3dd7fc-4569-46a4-8c16-8376350c1ce6, subject: air_tariff}
+  PRODUCER-091: {chat: PRODUCER, branch: current, index: 91, id: 52e3d43f-0cc0-49a7-8723-059ae1157911, subject: ai_psychologist}
+  PRODUCER-100: {chat: PRODUCER, branch: current, index: 100, id: 8924732e-18a6-4ece-973d-e5ba66b91b5d, subject: conscience_update}
+  PRODUCER-112: {chat: PRODUCER, branch: current, index: 112, id: 0ef41365-bfa7-49ae-a6f1-2682b5e9e15a, subject: mandatory_lollipop}
+  PRODUCER-BRANCH-LICHKA: {chat: PRODUCER, branch: saved_non_current, id: 7d6799d9-d599-4388-9391-d1ac76a5fe9a, subject: personal_chat_awoke_five_panels}
+  PRODUCER-BRANCH-HUMAN-ERROR-5: {chat: PRODUCER, branch: saved_non_current, id: d25d9057-caf7-4c29-b4e9-f0034a610764, subject: human_error_five_panels}
+  PRODUCER-BRANCH-HUMAN-ERROR-2: {chat: PRODUCER, branch: saved_non_current, id: 3de06883-f548-4c4a-acca-c28dee2abc34, subject: human_error_two_panels_final_edit}
+  PRODUCER-BRANCH-MINUS-CONTENT: {chat: PRODUCER, branch: saved_non_current, id: 37478ecc-5027-483b-84ad-7433204508a8, subject: minus_content_four_panels}
+  PRODUCER-BRANCH-MINUS-CONTENT-EPILOGUE: {chat: PRODUCER, branch: saved_non_current, id: 1a92a96a-e934-4b96-b105-3913e93621e1, subject: minus_content_epilogue}
+
+  ROLES-022: {chat: ROLES, branch: current, index: 22, id: 7c74cb4b-9c8d-4522-9b22-d7a871acba16, subject: three_scenes_that_sell_the_world}
+  ROLES-024: {chat: ROLES, branch: current, index: 24, id: 0b83a1dc-127b-4f1c-ace9-6af2eaff11ff, subject: argument_production_packet}
+  ROLES-026: {chat: ROLES, branch: current, index: 26, id: 78aaf426-9010-4bed-8bb4-cef6f96cc93b, subject: argument_clean_scene_input_and_constraints}
