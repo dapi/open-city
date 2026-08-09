@@ -15,4 +15,5 @@ scripts/chatgpt-export/pw-long.sh \
   <session> scripts/chatgpt-export/extract-project-chat.js
 ```
 
-Результат записывается в `chatgpt-project-archive/` относительно корня репозитория.
+Результат записывается в `knowledge/sources/chatgpt/open-city/archive/` относительно
+корня репозитория. Это provenance/source, а не канон проекта.

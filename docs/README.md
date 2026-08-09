@@ -4,7 +4,7 @@ doc_function: index
 context: studio_os
 purpose: Точка входа в документацию AI OS студии.
 derived_from:
-  - knowledge-base/principles.md
+  - ../studio-os/governance/knowledge-base/principles.md
 status: active
 ---
 
@@ -12,14 +12,15 @@ status: active
 
 Рекомендуемый порядок чтения:
 
-1. [Knowledge Base DNA](knowledge-base/README.md) — кто владеет фактами, как устроены
+1. [Studio OS](../studio-os/README.md) — роли, процессы, контракты и quality gates.
+2. [Knowledge Base DNA](../studio-os/governance/knowledge-base/README.md) — кто владеет фактами, как устроены
    зависимости документов и как знания проходят lifecycle.
-2. [Архитектура](architecture/README.md) — варианты целевой структуры AI OS и причины
+3. [Архитектура](architecture/README.md) — варианты целевой структуры AI OS и причины
    выбора границ.
-3. [Паспорт студии](паспорт_студии_город_неиросеть_prod.md) — миссия, роли агентов и
-   production pipeline; legacy-документ, frontmatter ещё не нормализован.
-4. [Паспорт проекта](паспорт_проекта_город_нейросеть.md) — мир, персонажи и творческий
-   канон; legacy-документ, frontmatter ещё не нормализован.
+4. [Паспорт студии](../studio-os/governance/studio-passport.md) — миссия, роли агентов
+   и production pipeline.
+5. [Паспорт проекта](../projects/open-city/canon/project-bible.md) — мир, персонажи и
+   творческий канон.
 
-Raw-архив разговоров находится в `chatgpt-project-archive/`. Он является source/provenance,
+Raw-архив разговоров находится в `../knowledge/sources/chatgpt/open-city/archive/`. Он является source/provenance,
 но не подменяет канон или утверждённые решения.

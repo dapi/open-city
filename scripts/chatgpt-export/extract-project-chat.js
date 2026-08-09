@@ -9,9 +9,9 @@
 //      → GET /backend-api/files/<file_id>/download → подписанный download_url → байты
 //
 // Результат (cwd = корень репо):
-//   chatgpt-project-archive/chats/<id>.json        — сообщения + реестр артефактов
-//   chatgpt-project-archive/chats/<id>.raw.json    — полный ответ API
-//   chatgpt-project-archive/artifacts/<id>/        — файлы с настоящими именами
+//   knowledge/sources/chatgpt/open-city/archive/chats/<id>.json        — сообщения + реестр артефактов
+//   knowledge/sources/chatgpt/open-city/archive/chats/<id>.raw.json    — полный ответ API
+//   knowledge/sources/chatgpt/open-city/archive/artifacts/<id>/        — файлы с настоящими именами
 
 const fs = require('node:fs');
 const path = require('node:path');
@@ -19,7 +19,7 @@ const path = require('node:path');
 const chatId = state.chatId;
 if (!chatId) throw new Error('state.chatId is not set');
 
-const baseDir = 'chatgpt-project-archive';
+const baseDir = 'knowledge/sources/chatgpt/open-city/archive';
 const artDir = path.join(baseDir, 'artifacts', chatId);
 fs.mkdirSync(artDir, { recursive: true });
 fs.mkdirSync(path.join(baseDir, 'chats'), { recursive: true });

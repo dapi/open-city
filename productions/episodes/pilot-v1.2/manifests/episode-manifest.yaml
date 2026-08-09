@@ -1,0 +1,15 @@
+episode: pilot-v1.2
+status: in_progress
+inputs:
+  - episode.yaml
+  - script/timeline.json
+  - audio/speaker-map.json
+outputs:
+  - audio/voice-manifest.json
+  - animation/render-manifest.json
+  - release/release-manifest.json
+gates:
+  script: pending
+  voice: pending
+  animation: pending
+  release: pending

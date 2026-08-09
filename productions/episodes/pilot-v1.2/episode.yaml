@@ -1,0 +1,11 @@
+id: pilot-v1.2
+project: open-city
+status: in_progress
+format:
+  width: 1080
+  height: 1920
+  fps: 30
+  aspect_ratio: "9:16"
+duration_limit_seconds: 180
+canonical_script: script/timeline.json
+speaker_map: audio/speaker-map.json

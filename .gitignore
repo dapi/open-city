@@ -1,2 +1,45 @@
 cache/
 output/
+
+# Runtime and temporary state
+var/
+*.tmp
+*.log
+
+# Generated production workspaces
+productions/**/audio/work/
+productions/**/render/work/
+productions/**/release/_staging/
+productions/**/manifests/*.local.json
+
+# Generated media stays outside Git; manifests document approved exports.
+*.wav
+*.mp3
+*.mp4
+*.mov
+*.m4a
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# Local agent state
+.codex/
+.agent-state/
+
+# Large binary source archive; keep indexes and provenance metadata in Git.
+knowledge/sources/chatgpt/open-city/archive/artifacts/
