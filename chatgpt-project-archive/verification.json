@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-08-09T07:53:43Z",
+  "projectUrl": "https://chatgpt.com/g/g-p-69077ed3b480819187025a0a7e47c0b5/project",
+  "gizmoId": "g-p-69077ed3b480819187025a0a7e47c0b5",
+  "serverList": {
+    "endpoint": "/backend-api/gizmos/g-p-69077ed3b480819187025a0a7e47c0b5/conversations?cursor=0",
+    "chatCount": 3,
+    "nextCursor": null,
+    "conversations": [
+      {
+        "id": "69078091-5838-8333-8e33-e18b3a431b33",
+        "title": "Эпотажный продюсер-консультант",
+        "update_time": 1786211954.529611,
+        "mappingNodes": 227,
+        "messageNodesAllBranches": 226,
+        "messagesCurrentBranch": 113
+      },
+      {
+        "id": "69086e59-db2c-8325-b5c2-da4d3bf58181",
+        "title": "Роли сотрудников OpenCity",
+        "update_time": 1786211941.732527,
+        "mappingNodes": 28,
+        "messageNodesAllBranches": 27,
+        "messagesCurrentBranch": 27
+      },
+      {
+        "id": "69077bb5-15c0-8327-a692-409c0d5bf1ea",
+        "title": "Главная",
+        "update_time": 1786211884.962669,
+        "mappingNodes": 639,
+        "messageNodesAllBranches": 638,
+        "messagesCurrentBranch": 583
+      }
+    ]
+  },
+  "checks": {
+    "allServerConversationIdsPresentLocally": true,
+    "noAdditionalServerPage": true,
+    "rawConversationTreesMatchServer": true,
+    "rawComparisonNote": "Exact semantic equality after sorting safe_urls, whose order changes between otherwise identical API responses.",
+    "normalizedCurrentBranchMessagesMatchRaw": true,
+    "normalizedMessageCount": 723,
+    "rawMessageNodesAllBranches": 891,
+    "downloadedArtifactFiles": 49,
+    "downloadedArtifactBytes": 115141670,
+    "downloadedArtifactFilesExistAndMatchRecordedSize": true
+  },
+  "serverMissingArtifacts": [
+    {
+      "conversationId": "69077bb5-15c0-8327-a692-409c0d5bf1ea",
+      "fileId": "file-45dSMrGbZESFvswfEAE3Jz",
+      "status": "file_not_found"
+    },
+    {
+      "conversationId": "69077bb5-15c0-8327-a692-409c0d5bf1ea",
+      "fileId": "file_00000000a4f871f58037ffe5dffe0705",
+      "status": "BlobNotFound (HTTP 404)"
+    },
+    {
+      "conversationId": "69078091-5838-8333-8e33-e18b3a431b33",
+      "fileId": "file_0000000049f071f58263e09b36fd65ac",
+      "status": "BlobNotFound (HTTP 404)"
+    }
+  ],
+  "legacyParallelExport": {
+    "manifest": "project_archive_manifest.json",
+    "listedConversationCount": 28,
+    "actualProjectConversationCount": 3,
+    "unrelatedSidebarConversationCount": 25,
+    "note": "The legacy parallel export mixed general ChatGPT sidebar links into the project list. index.json and this file are authoritative."
+  },
+  "result": "complete_except_server_deleted_artifacts"
+}
