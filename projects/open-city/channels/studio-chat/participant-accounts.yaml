@@ -1,4 +1,4 @@
-updated_at: "2026-08-09"
+updated_at: "2026-08-10"
 credential_policy: external_only
 required_bio_disclosure: "Персонаж OpenCity Studio. Художественный аккаунт, которым управляет студия."
 creation_requirements:
@@ -37,34 +37,6 @@ accounts:
     may_publish: false
 
   - persona_id: marina-audience-editor
-    identity_kind: fictional_studio_persona
-    telegram_handle: null
-    account_status: needs_creation
-    operator: Danil Pismenny
-    may_publish: false
-
-  - persona_id: mayor-production-coordinator
-    identity_kind: fictional_studio_persona
-    telegram_handle: null
-    account_status: needs_creation
-    operator: Danil Pismenny
-    may_publish: false
-
-  - persona_id: grisha-rhythm-editor
-    identity_kind: fictional_studio_persona
-    telegram_handle: null
-    account_status: needs_creation
-    operator: Danil Pismenny
-    may_publish: false
-
-  - persona_id: max-hypestein-producer-consultant
-    identity_kind: fictional_studio_persona
-    telegram_handle: null
-    account_status: needs_creation
-    operator: Danil Pismenny
-    may_publish: false
-
-  - persona_id: archivist-context-keeper
     identity_kind: fictional_studio_persona
     telegram_handle: null
     account_status: needs_creation

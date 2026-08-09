@@ -9,8 +9,8 @@ identity_kind: fictional_studio_persona
 status: active
 derived_from:
   - ../../../canon/characters/characters.json
-  - ../../../../../knowledge/sources/chatgpt/open-city/archive/chats/69077bb5-15c0-8327-a692-409c0d5bf1ea.json
-  - ../../../../../knowledge/sources/chatgpt/open-city/archive/chats/69078091-5838-8333-8e33-e18b3a431b33.json
+  - ../../../../../knowledge/sources/chatgpt/open-city/archive/chats/69077bb5-15c0-8327-a692-409c0d5bf1ea.raw.json
+  - ../../../../../knowledge/sources/chatgpt/open-city/archive/chats/69078091-5838-8333-8e33-e18b3a431b33.raw.json
 ---
 
 # Макс Хайпштейн — продюсер-консультант

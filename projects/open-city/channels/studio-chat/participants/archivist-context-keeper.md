@@ -10,7 +10,7 @@ status: active
 visual_presence: forbidden_in_issues
 derived_from:
   - ../../../canon/project-bible.md
-  - ../../../../../knowledge/sources/chatgpt/open-city/archive/chats/69077bb5-15c0-8327-a692-409c0d5bf1ea.json
+  - ../../../../../knowledge/sources/chatgpt/open-city/archive/chats/69077bb5-15c0-8327-a692-409c0d5bf1ea.raw.json
 ---
 
 # Архивариус — хранитель контекста

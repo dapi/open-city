@@ -9,7 +9,7 @@ identity_kind: fictional_studio_persona
 status: active
 derived_from:
   - ../../../canon/characters/characters.json
-  - ../../../../../knowledge/sources/chatgpt/open-city/archive/chats/69077bb5-15c0-8327-a692-409c0d5bf1ea.json
+  - ../../../../../knowledge/sources/chatgpt/open-city/archive/chats/69077bb5-15c0-8327-a692-409c0d5bf1ea.raw.json
 ---
 
 # Гриша Саунд — редактор ритма

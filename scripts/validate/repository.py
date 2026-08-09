@@ -110,6 +110,7 @@ FRONTMATTER_FILES = [
     "projects/open-city/channels/telegram-setup-checklist.md",
     "projects/open-city/channels/studio-chat/README.md",
     "projects/open-city/channels/studio-chat/editorial-policy.md",
+    "projects/open-city/channels/studio-chat/participants/archivist-context-keeper.md",
     "projects/open-city/channels/studio-chat/scripts/sync-001-format-change.md",
     "projects/open-city/channels/studio-chat/scripts/sync-002-no-argument.md",
     "projects/open-city/channels/studio-chat/scripts/sync-003-quiet-mode.md",
@@ -163,6 +164,21 @@ MANIFESTS = [
     "productions/episodes/pilot-v1.2/audio/voice-manifest.json",
     "productions/episodes/pilot-v1.2/animation/render-manifest.json",
     "productions/episodes/pilot-v1.2/release/release-manifest.json",
+]
+
+ARCHIVIST_PROFILE = "projects/open-city/channels/studio-chat/participants/archivist-context-keeper.md"
+ARCHIVIST_FORBIDDEN_ISSUE_PATTERNS = [
+    re.compile(
+        r"(?im)^\s*(?:[-*]\s*)?(?:\*\*)?(?:[\U0001F300-\U0001FAFF]\s*)?"
+        r"(?:Архивариус|Archivist)(?:\*\*)?\s*(?:\([^\n)]*\))?\s*:"
+    ),
+    re.compile(
+        r"(?i)\b(?:подпись|титр|голограмм\w*|аватар\w*|портрет\w*|силуэт\w*|"
+        r"изображени\w*|видеодневник\w*)\s+Архивариуса\b"
+    ),
+    re.compile(
+        r"(?i)\bАрхивариус\s+(?:появляется|виден|показан|изображ[её]н|говорит)\b"
+    ),
 ]
 
 
@@ -234,6 +250,10 @@ def main() -> int:
             errors.append("character catalog contains duplicate ids")
         if len(dossier_numbers) != len(set(dossier_numbers)):
             errors.append("character catalog contains duplicate dossier numbers")
+        if "archivist" in character_ids or any(
+            character.get("identity_id") == "archivist" for character in characters
+        ):
+            errors.append("archivist must not be present in the comic character catalog")
         for character in characters:
             for issue_id in character["appearances"]:
                 if not (ROOT / "productions/issues" / issue_id / "issue.json").exists():
@@ -259,6 +279,35 @@ def main() -> int:
                     errors.append(f"invalid portrait for character {character['id']}: {exc}")
     except (OSError, KeyError, json.JSONDecodeError) as exc:
         errors.append(f"invalid character catalog relationships: {exc}")
+
+    try:
+        archivist_profile = (ROOT / ARCHIVIST_PROFILE).read_text(encoding="utf-8")
+        for required_marker in (
+            "comic_world_character_id: null",
+            "visual_presence: forbidden_in_issues",
+        ):
+            if required_marker not in archivist_profile:
+                errors.append(f"archivist profile missing {required_marker}")
+    except OSError as exc:
+        errors.append(f"cannot read archivist profile: {exc}")
+
+    for issue_dir in sorted((ROOT / "productions/issues").glob("issue-*")):
+        issue_text_paths = [
+            issue_dir / "preproduction.md",
+            issue_dir / "script.md",
+            issue_dir / "storyboard.md",
+            issue_dir / "art/generation-prompt.md",
+            *sorted((issue_dir / "publish").glob("*.md")),
+        ]
+        for issue_text_path in issue_text_paths:
+            if not issue_text_path.is_file():
+                continue
+            issue_text = issue_text_path.read_text(encoding="utf-8")
+            if any(pattern.search(issue_text) for pattern in ARCHIVIST_FORBIDDEN_ISSUE_PATTERNS):
+                errors.append(
+                    "archivist visual boundary violated in "
+                    f"{issue_text_path.relative_to(ROOT)}"
+                )
 
     for relative in FRONTMATTER_FILES:
         path = ROOT / relative
