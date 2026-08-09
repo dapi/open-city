@@ -1,0 +1,25 @@
+{
+  "doc_kind": "visual_development_manifest",
+  "context": "open_city_brand",
+  "status": "approved_first_pass",
+  "approved_at": "2026-08-10",
+  "decision_maker": "Данил Письменный",
+  "generator": "Codex built-in image_gen",
+  "style_system": "projects/open-city/brand/visual-system.md",
+  "prompt_manifest": "projects/open-city/assets/visual-development/color-breath-v1/PROMPTS.md",
+  "next_gate": "multi_character_scene_tests",
+  "style_sources": [
+    "knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/A_storyboard_composed_of_ten_digital_illustrations.png",
+    "knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/a73bc9de-47c0-406f-b31e-bd505121f934.png"
+  ],
+  "assets": [
+    {"id": "color-breath-style-calibration-v1", "role": "style_calibration", "file": "01-style-calibration-v1.png", "width": 1024, "height": 1536, "sha256": "8e2d0e97cd12c4379a8e1d53bb55a744fa06a285bf04137fbab5f8de61d354f0"},
+    {"id": "danya-reference-profile-v1", "role": "reference_profile", "character_id": "danya", "file": "02-danya-model-sheet-v1.png", "width": 1024, "height": 1536, "sha256": "fdc67b8a486608f3c0b68c1100f6ea49049d2ad2d7fae4a6ea7dd4779f4adf44"},
+    {"id": "flepik-reference-profile-v1", "role": "reference_profile", "character_id": "flepik", "file": "03-flepik-model-sheet-v1.png", "width": 1024, "height": 1536, "sha256": "c2c4bd49bae197ee72ebe70d5665e6fe5a66992a6102462040507f1442b2b54d"},
+    {"id": "marina-reference-profile-v1", "role": "reference_profile", "character_id": "marina", "file": "04-marina-model-sheet-v1.png", "width": 1024, "height": 1536, "sha256": "2c77f093b63d0dfdf88611c04cde375c50ded894da20219f63f6a1939b630616"},
+    {"id": "mayor-chatbot-reference-profile-v2", "role": "reference_profile", "character_id": "mayor-chatbot", "file": "05-mayor-chatbot-model-sheet-v2.png", "width": 1024, "height": 1536, "sha256": "e32252e29f304d24573a9ce5008a17ef55ee29679bd40f4293dfaa6d4291a4d0"},
+    {"id": "grisha-reference-profile-v1", "role": "reference_profile", "character_id": "grisha", "file": "06-grisha-model-sheet-v1.png", "width": 1024, "height": 1536, "sha256": "8b512a69c74d51612f273e7450b85005c3aa817d38a36c74825417478f5c54d4"},
+    {"id": "neyra-reference-profile-v1", "role": "reference_profile", "character_id": "neyra", "file": "07-neyra-model-sheet-v1.png", "width": 1024, "height": 1536, "sha256": "c116eef128aa678ea2736e41f4e7a483735eb38217482b7897847b6d39f2ca75"},
+    {"id": "max-hypestein-reference-profile-v1", "role": "reference_profile", "character_id": "max-hypestein", "file": "08-max-hypestein-model-sheet-v1.png", "width": 1024, "height": 1536, "sha256": "77f8ea1becbd7158bd28dc5de9681cb151b92ee806d1b63b0e440509f51380b8"}
+  ]
+}

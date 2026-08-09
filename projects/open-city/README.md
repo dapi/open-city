@@ -12,6 +12,7 @@ status: active
 - [Каналы](channels/README.md)
 - [Визуальная система](brand/visual-system.md)
 - [Сайт](site/README.md)
+- [Новости студии](news/README.md)
 - [Персонажи](canon/characters/)
 - [Мир](canon/world/)
 - [Материалы](assets/)

@@ -77,6 +77,7 @@
           "type": "array",
           "items": { "$ref": "#/$defs/archiveVisualReference" }
         },
+        "portrait": { "$ref": "#/$defs/portrait" },
         "appearances": {
           "type": "array",
           "uniqueItems": true,
@@ -109,7 +110,34 @@
           "enum": ["character_sheet", "mini_avatar", "profile_card", "style_iteration", "ensemble_sheet"]
         },
         "status": { "const": "source_only" },
+        "publish": { "type": "boolean" },
+        "featured": { "type": "boolean" },
         "note": { "type": "string", "minLength": 1 }
+      }
+    },
+    "portrait": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asset_path",
+        "alt",
+        "creation_note",
+        "prompt_id",
+        "manifest_path",
+        "sha256"
+      ],
+      "properties": {
+        "asset_path": {
+          "type": "string",
+          "pattern": "^projects/open-city/assets/characters/[a-z0-9-]+\\.png$"
+        },
+        "alt": { "type": "string", "minLength": 1 },
+        "creation_note": { "type": "string", "minLength": 1 },
+        "prompt_id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "manifest_path": {
+          "const": "projects/open-city/assets/characters/manifest.json"
+        },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
       }
     }
   }

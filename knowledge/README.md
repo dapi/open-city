@@ -22,5 +22,8 @@ Raw sources never override canonical project or studio documents automatically.
 
 Последний редакционный совет: [ревью выпусков 001–004](research/editorial-review-issues-001-004.md).
 
+Приватный обезличенный [банк сюжетных зёрен из Telegram-чата «ИИшница»](research/iishnitsa-story-seeds-2026-05-10-to-08-10.md)
+сохраняется как производное исследование, не как канон.
+
 Методический материал: [проверенные практики сценариев коротких цифровых
 комиксов](research/comic-script-writing.md) и границы их применения в OpenCity.

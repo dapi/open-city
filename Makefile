@@ -27,8 +27,10 @@ site-serve: site-preview
 
 PUBLIC_SITE ?= ../opencitystudio.ru
 
-site-sync-characters:
+site-sync-content:
 	$(PYTHON) platform/publishing/build_site.py --sync-characters-to $(PUBLIC_SITE)
+
+site-sync-characters: site-sync-content
 
 review-submit:
 	$(PYTHON) platform/publishing/review_bot.py submit $(ISSUE)

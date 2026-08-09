@@ -1,0 +1,66 @@
+{
+  "doc_kind": "visual_development_manifest",
+  "context": "open_city_site",
+  "status": "direction_selected",
+  "approved_at": "2026-08-10",
+  "decision_maker": "Данил Письменный",
+  "generator": "Codex built-in image_gen",
+  "source_brief": "inbox/003.txt",
+  "canonical_decision": "projects/open-city/site/visual-direction.md",
+  "style_system": "projects/open-city/brand/visual-system.md",
+  "prompt_manifest": "projects/open-city/assets/visual-development/site-concepts-v1/PROMPTS.md",
+  "assets": [
+    {
+      "id": "site-concept-municipal-os-v1",
+      "role": "selected_site_direction",
+      "file": "01-municipal-os-selected-v1.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "a214960959babc59cfcaf14eacd645a28c6e822917b97a869e1d5a0fadea4b19",
+      "archive": {
+        "publish": true,
+        "alt": "Концепт главной страницы OpenCity в виде муниципальной операционной системы: окна выпуска, городских служб, новостей студии и терминала.",
+        "caption": "Выбранное направление сайта: муниципальная операционная система."
+      }
+    },
+    {
+      "id": "site-concept-digital-city-hall-v1",
+      "role": "illustration_reference_only",
+      "file": "02-digital-city-hall-illustration-reference-v1.png",
+      "width": 1586,
+      "height": 992,
+      "sha256": "75e830aac0beb15cd8ab9f51f8430f7c6e06729402cb0bb8e5f0bafa8d023540",
+      "archive": {
+        "publish": true,
+        "alt": "Светлая главная страница цифровой мэрии с большой иллюстрированной карточкой выпуска.",
+        "caption": "Вариант цифровой мэрии; центральная иллюстрация сохранена как сильный референс."
+      }
+    },
+    {
+      "id": "site-concept-punk-bulletin-v1",
+      "role": "archived_alternative",
+      "file": "03-punk-bulletin-archive-v1.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "a323c7138fd70952010e120697070529549e7c68c6212441e969572c6f440021",
+      "archive": {
+        "publish": true,
+        "alt": "Главная страница OpenCity как коллаж из муниципальных документов, штампов и комиксных материалов.",
+        "caption": "Архивный вариант: панк-бюллетень поверх муниципальной системы."
+      }
+    },
+    {
+      "id": "site-concept-city-map-v1",
+      "role": "city_map_page_candidate",
+      "file": "04-city-map-page-candidate-v1.png",
+      "width": 1568,
+      "height": 1003,
+      "sha256": "5fcb45a81d7c30330e657793f3febf2ab7e58512d27705d34b8d1aa3fb1b2622",
+      "archive": {
+        "publish": true,
+        "alt": "Интерактивная иллюстрированная карта OpenCity со студией, мэрией, архивом и городскими районами.",
+        "caption": "Кандидат для будущей отдельной страницы карты города."
+      }
+    }
+  ]
+}

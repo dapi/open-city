@@ -1,0 +1,63 @@
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(1180px, calc(100% - 48px));
+  min-height: 92px;
+  margin: 0 auto;
+  border-bottom: 1px solid rgb(243 234 215 / 18%);
+}
+
+.studio-mark,
+.header-link,
+.site-nav a {
+  font-size: .78rem;
+  font-weight: 760;
+  letter-spacing: .08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.studio-mark {
+  display: flex;
+  gap: .65rem;
+  align-items: center;
+  color: #f3ead7;
+}
+
+.studio-mark__signal {
+  width: .75rem;
+  height: .75rem;
+  background: #45e6df;
+  border-radius: 50%;
+  box-shadow: 0 0 22px #45e6df;
+}
+
+.site-nav {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: center;
+}
+
+.site-nav a { color: #b9b0a4; }
+.site-nav a:hover,
+.site-nav a:focus-visible,
+.site-nav a[aria-current="page"] { color: #f3ead7; }
+.site-nav .header-link { color: #45e6df; }
+
+@media (max-width: 600px) {
+  .site-header {
+    width: min(100% - 30px, 1180px);
+    min-height: 74px;
+  }
+
+  .studio-mark { font-size: .7rem; }
+  .header-link { font-size: 0; }
+  .header-link::after { content: "TG ↗"; font-size: .7rem; }
+  .site-nav { gap: 1rem; }
+  .site-nav > .secondary-nav-link { display: none; }
+}
+
+@media (max-width: 460px) {
+  .site-nav > a[href="/studio/"] { display: none; }
+}

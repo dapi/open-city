@@ -42,3 +42,31 @@ accounts:
     account_status: needs_creation
     operator: Danil Pismenny
     may_publish: false
+
+  - persona_id: mayor-production-coordinator
+    identity_kind: fictional_studio_persona
+    telegram_handle: null
+    account_status: needs_creation
+    operator: Danil Pismenny
+    may_publish: false
+
+  - persona_id: grisha-rhythm-editor
+    identity_kind: fictional_studio_persona
+    telegram_handle: null
+    account_status: needs_creation
+    operator: Danil Pismenny
+    may_publish: false
+
+  - persona_id: max-hypestein-producer-consultant
+    identity_kind: fictional_studio_persona
+    telegram_handle: null
+    account_status: needs_creation
+    operator: Danil Pismenny
+    may_publish: false
+
+  - persona_id: archivist-context-keeper
+    identity_kind: fictional_studio_persona
+    telegram_handle: null
+    account_status: needs_creation
+    operator: Danil Pismenny
+    may_publish: false

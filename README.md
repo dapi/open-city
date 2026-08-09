@@ -17,12 +17,15 @@ AI-first операционная система студии OpenCity: публ
 
 ## Основные команды
 
+Все команды проекта запускаются через `direnv exec .`, чтобы загрузить окружение
+из `.envrc`:
+
 ```bash
-make deps       # создать .venv и установить зависимости
-make validate
-make site-preview # закрытый локальный предпросмотр выпусков
-make voices
-make generate
+direnv exec . make deps         # создать .venv и установить зависимости
+direnv exec . make validate
+direnv exec . make site-preview # закрытый локальный предпросмотр выпусков
+direnv exec . make voices
+direnv exec . make generate
 ```
 
 Голосовые команды поддерживают архивный пилот и не входят в основной процесс

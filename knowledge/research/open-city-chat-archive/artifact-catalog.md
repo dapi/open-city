@@ -96,7 +96,7 @@ ChatGPT Image Generation и один график, созданный ChatGPT к
 - [`Персонажи_OpenCity_Город_Идей.png`](../../sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/Персонажи_OpenCity_Город_Идей.png) — ранняя визуальная библия мира.
 - [`bb6b0407…png`](../../sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/bb6b0407-7d35-4a3f-9764-05aec8fa70df.png) — концептуальный гайд окружения.
 - [`a73bc9de…png`](../../sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/a73bc9de-47c0-406f-b31e-bd505121f934.png) — лист U-P² с палитрой и линией.
-- [`Friendly_Robot_with_Glowing_Antenna.png`](../../sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/Friendly_Robot_with_Glowing_Antenna.png) — ранний телесный образ Флёпика.
+- [`Friendly_Robot_with_Glowing_Antenna.png`](../../sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/Friendly_Robot_with_Glowing_Antenna.png) — любимый ранний 3D-образ Флёпика с кольцом-антенной; оригинал 1024×1024, 1 731 189 байт, SHA-256 `1247ca44153d739240854a3094ee0cde3f5a342317ab36709242fa01d7ff5dd1`, сообщение-источник `543c7829-c20d-4a9b-a7cb-0a51a726743f`, DALL·E generation id `9efd2fdd-d26e-48f6-9e5a-5b357f7dea4e`.
 - [`69969e31…png`](../../sources/chatgpt/open-city/archive/artifacts/69078091-5838-8333-8e33-e18b3a431b33/69969e31-8f36-4e86-924d-4ae2ef978aca.png) — постер слогана о синхронизации.
 - [`ca76c594…png`](../../sources/chatgpt/open-city/archive/artifacts/69086e59-db2c-8325-b5c2-da4d3bf58181/ca76c594-8f40-4be1-9400-9321f45f01a3.png) — ещё один манифестный постер.
 

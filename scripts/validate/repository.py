@@ -238,6 +238,25 @@ def main() -> int:
             for issue_id in character["appearances"]:
                 if not (ROOT / "productions/issues" / issue_id / "issue.json").exists():
                     errors.append(f"character {character['id']} references missing issue {issue_id}")
+            portrait = character.get("portrait")
+            if portrait:
+                portrait_path = ROOT / portrait["asset_path"]
+                if not portrait_path.is_file():
+                    errors.append(
+                        f"character {character['id']} references missing portrait {portrait['asset_path']}"
+                    )
+                    continue
+                try:
+                    width, height = png_dimensions(portrait_path)
+                    if (width, height) != (1024, 1280):
+                        errors.append(
+                            f"character {character['id']} portrait must be 1024x1280, got {width}x{height}"
+                        )
+                    digest = hashlib.sha256(portrait_path.read_bytes()).hexdigest()
+                    if digest != portrait["sha256"]:
+                        errors.append(f"character {character['id']} portrait sha256 mismatch")
+                except ValueError as exc:
+                    errors.append(f"invalid portrait for character {character['id']}: {exc}")
     except (OSError, KeyError, json.JSONDecodeError) as exc:
         errors.append(f"invalid character catalog relationships: {exc}")
 

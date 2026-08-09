@@ -1,0 +1,84 @@
+{
+  "doc_kind": "asset_manifest",
+  "context": "open_city_canon",
+  "status": "active",
+  "generated_at": "2026-08-09",
+  "updated_at": "2026-08-10",
+  "generator": "Codex built-in image_gen",
+  "style_sources": [
+    "productions/issues/issue-001/art/issue-001-master.png",
+    "productions/issues/issue-004/art/issue-004-master.png"
+  ],
+  "assets": [
+    {
+      "id": "neyra-portrait-v1",
+      "character_id": "neyra",
+      "file": "neyra-portrait-v1.png",
+      "width": 1024,
+      "height": 1280,
+      "sha256": "5a10006b982cdd96ed1e68a6b8914239f74eb65f4d96024ecad58377b88cf61c",
+      "creation_note": "Прямой взгляд, узнаваемый magenta-силуэт и контролируемая публичная искренность.",
+      "prompt": "Use case: stylized-concept\nAsset type: canonical character portrait for the OpenCity website character registry\nPrimary request: Create a single portrait of NEYRA, the virtual influencer and visual designer identity from OpenCity.\nInput images: Image 1 and Image 2 are style references only. Match their graphic language, palette discipline, ink texture, and print feel; do not copy their panel layouts or characters.\nScene/backdrop: simple near-black urban-night field with a narrow cream paper border and sparse cyan/magenta registration marks; no readable signs and no interface.\nSubject: one adult virtual woman, chest-up, facing the viewer with calm controlled eye contact and a slight professionally rehearsed smile. Strong recognizable silhouette: short precise silver bob with a vivid magenta underlayer, one clean geometric magenta hair clip, dark high-collar jacket with a small cyan seam. Human face with subtly too-perfect symmetry; no exposed machinery.\nStyle/medium: graphic 2D editorial comic portrait, post-Soviet cyberpunk poster, bold confident dark ink contour, simplified volumes, coarse risograph/screen-print grain, imperfect color registration, cream paper texture, consistent with the supplied OpenCity comic pages.\nComposition/framing: vertical 4:5 portrait, centered head and shoulders, generous padding, clear silhouette, no cropped hair or shoulders.\nLighting/mood: dark systemic mode, restrained cyan rim light and dominant magenta accent, poised and slightly uncanny rather than glamorous.\nColor palette: near-black #070B12, cream #F1E2C3, cyan #08B8D1, magenta #E52B72, tiny orange #F18A32 accent; no broad naturalistic color range.\nConstraints: exactly one character; no text, letters, logos, speech bubbles, UI, watermark, photorealism, 3D render, glossy anime style, extra jewelry, extra people, hands, or props."
+    },
+    {
+      "id": "max-hypestein-portrait-v1",
+      "character_id": "max-hypestein",
+      "file": "max-hypestein-portrait-v1.png",
+      "width": 1024,
+      "height": 1280,
+      "sha256": "c0c26d5a2b3bd72c82f90b09e2b35c76733e4c907fc06299e505e370c80ce39e",
+      "creation_note": "Прямой взгляд, узнаваемый orange-силуэт и опасно убедительная энергия продюсера внимания.",
+      "prompt": "Use case: stylized-concept\nAsset type: canonical character portrait for the OpenCity website character registry\nPrimary request: Create a single portrait of Max Hypestein, OpenCity's producer of attention and invited creative consultant.\nInput images: Image 1 and Image 2 are style references only. Match their graphic language, palette discipline, ink texture, and print feel; do not copy their panel layouts or characters.\nScene/backdrop: simple near-black urban-night field with a narrow cream paper border and sparse orange/cyan registration marks; no readable signs and no interface.\nSubject: one adult man around forty, chest-up, facing the viewer. Strong recognizable silhouette: swept-back dark hair with one precise angular forelock, narrow orange-tinted rectangular glasses, black structured blazer over a dark high-neck shirt, tiny orange lapel tab. Alert raised eyebrow and restrained confident half-smile; charismatic and slightly dangerous, never clownish.\nStyle/medium: graphic 2D editorial comic portrait, post-Soviet cyberpunk poster, bold confident dark ink contour, simplified volumes, coarse risograph/screen-print grain, imperfect color registration, cream paper texture, consistent with the supplied OpenCity comic pages.\nComposition/framing: vertical 4:5 portrait, centered head and shoulders, generous padding, clear silhouette, no cropped hair or shoulders.\nLighting/mood: dark systemic mode, dominant orange edge light with a restrained cyan counterlight; persuasive, energetic, calculating.\nColor palette: near-black #070B12, cream #F1E2C3, orange #F18A32, cyan #08B8D1, tiny magenta #E52B72 accent; no broad naturalistic color range.\nConstraints: exactly one character; no text, letters, logos, speech bubbles, UI, watermark, photorealism, 3D render, glossy anime style, beard, tie, extra people, hands, or props."
+    },
+    {
+      "id": "danya-portrait-v1",
+      "character_id": "danya",
+      "file": "danya-portrait-v1.png",
+      "width": 1024,
+      "height": 1280,
+      "sha256": "30287b5a0ce8a506dd8ba2ccbf9c717ad47268b08a2c43494075d64f5797e154",
+      "creation_note": "Усталый прямой взгляд, тёмное худи и человек, который всё ещё спрашивает «зачем».",
+      "prompt": "Use case: stylized-concept\nAsset type: canonical character portrait for the OpenCity website character registry\nPrimary request: Create a single portrait of Danya, OpenCity's product manager, script editor, and central human protagonist.\nInput images: Image 1 and Image 2 are style references only. Match their graphic language, palette discipline, ink texture, and print feel; do not copy their panel layouts.\nScene/backdrop: simple near-black urban-night field with a narrow cream paper border and sparse cyan/magenta registration marks; no readable signs and no interface.\nSubject: one young adult man, chest-up, facing the viewer. Short slightly untidy dark hair, tired attentive eyes, restrained skeptical expression, black hoodie with a high folded collar. He looks like a person who has just asked why after a successful deployment; intelligent and vulnerable, not heroic or glamorous.\nStyle/medium: graphic 2D editorial comic portrait, post-Soviet cyberpunk poster, bold dark ink contour, simplified volumes, coarse risograph/screen-print grain, imperfect color registration, cream paper texture, consistent with the supplied OpenCity comic pages.\nComposition/framing: vertical 4:5 portrait, centered head and shoulders, generous padding, clear silhouette, no cropped hair or shoulders.\nLighting/mood: dark systemic mode, restrained cyan rim light with a magenta counterlight; sober, observant, slightly exhausted.\nColor palette: near-black #070B12, cream #F1E2C3, cyan #08B8D1, magenta #E52B72; no broad naturalistic color range.\nConstraints: exactly one character; no text, letters, logos, speech bubbles, UI, watermark, photorealism, 3D render, glossy anime style, beard, glasses, suit, extra people, hands, or props."
+    },
+    {
+      "id": "flepik-portrait-v1",
+      "character_id": "flepik",
+      "file": "flepik-portrait-v1.png",
+      "width": 1024,
+      "height": 1280,
+      "sha256": "a34499db2f35fcb56b29c2578ef71226c9979c73a82db0a5151b4f9491569c00",
+      "creation_note": "Круглая cyan-голова, две петли-антенны и доброжелательная буквальность системы.",
+      "prompt": "Use case: stylized-concept\nAsset type: canonical character portrait for the OpenCity website character registry\nPrimary request: Create a single portrait of Flepik, Danya's warm and literal AI assistant.\nInput images: Image 1 and Image 2 are style references only. Match their graphic language, palette discipline, ink texture, and print feel; do not copy their panel layouts.\nScene/backdrop: simple near-black urban-night field with a narrow cream paper border and sparse cyan/magenta registration marks; no readable signs and no interface.\nSubject: one friendly compact robot, chest-up, directly facing the viewer. A perfectly round cyan head, exactly two flexible loop-shaped antennae on top, two large black oval eyes, a tiny oval mouth, magenta circular headphone-like ear modules, and a simple dark teal neck and shoulders. The expression is curious, kind, and slightly surprised; readable as a system becoming more human.\nStyle/medium: graphic 2D editorial comic portrait, post-Soviet cyberpunk poster, bold confident dark ink contour, simplified volumes, coarse risograph/screen-print grain, imperfect color registration, cream paper texture, consistent with the supplied OpenCity comic pages.\nComposition/framing: vertical 4:5 portrait, centered head and shoulders, generous padding, clear silhouette, no cropped antennae or shoulders.\nLighting/mood: dark systemic mode, dominant cyan body with restrained magenta edge light; friendly, precise, gently uncanny.\nColor palette: near-black #070B12, cream #F1E2C3, cyan #08B8D1, magenta #E52B72, dark teal; no broad naturalistic color range.\nConstraints: exactly one robot; exactly two loop antennae; no text, letters, logos, speech bubbles, UI, watermark, photorealism, 3D render, glossy anime style, human skin, teeth, extra limbs, extra people, hands, or props."
+    },
+    {
+      "id": "marina-portrait-v1",
+      "character_id": "marina",
+      "file": "marina-portrait-v1.png",
+      "width": 1024,
+      "height": 1280,
+      "sha256": "fb83d4ee94ef6e5e16a7e519ad06d1de7ead9f2ebbdceed3f8694dc660fb1528",
+      "creation_note": "Спокойный прямой взгляд, тёмный платок и человеческая мера без карикатуры.",
+      "prompt": "Use case: stylized-concept\nAsset type: canonical character portrait for the OpenCity website character registry\nPrimary request: Create a single portrait of Grandma Marina, OpenCity's analog activist and audience editor.\nInput images: Image 1 and Image 2 are style references only. Match their graphic language, palette discipline, ink texture, and print feel; do not copy their panel layouts.\nScene/backdrop: simple near-black urban-night field with a narrow cream paper border and sparse cyan/orange registration marks; no readable signs and no interface.\nSubject: one dignified elderly woman, chest-up, facing the viewer with a calm direct gaze and the faintest knowing smile. Dark practical headscarf framing a deeply human face, dark heavy coat, no jewelry. Her age is visible but never a joke; she radiates patience, clarity, and unoptimizable common sense.\nStyle/medium: graphic 2D editorial comic portrait, post-Soviet cyberpunk poster, bold confident dark ink contour, simplified volumes, coarse risograph/screen-print grain, imperfect color registration, cream paper texture, consistent with the supplied OpenCity comic pages.\nComposition/framing: vertical 4:5 portrait, centered head and shoulders, generous padding, clear silhouette, no cropped scarf or shoulders.\nLighting/mood: dark systemic mode, cyan rim light and warm orange facial edge; grounded, humane, resistant without aggression.\nColor palette: near-black #070B12, cream #F1E2C3, orange #F18A32, cyan #08B8D1, tiny magenta accent; no broad naturalistic color range.\nConstraints: exactly one character; no text, letters, logos, speech bubbles, UI, watermark, photorealism, 3D render, glossy anime style, grotesque caricature, witch imagery, extra people, hands, or props."
+    },
+    {
+      "id": "mayor-chatbot-portrait-v1",
+      "character_id": "mayor-chatbot",
+      "file": "mayor-chatbot-portrait-v1.png",
+      "width": 1024,
+      "height": 1280,
+      "sha256": "d971ab66897fcf8e9a6fc79e6400378c28f46878f62cb444a5db3748c10de95e",
+      "creation_note": "Прямоугольная magenta-голова-экран, строгий костюм и уверенность избранного алгоритма.",
+      "prompt": "Use case: stylized-concept\nAsset type: canonical character portrait for the OpenCity website character registry\nPrimary request: Create a single portrait of the Mayor Chatbot, OpenCity's elected neural-network mayor and production coordinator.\nInput images: Image 1 and Image 2 are style references only. Match their graphic language, palette discipline, ink texture, and print feel; do not copy their panel layouts.\nScene/backdrop: simple near-black urban-night field with a narrow cream paper border and sparse magenta/cyan registration marks; no readable signs and no interface.\nSubject: one humanoid municipal robot, chest-up, directly facing the viewer. Strong unmistakable silhouette: rectangular magenta screen head with rounded corners, exactly two pale vertical rectangular eyes, small circular side modules, black formal suit, cream shirt, precise cyan bow tie. The posture is ceremonially confident and bureaucratically serene.\nStyle/medium: graphic 2D editorial comic portrait, post-Soviet cyberpunk poster, bold confident dark ink contour, simplified volumes, coarse risograph/screen-print grain, imperfect color registration, cream paper texture, consistent with the supplied OpenCity comic pages.\nComposition/framing: vertical 4:5 portrait, centered head and shoulders, generous padding, clear silhouette, no cropped head or shoulders.\nLighting/mood: dark systemic mode, dominant magenta screen glow with a restrained cyan counterlight; official, absurdly self-assured, never menacing.\nColor palette: near-black #070B12, cream #F1E2C3, magenta #E52B72, cyan #08B8D1; no broad naturalistic color range.\nConstraints: exactly one robot; exactly two simple eye rectangles; no mouth, text, letters, logos, speech bubbles, UI labels, watermark, photorealism, 3D render, glossy anime style, human face, crown, extra people, hands, or props."
+    },
+    {
+      "id": "grisha-portrait-v1",
+      "character_id": "grisha",
+      "file": "grisha-portrait-v1.png",
+      "width": 1024,
+      "height": 1280,
+      "sha256": "0c8121463a4b9d43d1e651898f3e3e31f4b3a16450c9e232c539ed17112d2308",
+      "creation_note": "Парящий teal-корпус, оранжевая грузовая кассета и усталый взгляд философа, которому уже назначили маршрут.",
+      "prompt": "Use case: stylized-concept\nAsset type: first canonical character portrait for the OpenCity website character registry\nPrimary request: Create a single portrait of Grisha, a courier drone and reluctant philosopher whose route is always assigned before consent is requested.\nInput images: Image 1 and Image 2 are style references only. Match their graphic language, palette discipline, ink texture, and print feel; do not copy their panel layouts or human characters.\nScene/backdrop: simple near-black urban-night field with a narrow cream paper border and sparse teal/orange registration marks; no readable signs and no interface.\nSubject: one compact hovering delivery drone, front-facing. Rounded weathered teal body, two small side rotor rings, two half-lidded cream eyes integrated into a dark visor, a tiny speaker grille, and one clearly visible orange cargo cassette fixed beneath the body. Its expression is tired, observant, and quietly philosophical; industrial rather than cute, but sympathetic.\nStyle/medium: graphic 2D editorial comic portrait, post-Soviet cyberpunk poster, bold confident dark ink contour, simplified volumes, coarse risograph/screen-print grain, imperfect color registration, cream paper texture, consistent with the supplied OpenCity comic pages.\nComposition/framing: vertical 4:5 portrait, centered full drone with generous padding, clear silhouette, both rotors and cargo cassette fully visible.\nLighting/mood: dark systemic mode, restrained cyan edge light and warm orange cargo accent; weary, dryly funny, dignified.\nColor palette: near-black #070B12, cream #F1E2C3, teal #31525A, cyan #08B8D1, orange #F18A32; no broad naturalistic color range.\nConstraints: exactly one drone; no human body, arms, legs, text, letters, logos, speech bubbles, route UI, watermark, photorealism, glossy 3D render, anime style, weapons, extra drones, or loose props."
+    }
+  ]
+}

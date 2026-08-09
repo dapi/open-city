@@ -26,6 +26,14 @@
       "profile_status": "active",
       "visual_status": "approved",
       "studio_chat_persona_id": "danya-script-editor",
+      "portrait": {
+        "asset_path": "projects/open-city/assets/characters/danya-portrait-v1.png",
+        "alt": "Портрет Дани: молодой мужчина с короткими тёмными волосами в чёрном худи смотрит прямо, лицо подсвечено голубым и пурпурным контуром.",
+        "creation_note": "Усталый прямой взгляд, тёмное худи и человек, который всё ещё спрашивает «зачем».",
+        "prompt_id": "danya-portrait-v1",
+        "manifest_path": "projects/open-city/assets/characters/manifest.json",
+        "sha256": "30287b5a0ce8a506dd8ba2ccbf9c717ad47268b08a2c43494075d64f5797e154"
+      },
       "archive_visual_references": [
         {
           "artifact_path": "knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/ed2a4f09-d579-422f-9d15-a46d27355acc.png",
@@ -59,6 +67,14 @@
       "profile_status": "active",
       "visual_status": "approved",
       "studio_chat_persona_id": "flepik-story-agent",
+      "portrait": {
+        "asset_path": "projects/open-city/assets/characters/flepik-portrait-v1.png",
+        "alt": "Портрет Флёпика: дружелюбный робот с круглой голубой головой, двумя петлями-антеннами, чёрными овальными глазами и пурпурными наушниками.",
+        "creation_note": "Круглая cyan-голова, две петли-антенны и доброжелательная буквальность системы.",
+        "prompt_id": "flepik-portrait-v1",
+        "manifest_path": "projects/open-city/assets/characters/manifest.json",
+        "sha256": "a34499db2f35fcb56b29c2578ef71226c9979c73a82db0a5151b4f9491569c00"
+      },
       "archive_visual_references": [
         {
           "artifact_path": "knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/98fafe5b-c057-48f4-85cd-9260eac9a3d3.png",
@@ -82,7 +98,8 @@
           "context": "shared_identity",
           "reference_type": "style_iteration",
           "status": "source_only",
-          "note": "Высоко оценённая U-P2-итерация телесного образа; не совпадает с текущим утверждённым силуэтом комикса."
+          "featured": true,
+          "note": "Любимый ранний 3D-вариант Флёпика с кольцом-антенной; полный оригинал 1024×1024. Не совпадает с текущим утверждённым силуэтом комикса."
         }
       ],
       "appearances": ["issue-001", "issue-003", "issue-004"]
@@ -100,6 +117,14 @@
       "profile_status": "active",
       "visual_status": "approved",
       "studio_chat_persona_id": "mayor-production-coordinator",
+      "portrait": {
+        "asset_path": "projects/open-city/assets/characters/mayor-chatbot-portrait-v1.png",
+        "alt": "Портрет Мэра-чатбота: робот с прямоугольной пурпурной головой-экраном и двумя светлыми глазами в чёрном костюме с голубой бабочкой.",
+        "creation_note": "Прямоугольная magenta-голова-экран, строгий костюм и уверенность избранного алгоритма.",
+        "prompt_id": "mayor-chatbot-portrait-v1",
+        "manifest_path": "projects/open-city/assets/characters/manifest.json",
+        "sha256": "d971ab66897fcf8e9a6fc79e6400378c28f46878f62cb444a5db3748c10de95e"
+      },
       "archive_visual_references": [
         {
           "artifact_path": "knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/Персонажи_OpenCity_Город_Идей.png",
@@ -115,6 +140,7 @@
           "context": "studio_chat",
           "reference_type": "ensemble_sheet",
           "status": "source_only",
+          "publish": false,
           "note": "Архивный ансамбль сотрудников с отдельным портретом НейроМэра."
         }
       ],
@@ -133,6 +159,14 @@
       "profile_status": "active",
       "visual_status": "approved",
       "studio_chat_persona_id": "marina-audience-editor",
+      "portrait": {
+        "asset_path": "projects/open-city/assets/characters/marina-portrait-v1.png",
+        "alt": "Портрет Бабки Марины: пожилая женщина в тёмном платке и пальто спокойно смотрит прямо, лицо подсвечено голубым и оранжевым контуром.",
+        "creation_note": "Спокойный прямой взгляд, тёмный платок и человеческая мера без карикатуры.",
+        "prompt_id": "marina-portrait-v1",
+        "manifest_path": "projects/open-city/assets/characters/manifest.json",
+        "sha256": "fb83d4ee94ef6e5e16a7e519ad06d1de7ead9f2ebbdceed3f8694dc660fb1528"
+      },
       "archive_visual_references": [
         {
           "artifact_path": "knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/6080c27b-8c1b-4694-960d-fa6db3b4c8c0.png",
@@ -164,8 +198,16 @@
       "quote": null,
       "accent": "teal",
       "profile_status": "announced",
-      "visual_status": "awaiting_master",
+      "visual_status": "approved",
       "studio_chat_persona_id": "grisha-rhythm-editor",
+      "portrait": {
+        "asset_path": "projects/open-city/assets/characters/grisha-portrait-v1.png",
+        "alt": "Портрет курьера-дрона Гриши: парящий округлый бирюзовый дрон с усталыми глазами, боковыми роторами и оранжевой грузовой кассетой.",
+        "creation_note": "Парящий teal-корпус, оранжевая грузовая кассета и усталый взгляд философа, которому уже назначили маршрут.",
+        "prompt_id": "grisha-portrait-v1",
+        "manifest_path": "projects/open-city/assets/characters/manifest.json",
+        "sha256": "0c8121463a4b9d43d1e651898f3e3e31f4b3a16450c9e232c539ed17112d2308"
+      },
       "archive_visual_references": [
         {
           "artifact_path": "knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/75d0077e-defa-484f-bc6c-f751fcb4e7aa.png",
@@ -173,6 +215,7 @@
           "context": "studio_chat",
           "reference_type": "ensemble_sheet",
           "status": "source_only",
+          "publish": false,
           "note": "Ансамблевый лист с Гришей Саундом; относится к студийному воплощению общей идентичности."
         },
         {
@@ -205,8 +248,16 @@
       "quote": null,
       "accent": "magenta",
       "profile_status": "announced",
-      "visual_status": "awaiting_master",
+      "visual_status": "approved",
       "studio_chat_persona_id": "neyra-visual-designer",
+      "portrait": {
+        "asset_path": "projects/open-city/assets/characters/neyra-portrait-v1.png",
+        "alt": "Портрет NEYRA: девушка с серебряным каре и пурпурным нижним слоем волос в тёмном высоком воротнике, освещённая голубым и пурпурным контуром.",
+        "creation_note": "Прямой взгляд, узнаваемый magenta-силуэт и контролируемая публичная искренность.",
+        "prompt_id": "neyra-portrait-v1",
+        "manifest_path": "projects/open-city/assets/characters/manifest.json",
+        "sha256": "5a10006b982cdd96ed1e68a6b8914239f74eb65f4d96024ecad58377b88cf61c"
+      },
       "archive_visual_references": [],
       "appearances": []
     },
@@ -221,8 +272,16 @@
       "quote": "Сделайте, чтобы это отменили — тогда посмотрят все.",
       "accent": "orange",
       "profile_status": "announced",
-      "visual_status": "awaiting_master",
+      "visual_status": "approved",
       "studio_chat_persona_id": "max-hypestein-producer-consultant",
+      "portrait": {
+        "asset_path": "projects/open-city/assets/characters/max-hypestein-portrait-v1.png",
+        "alt": "Портрет Макса Хайпштейна: мужчина с зачёсанными назад тёмными волосами и узкими оранжевыми очками в чёрном пиджаке, освещённый оранжевым и голубым контуром.",
+        "creation_note": "Прямой взгляд, узнаваемый orange-силуэт и опасно убедительная энергия продюсера внимания.",
+        "prompt_id": "max-hypestein-portrait-v1",
+        "manifest_path": "projects/open-city/assets/characters/manifest.json",
+        "sha256": "c0c26d5a2b3bd72c82f90b09e2b35c76733e4c907fc06299e505e370c80ce39e"
+      },
       "archive_visual_references": [],
       "appearances": []
     }
