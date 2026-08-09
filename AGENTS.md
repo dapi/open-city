@@ -81,17 +81,10 @@ direnv exec . zsh -c 'command-1 | command-2'
 варианты выпусков в Telegram, сразу используйте штатный контур, не создавая
 внутреннего ревью-агента и не выполняя широкий поиск:
 
-1. Флёпик обсуждает идеи с сотрудниками и ведёт
-   `productions/proposals/ideas-backlog.md`; Showrunner не утверждает идею отдельно.
-2. Как только идея берётся в производство, создайте `productions/issues/issue-NNN/`
-   со всеми артефактами и метаданными.
-3. Соберите `preproduction.md` (сценарий и раскадровка), запустите
-   `direnv exec . make review-run` и отправьте только один сценарный пакет командой
-   `direnv exec . make review-submit-script ISSUE=issue-NNN`. Визуал запрещён до
-   одобрения сценарного SHA-256.
-4. После одобрения отправьте только один визуальный мастер командой
-   `direnv exec . make review-submit ISSUE=issue-NNN` и дождитесь решения Данила
-   («Одобрить» или «Нужны правки») до отправки следующего выпуска.
+Порядок этапов, роли и человеческие решения определяет единственный канонический
+документ [производства выпуска](studio-os/workflows/comic-issue-production.md).
+Здесь действуют лишь технические точки входа: `make review-submit-script`,
+`make review-submit` и `make review-submit-retro`.
 
 Бот находится в `platform/publishing/review_bot.py`; он отправляет карточку
 мастера в личный Telegram-диалог Данила, принимает только его решение и никогда
