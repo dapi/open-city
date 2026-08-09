@@ -50,6 +50,11 @@ def load_characters() -> list[dict]:
     return catalog["characters"]
 
 
+def clean_html(page: str) -> str:
+    """Normalize generated pages without changing their rendered content."""
+    return "\n".join(line.rstrip() for line in page.splitlines()) + "\n"
+
+
 def shell(config: dict, body: str, *, review: bool, title: str, description: str) -> str:
     robots = '<meta name="robots" content="noindex,nofollow">' if review else ""
     banner = '<div class="review-banner">Закрытый предпросмотр — не опубликовано</div>' if review else ""
@@ -238,11 +243,13 @@ def write_site(output: Path, include_drafts: bool) -> int:
     for issue in issues:
         source_image = issue["directory"] / issue["canonical_files"]["art_master"]
         shutil.copy2(source_image, output / f"assets/comics/{issue['id']}.png")
-    (output / "index.html").write_text(build_index(config, issues, include_drafts), encoding="utf-8")
+    (output / "index.html").write_text(
+        clean_html(build_index(config, issues, include_drafts)), encoding="utf-8"
+    )
     characters_output = output / "characters"
     characters_output.mkdir(parents=True, exist_ok=True)
     (characters_output / "index.html").write_text(
-        build_characters(config, characters, issues, include_drafts), encoding="utf-8"
+        clean_html(build_characters(config, characters, issues, include_drafts)), encoding="utf-8"
     )
     for index, issue in enumerate(issues):
         issue_output = output / issue["address"].strip("/")
@@ -250,7 +257,7 @@ def write_site(output: Path, include_drafts: bool) -> int:
         previous = issues[index - 1] if index > 0 else None
         following = issues[index + 1] if index + 1 < len(issues) else None
         page = build_issue(config, issue, previous, following, include_drafts)
-        (issue_output / "index.html").write_text(page, encoding="utf-8")
+        (issue_output / "index.html").write_text(clean_html(page), encoding="utf-8")
     print(f"SITE BUILD OK: {len(issues)} issues, {len(characters)} characters -> {output}")
     return len(issues)
 

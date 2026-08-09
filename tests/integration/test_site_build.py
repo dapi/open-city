@@ -33,6 +33,7 @@ class SiteBuildTests(unittest.TestCase):
             self.assertIn("NEYRA", characters)
             self.assertIn("Мы же не договорились", characters)
             self.assertIn('name="robots" content="noindex,nofollow"', characters)
+            self.assertFalse(any(line.endswith(" ") for line in characters.splitlines()))
 
     def test_public_build_excludes_unpublished_issues(self):
         with tempfile.TemporaryDirectory() as temporary:
