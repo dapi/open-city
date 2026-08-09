@@ -3,7 +3,7 @@ doc_kind: storyboard
 doc_function: production
 context: open_city_issue_001
 issue_id: issue-001
-status: ready_for_review
+status: archived
 ---
 
 # Раскадровка

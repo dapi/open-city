@@ -53,10 +53,30 @@
       "additionalProperties": false,
       "required": ["script", "art_master", "manifest"],
       "properties": {
+        "preproduction": {"type": "string", "minLength": 1},
+        "preproduction_review": {"type": "string", "minLength": 1},
         "script": {"type": "string", "minLength": 1},
         "art_master": {"type": "string", "minLength": 1},
         "manifest": {"type": "string", "minLength": 1}
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": ["ready_for_art", "ready_for_lettering", "ready_for_review", "approved", "published"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "canonical_files": {
+            "required": ["preproduction", "preproduction_review"]
+          }
+        }
+      }
+    }
+  ]
 }

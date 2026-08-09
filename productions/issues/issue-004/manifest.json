@@ -1,6 +1,6 @@
 {
   "issue": "issue-004",
-  "status": "ready_for_review",
+  "status": "draft",
   "generated_at": "2026-08-09",
   "inputs": [
     "../../../projects/open-city/channels/studio-chat/scripts/sync-004-joy-index.md",

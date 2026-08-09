@@ -3,7 +3,7 @@ doc_kind: comic_script
 doc_function: canonical
 context: open_city_issue_004
 issue_id: issue-004
-status: ready_for_review
+status: draft
 canonical_for: issue_004_lettering
 ---
 

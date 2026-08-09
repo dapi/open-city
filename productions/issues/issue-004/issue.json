@@ -2,7 +2,7 @@
   "$schema": "../../../studio-os/contracts/comic-issue.schema.json",
   "id": "issue-004",
   "project": "open-city",
-  "status": "ready_for_review",
+  "status": "draft",
   "title": "Индекс радости",
   "premise": "Город раздаёт обязательные леденцы и объявляет отсутствие слышимых возражений стопроцентным счастьем.",
   "source_sync": "../../../projects/open-city/channels/studio-chat/scripts/sync-004-joy-index.md",

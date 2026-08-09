@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../studio-os/contracts/comic-review.schema.json",
+  "issue": "issue-002",
+  "decision": "changes_requested",
+  "master_sha256": "eb00e712ac0e9d9116d4647df0d5aaa53ebc2187942a27f09a618ef374b2806c",
+  "reviewer_role": "showrunner",
+  "decided_at": "2026-08-09T23:10:05+05:00",
+  "source": "codex_editorial_chat",
+  "comment": "Сюжет непонятен и не раскрывает проблему, связанную с нейросетями; требуется новая смысловая основа.",
+  "disposition": "revise"
+}

@@ -2,7 +2,7 @@
   "$schema": "../../../studio-os/contracts/comic-issue.schema.json",
   "id": "issue-003",
   "project": "open-city",
-  "status": "ready_for_review",
+  "status": "draft",
   "title": "Тихий режим",
   "premise": "ИИ-психолог принимает сомнение Дани за дефект и выключает тревогу вместе со способностью спрашивать о смысле.",
   "source_sync": "../../../projects/open-city/channels/studio-chat/scripts/sync-003-quiet-mode.md",

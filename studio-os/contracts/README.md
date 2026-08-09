@@ -9,6 +9,8 @@ status: active
 # Контракты
 
 - [Выпуск комикса](comic-issue.schema.json)
+- [Предгенерационное решение](comic-preproduction-review.schema.json)
+- [Редакторское решение по мастеру](comic-review.schema.json)
 - [Спецификация эпизода](episode-spec.schema.json)
 - [Утверждённый сценарий](approved-script.schema.json)
 - [Манифест голосов](voice-manifest.schema.json)

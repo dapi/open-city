@@ -3,7 +3,7 @@ doc_kind: issue_brief
 doc_function: production
 context: open_city_issue_003
 issue_id: issue-003
-status: ready_for_review
+status: draft
 derived_from:
   - ../../../knowledge/research/open-city-chat-archive-findings.md
 ---

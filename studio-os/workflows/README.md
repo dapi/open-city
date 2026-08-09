@@ -9,6 +9,7 @@ status: active
 # Производственные процессы
 
 - [Сюжетная арка StudioChat](studio-chat-story-arc.md)
+- [Предгенерационное утверждение комикса](comic-preproduction-approval.md)
 - [Производство комикса](comic-issue-production.md)
 - [Выпуск комикса](comic-release.md)
 - [Редакционный совет сотрудников](editorial-council.md)

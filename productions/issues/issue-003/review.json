@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../studio-os/contracts/comic-review.schema.json",
+  "issue": "issue-003",
+  "decision": "changes_requested",
+  "master_sha256": "38613efe679de1f9bfa075a7bf91e032c4ef014b289a155bab8aa3842aa1d000",
+  "reviewer_role": "showrunner",
+  "decided_at": "2026-08-09T23:10:05+05:00",
+  "source": "codex_editorial_chat",
+  "comment": "Первые три панели можно сохранить как направление; четвёртая панель не следует из истории и требует полной замены.",
+  "disposition": "revise"
+}

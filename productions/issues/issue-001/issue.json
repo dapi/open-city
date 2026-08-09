@@ -2,7 +2,7 @@
   "$schema": "../../../studio-os/contracts/comic-issue.schema.json",
   "id": "issue-001",
   "project": "open-city",
-  "status": "ready_for_review",
+  "status": "archived",
   "title": "Режим энергосбережения",
   "premise": "Город отключает движение и возвращает его по подписке, случайно превращая реальность в комикс.",
   "source_sync": "../../../projects/open-city/channels/studio-chat/scripts/sync-001-format-change.md",

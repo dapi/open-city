@@ -1,6 +1,6 @@
 {
   "issue": "issue-001",
-  "status": "ready_for_review",
+  "status": "archived",
   "generated_at": "2026-08-09",
   "inputs": [
     "../../../projects/open-city/channels/studio-chat/scripts/sync-001-format-change.md",

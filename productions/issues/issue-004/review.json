@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../studio-os/contracts/comic-review.schema.json",
+  "issue": "issue-004",
+  "decision": "changes_requested",
+  "master_sha256": "78d608f852e2cab4afdef5f5a949fd13de4b2dbc7068d91ed63812414096ad4b",
+  "reviewer_role": "showrunner",
+  "decided_at": "2026-08-09T23:10:05+05:00",
+  "source": "codex_editorial_chat",
+  "comment": "Идея первой панели годится как отправная точка; последующие панели и финал отклонены и должны быть придуманы заново.",
+  "disposition": "revise"
+}
