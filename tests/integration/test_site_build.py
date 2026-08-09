@@ -39,7 +39,7 @@ class SiteBuildTests(unittest.TestCase):
                 "danya-portrait-v1.png",
                 "flepik-portrait-v1.png",
                 "marina-portrait-v1.png",
-                "mayor-chatbot-portrait-v1.png",
+                "mayor-chatbot-manifestation-v1.png",
                 "grisha-portrait-v1.png",
                 "neyra-portrait-v1.png",
                 "max-hypestein-portrait-v1.png",

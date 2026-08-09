@@ -40,15 +40,16 @@ Primary request: Create one coherent vertical 2:3 comic page divided into four c
 panels, testing the target style without telling a finished story. Show: an overcast
 residential courtyard with panel apartment blocks; a mundane municipal waiting room;
 a warm human close-up beside a small neural-green terminal; and an ensemble reaction
-shot with Danya, Flepik, Grandma Marina and the Mayor Chatbot. Technology stays small
-and ordinary. Include at most two empty cream speech bubbles with dark outlines.
+shot with Danya, Flepik and Grandma Marina, while the same small neural-green status
+appears on two separate everyday interfaces. Technology stays small and ordinary.
+Include at most two empty cream speech bubbles with dark outlines.
 
 Composition/framing: four panels with calm gutters; mix wide, medium and close shot;
 human action reads before devices; leave safe margins for a 4:5 crop.
 
-Identity constraints: preserve the four supplied character silhouettes, outfits and
-faces, but translate them completely into Color-Breath. No additional named
-characters.
+Identity constraints: preserve the three supplied character silhouettes, outfits and
+faces, but translate them completely into Color-Breath. The Нейро-мэр is not a fourth
+body in the scene: show only its coordinated effects. No additional named characters.
 
 ## 02 — Danya model sheet
 
@@ -90,23 +91,12 @@ side profile, and four consistent head expressions: calm, skeptical, alarmed,
 faintly knowing. Same scarf knot and coat in every view. Plain warm cream paper field
 with thin dark-brown dividers and small unlabeled palette swatches.
 
-## 05 — Mayor Chatbot model sheet
+## 05 — historical Mayor Chatbot model sheet (not for use)
 
-Asset type: character model sheet candidate, vertical 2:3.
-
-Subject: the Mayor Chatbot, a humanoid municipal robot with a rounded rectangular
-muted-plum screen head, exactly two pale vertical rectangular eyes and no mouth,
-small circular side modules, black formal suit, cream shirt and precise muted-cyan bow
-tie. Ceremonially confident and bureaucratically serene; the screen does not glow.
-
-Composition: one full-body front pose, one full-body three-quarter pose, one side
-profile, and four consistent screen-eye expressions: official neutral, pleased,
-alarmed, calculating. Same head geometry and suit in every view. Plain warm cream
-paper field with thin dark-brown dividers and small unlabeled palette swatches.
-
-Revision v2: remove only the generated M-shaped crest from every view; replace it
-with the plain rounded top edge of the screen casing; preserve layout, poses,
-expressions, palette, linework and grain; add no symbol or accessory.
+`05-mayor-chatbot-model-sheet-v2.png` documents the superseded humanoid design with
+a screen head and suit. It remains only as a production-history source. Do not supply
+it as a visual reference, use it in a scene, or derive a new version from it: ADR 0007
+defines the Нейро-мэр as an incorporeal presence with no body, face or central device.
 
 ## 06 — Courier drone Grisha model sheet
 

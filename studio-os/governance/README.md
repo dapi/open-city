@@ -16,4 +16,5 @@ status: active
 - [ADR 0004](adr/0004-elect-neural-network-mayor.md) — избрание нейросети мэром как основополагающий факт мира.
 - [ADR 0005](adr/0005-adopt-color-breath-visual-language.md) — Color-Breath как основной визуальный язык.
 - [ADR 0006](adr/0006-adopt-municipal-os-site-architecture.md) — муниципальная ОС как информационная архитектура сайта.
+- [ADR 0007](adr/0007-depict-neural-mayor-as-incorporeal-presence.md) — Нейро-мэр как бесплотное присутствие, а не персонаж-объект.
 - [Правила базы знаний](knowledge-base/README.md) — авторитетность, происхождение и жизненный цикл.

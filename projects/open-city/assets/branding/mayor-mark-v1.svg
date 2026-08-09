@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title id="title">Служебный знак Нейро-мэра</title>
+  <desc id="desc">Три горизонтальные нейро-зелёные линии разной длины над тонким кольцом.</desc>
+  <g fill="none" stroke="#5DE0A3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M25 18h46" stroke-width="7"/>
+    <path d="M31 34h28" stroke-width="7"/>
+    <path d="M20 50h55" stroke-width="7"/>
+    <circle cx="48" cy="74" r="12" stroke-width="5"/>
+  </g>
+</svg>
