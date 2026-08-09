@@ -1,0 +1,24 @@
+{
+  "issue": "issue-005",
+  "status": "draft",
+  "generated_at": "2026-08-10",
+  "inputs": [
+    "../../../productions/proposals/ideas-backlog.md",
+    "brief.md",
+    "script.md",
+    "storyboard.md",
+    "preproduction.md"
+  ],
+  "outputs": [],
+  "generation": {
+    "tool": null,
+    "reference": null,
+    "corrective_passes": 0,
+    "human_lettering_check": false
+  },
+  "releases": {
+    "website_url": null,
+    "telegram_url": null,
+    "instagram_url": null
+  }
+}

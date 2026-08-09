@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../studio-os/contracts/comic-issue.schema.json",
+  "id": "issue-005",
+  "project": "open-city",
+  "status": "draft",
+  "title": "Баланс добра",
+  "premise": "Даня хочет оставить Марине ключ для сантехника во время протечки, но домовой терминал считает соседскую помощь непогашенным долгом и блокирует передачу.",
+  "source_sync": "../../../productions/proposals/ideas-backlog.md",
+  "format": {
+    "panels": 5,
+    "master_aspect_ratio": "2:3",
+    "release_targets": ["website", "telegram", "instagram"]
+  },
+  "canonical_files": {
+    "preproduction": "preproduction.md",
+    "preproduction_review": "preproduction-review.json",
+    "script": "script.md",
+    "art_master": "art/issue-005-master.png",
+    "manifest": "manifest.json"
+  }
+}

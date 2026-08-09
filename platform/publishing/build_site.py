@@ -28,6 +28,10 @@ ARCHIVE_REMOVED_SOURCES = {
     "knowledge/sources/chatgpt/open-city/archive/artifacts/69086e59-db2c-8325-b5c2-da4d3bf58181/ca76c594-8f40-4be1-9400-9321f45f01a3.png",
 }
 NEWS_SOURCE = ROOT / "projects/open-city/news/news.json"
+CITY_MAP_ASSET = (
+    ROOT
+    / "projects/open-city/assets/visual-development/site-concepts-v1/04-city-map-page-candidate-v1.png"
+)
 DEFAULT_OUTPUT = ROOT / "var/output/site"
 PUBLIC_STATUSES = {"published"}
 
@@ -48,7 +52,16 @@ def load_issues(include_drafts: bool) -> list[dict]:
         if not include_drafts and issue["status"] not in PUBLIC_STATUSES:
             continue
         issue_dir = issue_path.parent
-        release_text = (issue_dir / "publish/website.md").read_text(encoding="utf-8")
+        release_path = issue_dir / "publish/website.md"
+        if not release_path.is_file():
+            if issue["status"] in PUBLIC_STATUSES:
+                raise FileNotFoundError(
+                    f"published issue is missing website release package: {release_path}"
+                )
+            # A script-only draft is not a visual review candidate yet. It may not
+            # enter a site preview until its approved master and release package exist.
+            continue
+        release_text = release_path.read_text(encoding="utf-8")
         issue["directory"] = issue_dir
         issue["number"] = issue["id"].split("-")[1]
         issue["address"] = markdown_field(release_text, "Адрес") or f"/comics/{issue['id']}"
@@ -208,6 +221,8 @@ def shell(
     title: str,
     description: str,
     scripts: str = "",
+    current: str = "",
+    body_class: str = "",
 ) -> str:
     robots = '<meta name="robots" content="noindex,nofollow">' if review else ""
     banner = '<div class="review-banner">Закрытый предпросмотр — не опубликовано</div>' if review else ""
@@ -215,14 +230,26 @@ def shell(
     github_link = (
         f'<a href="{html.escape(github_url)}">Исходный код на GitHub ↗</a>' if github_url else ""
     )
+    nav_items = [
+        ("issues", "/", "Выпуски"),
+        ("city", "/city/", "Город"),
+        ("characters", "/characters/", "Картотека"),
+        ("studio", "/studio/", "Студия"),
+        ("archive", "/archive/", "Архив"),
+    ]
+    nav = "".join(
+        f'<a href="{href}"{" aria-current=\"page\"" if key == current else ""}>'
+        f'<span class="nav-index">0{index}</span>{label}</a>'
+        for index, (key, href, label) in enumerate(nav_items, start=1)
+    )
     return f"""<!doctype html>
 <!-- GENERATED FILE. Source of truth: open-city repository. Do not edit published facts here. -->
 <html lang="ru">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#070b12">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#263a3d">
+  <meta name="color-scheme" content="light dark">
   {robots}
   <title>{html.escape(title)}</title>
   <meta name="description" content="{html.escape(description)}">
@@ -233,51 +260,76 @@ def shell(
   <link rel="stylesheet" href="/assets/styles.css">
   <link rel="stylesheet" href="/assets/site-header.css">
 </head>
-<body>
+<body{f' class="{html.escape(body_class)}"' if body_class else ''}>
   {banner}
   <a class="skip-link" href="#main">К содержанию</a>
-  <header class="site-header">
-    <a class="studio-mark" href="/" aria-label="OpenCity Studio — главная">
-      <span class="studio-mark__signal" aria-hidden="true"></span>
-      OpenCity Studio
-    </a>
-    <nav class="site-nav" aria-label="Основная навигация">
-      <a href="/characters/">Картотека</a>
-      <a href="/news/">Новости</a>
-      <a class="secondary-nav-link" href="/archive/">Архив</a>
-      <a href="/studio/">Студия</a>
-      <a class="secondary-nav-link" href="/studio/process/">Как мы работаем</a>
-      <a class="header-link" href="{html.escape(config['telegram_url'])}" aria-label="Telegram">Telegram ↗</a>
-    </nav>
+  <header class="site-header shell">
+    <div class="system-identity">
+      <a class="studio-mark" href="/" aria-label="OpenCity — главная">
+        <span class="municipal-seal" aria-hidden="true">OC</span>
+        <span><strong>OpenCity</strong><small>Город Нейросеть</small></span>
+      </a>
+      <div class="system-utility" aria-label="Состояние системы">
+        <span><i class="status-dot" aria-hidden="true"></i>Система работает</span>
+        <span>Контур: публичный</span>
+      </div>
+    </div>
+    <nav class="site-nav" aria-label="Основная навигация">{nav}</nav>
   </header>
   <main id="main">{body}</main>
-  <footer class="site-footer"><div class="shell footer-row"><span>{html.escape(config['publisher'])}</span><span>Город, где оптимизация стала смыслом жизни.</span>{github_link}</div></footer>
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <div><strong>{html.escape(config['publisher'])}</strong><span>Город, где оптимизация стала смыслом жизни.</span></div>
+      <div class="footer-status"><span><i class="status-dot" aria-hidden="true"></i>Связь установлена</span>{github_link}</div>
+    </div>
+  </footer>
   {scripts}
 </body>
 </html>
 """
 
 
-def build_index(config: dict, issues: list[dict], news: list[dict], review: bool) -> str:
-    cards = []
-    for issue in issues:
-        cards.append(f"""
-        <a class="issue-card" href="{html.escape(issue['address'])}/">
-          <img src="/assets/comics/{issue['id']}.png" alt="{html.escape(issue['alt'])}" loading="lazy" width="1024" height="1536">
-          <div class="issue-card-copy">
-            <div class="issue-number">Выпуск {issue['number']}</div>
-            <h3>{html.escape(issue['title'])}</h3>
-            <p>{html.escape(issue['intro'])}</p>
+def build_index(
+    config: dict,
+    issues: list[dict],
+    news: list[dict],
+    archive_assets: list[dict],
+    review: bool,
+) -> str:
+    latest_issue = issues[-1] if issues else None
+    previous_issues = list(reversed(issues[:-1]))
+    if latest_issue:
+        issue_feature = f"""
+        <article class="os-window issue-feature home-panel is-active" id="home-panel-issues" data-home-panel="issues" aria-labelledby="home-tab-issues">
+          <header class="window-bar">
+            <span>Последний выпуск / ISSUE-{html.escape(latest_issue['number'])}</span>
+            <span class="window-controls" aria-hidden="true">— □ ×</span>
+          </header>
+          <div class="issue-feature-grid">
+            <a class="issue-feature-art" href="{html.escape(latest_issue['address'])}/">
+              <img src="/assets/comics/{latest_issue['id']}.png" alt="{html.escape(latest_issue['alt'])}" width="1024" height="1536">
+            </a>
+            <div class="issue-feature-copy">
+              <div class="record-label">Выпуск {latest_issue['number']} · запись опубликована в предпросмотре</div>
+              <h2>{html.escape(latest_issue['title'])}</h2>
+              <p>{html.escape(latest_issue['intro'])}</p>
+              <a class="button primary" href="{html.escape(latest_issue['address'])}/">Читать выпуск →</a>
+            </div>
           </div>
-        </a>""")
-    empty = '<p class="lede">Первый выпуск готовится к публикации.</p>'
-    grid = "\n".join(cards) if cards else empty
+        </article>"""
+    else:
+        issue_feature = """
+        <article class="os-window issue-feature home-panel is-active is-empty" id="home-panel-issues" data-home-panel="issues" aria-labelledby="home-tab-issues">
+          <header class="window-bar"><span>Последний выпуск</span><span>ожидание</span></header>
+          <div class="empty-record"><strong>Первый выпуск готовится к публикации.</strong><span>Следить за производством можно в каналах студии.</span></div>
+        </article>"""
+
     latest_news = ""
     if news:
         article = news[0]
         latest_news = f"""
-        <section class="shell latest-news" aria-labelledby="latest-news-title">
-          <div class="section-heading"><h2 id="latest-news-title">Внутри студии</h2><a href="/news/">Все новости →</a></div>
+        <section class="os-window home-panel home-studio-panel" id="home-panel-studio" data-home-panel="studio" aria-labelledby="home-tab-studio">
+          <header class="window-bar"><span>Студия / свежая запись</span><a href="/news/">Все записи →</a></header>
           <a class="latest-news-card" href="/news/{html.escape(article['slug'])}/">
             <span class="news-card-media"><img src="{html.escape(news_asset_url(article, article['cover']))}" alt="{html.escape(article['cover']['alt'])}" loading="lazy" width="1024" height="1536"></span>
             <div>
@@ -286,24 +338,143 @@ def build_index(config: dict, issues: list[dict], news: list[dict], review: bool
               <p>{html.escape(article['summary'])}</p>
             </div>
           </a>
+          <div class="studio-intervention" aria-label="Редакционная пометка студии"><span>OPEN CITY STUDIO</span>Людей из процесса пока не исключать.</div>
         </section>"""
+    else:
+        latest_news = """
+        <section class="os-window home-panel home-studio-panel" id="home-panel-studio" data-home-panel="studio" aria-labelledby="home-tab-studio">
+          <header class="window-bar"><span>Студия</span><span>в работе</span></header>
+          <div class="empty-record"><strong>Новая запись готовится.</strong><a class="button" href="/studio/">Открыть студию →</a></div>
+        </section>"""
+
+    archive_preview = "".join(
+        f"""
+        <a class="archive-preview-card" href="/archive/#{html.escape(asset['id'].lower())}">
+          <img src="/assets/archive/{html.escape(asset['public_filename'])}" alt="{html.escape(asset.get('alt', asset['original_filename']))}" loading="lazy">
+          <span><strong>{html.escape(asset['id'])}</strong>{html.escape(asset['original_filename'])}</span>
+        </a>"""
+        for asset in archive_assets[:4]
+    )
+    issue_links = "".join(
+        f'<a href="{html.escape(issue["address"])}/"><span>Выпуск {issue["number"]}</span><strong>{html.escape(issue["title"])}</strong></a>'
+        for issue in previous_issues
+    ) or '<span class="empty-menu-record">Предыдущих выпусков пока нет.</span>'
     body = f"""
-    <section class="hero shell">
-      <div class="eyebrow">Серийный цифровой комикс</div>
-      <h1>Всё уже <em>оптимизировано.</em> Кроме смысла.</h1>
-      <p class="lede">{html.escape(config['description'])}</p>
-      <div class="hero-actions">
-        <a class="button primary" href="#issues">Читать выпуски</a>
-        <a class="button" href="/characters/">Открыть картотеку</a>
-        <a class="button" href="{html.escape(config['studio_chat_url'])}">Читать «Синхронизацию»</a>
+    <section class="home-console shell" aria-label="Муниципальная информационная система OpenCity">
+      <header class="home-console-intro">
+        <div><span class="eyebrow">Официальный портал · серийный цифровой комикс</span><h1>Город Нейросеть</h1></div>
+        <p>{html.escape(config['description'])}</p>
+        <div class="console-id"><span>OC/CITY/2026</span><strong><i class="status-dot" aria-hidden="true"></i>ONLINE</strong></div>
+      </header>
+      <div class="home-workspace">
+        <div class="home-stage">
+          {issue_feature}
+          <section class="os-window home-panel home-city-panel" id="home-panel-city" data-home-panel="city" aria-labelledby="home-tab-city">
+            <header class="window-bar"><span>Город / карта и службы</span><span>LIVE</span></header>
+            <div class="home-city-grid"><img src="/assets/site/city-map-concept.png" alt="Концептуальная карта OpenCity со студией, мэрией, архивом и городскими районами."><div><span class="section-code">ГОРОД / MAP</span><h2>Город на связи</h2><p>Мэрия, службы, жители и городская хроника доступны как отдельный режим.</p><a class="button primary" href="/city/">Карта и список →</a></div></div>
+          </section>
+          {latest_news}
+          <section class="os-window home-panel archive-preview" id="home-panel-archive" data-home-panel="archive" aria-labelledby="home-tab-archive">
+            <header class="window-bar"><span>Из архива</span><a href="/archive/">Все записи →</a></header>
+            <div class="archive-preview-grid">{archive_preview}</div>
+            <div class="archivist-stamp">Ведёт Архивариус · сначала новые</div>
+          </section>
+          <section class="os-window home-panel home-menu-panel" id="home-panel-menu" data-home-panel="menu" aria-labelledby="home-tab-menu">
+            <header class="window-bar"><span>Меню системы</span><span>открытый доступ</span></header>
+            <div class="home-menu-grid"><nav aria-label="Разделы системы"><a href="/city/">Город</a><a href="/characters/">Картотека</a><a href="/studio/">Студия</a><a href="/archive/">Архив</a></nav><div class="previous-issue-list"><span class="section-code">ПРЕДЫДУЩИЕ ВЫПУСКИ</span>{issue_links}</div></div>
+          </section>
+        </div>
+        <aside class="home-context" aria-label="Краткая сводка системы">
+          <section class="city-status">
+            <div class="system-health"><i class="status-dot" aria-hidden="true"></i><strong>Система работает</strong><span>Отклонения в пределах человеческого фактора.</span></div>
+            <dl class="status-list"><div><dt>Мэрия</dt><dd>На связи</dd></div><div><dt>Архив</dt><dd>{len(archive_assets):02d}</dd></div><div><dt>Выпуски</dt><dd>{len(issues):02d}</dd></div></dl>
+          </section>
+          <a class="studio-pulse" href="/studio/"><span>СООБЩЕНИЕ СТУДИИ</span><strong>Не всё оптимизированное стоит оставлять.</strong><small>Открыть студию →</small></a>
+        </aside>
       </div>
+      <nav class="home-dock" role="tablist" aria-label="Приложения городской системы">
+        <button id="home-tab-issues" type="button" role="tab" aria-controls="home-panel-issues" aria-selected="true" data-home-tab="issues"><span>01</span>Выпуск</button>
+        <button id="home-tab-city" type="button" role="tab" aria-controls="home-panel-city" aria-selected="false" data-home-tab="city"><span>02</span>Город</button>
+        <button id="home-tab-studio" type="button" role="tab" aria-controls="home-panel-studio" aria-selected="false" data-home-tab="studio"><span>03</span>Студия</button>
+        <button id="home-tab-archive" type="button" role="tab" aria-controls="home-panel-archive" aria-selected="false" data-home-tab="archive"><span>04</span>Архив</button>
+        <button id="home-tab-menu" type="button" role="tab" aria-controls="home-panel-menu" aria-selected="false" data-home-tab="menu"><span>05</span>Меню</button>
+      </nav>
+    </section>"""
+    return shell(
+        config,
+        body,
+        review=review,
+        title=config["title"],
+        description=config["description"],
+        current="issues",
+        scripts='<script src="/assets/home-shell.js" defer></script>',
+        body_class="home-screen",
+    )
+
+
+def build_city(config: dict, review: bool) -> str:
+    body = f"""
+    <section class="catalog-hero shell city-hero">
+      <div class="eyebrow">Городской контур · открытый доступ</div>
+      <h1>Город<br><em>на связи</em></h1>
+      <p class="lede">Знакомый постсоветский город ближайшего будущего, где удобство стало формой управления, а нейросеть — честно избранным мэром.</p>
     </section>
-    <section class="shell" id="issues">
-      <div class="section-heading"><h2>Выпуски</h2><div class="count">{len(issues):02d}</div></div>
-      <div class="issue-grid">{grid}</div>
+    <section class="shell os-window city-map-window">
+      <header class="window-bar"><span>Карта районов</span><span>визуальная схема / кандидат</span></header>
+      <img src="/assets/site/city-map-concept.png" alt="Концептуальная карта OpenCity со студией, мэрией, архивом и городскими районами.">
     </section>
-    {latest_news}"""
-    return shell(config, body, review=review, title=config["title"], description=config["description"])
+    <section class="shell city-directory" aria-labelledby="directory-title">
+      <div class="section-heading system-heading"><div><span class="section-code">СПИСОЧНАЯ АЛЬТЕРНАТИВА</span><h2 id="directory-title">Городские разделы</h2></div><div class="count">04</div></div>
+      <div class="service-grid">
+        <article class="service-card"><span>01 / CITY</span><h3>Мэрия</h3><p>Решения, правила и буквальная логика Мэра-чатбота.</p><small>Раздел проектируется</small></article>
+        <article class="service-card"><span>02 / SERVICES</span><h3>Службы</h3><p>Транспорт, обращения, подписки и другие способы сделать жизнь измеримой.</p><small>Раздел проектируется</small></article>
+        <a class="service-card" href="/characters/"><span>03 / PEOPLE</span><h3>Жители</h3><p>Картотека тех, кому приходится жить внутри оптимизации.</p><small>Открыть картотеку →</small></a>
+        <a class="service-card" href="/archive/"><span>04 / RECORDS</span><h3>Хроника</h3><p>Публичные документы, изображения и происхождение материалов.</p><small>Открыть архив →</small></a>
+      </div>
+    </section>"""
+    return shell(
+        config,
+        body,
+        review=review,
+        title=f"Город — {config['short_title']}",
+        description="Устройство мира, городские службы и карта OpenCity.",
+        current="city",
+    )
+
+
+def build_studio(config: dict, news: list[dict], review: bool) -> str:
+    latest = news[0] if news else None
+    latest_link = (
+        f'<a class="service-card studio-latest" href="/news/{html.escape(latest["slug"])}/"><span>ПОСЛЕДНЯЯ ЗАПИСЬ</span><h3>{html.escape(latest["title"])}</h3><p>{html.escape(latest["summary"])}</p><small>Читать →</small></a>'
+        if latest
+        else '<article class="service-card"><span>ЖУРНАЛ</span><h3>Записи готовятся</h3><p>Публичных материалов пока нет.</p></article>'
+    )
+    body = f"""
+    <section class="catalog-hero shell studio-hero">
+      <div class="eyebrow">OpenCity Studio · производственный контур</div>
+      <h1>Студия<br><em>в работе</em></h1>
+      <p class="lede">Цифровая редакция выпускает серийный комикс, сохраняет происхождение решений и показывает проверенные части производственного процесса.</p>
+    </section>
+    <section class="shell studio-dashboard">
+      <article class="os-window">
+        <header class="window-bar"><span>Производственный маршрут</span><span>контроль человеком</span></header>
+        <ol class="pipeline-list"><li><strong>01</strong>История</li><li><strong>02</strong>Сценарий</li><li><strong>03</strong>Визуал</li><li><strong>04</strong>Проверка</li><li><strong>05</strong>Публикация</li></ol>
+      </article>
+      <div class="service-grid studio-links">
+        {latest_link}
+        <a class="service-card" href="/news/"><span>ЖУРНАЛ</span><h3>Новости студии</h3><p>Решения, эксперименты и рабочие материалы.</p><small>Все записи →</small></a>
+        <a class="service-card" href="{html.escape(config['studio_chat_url'])}"><span>ПУБЛИЧНАЯ ПОСТАНОВКА</span><h3>Синхронизация</h3><p>Ролевой чат сотрудников студии, всегда обозначенный как постановка.</p><small>Открыть Telegram ↗</small></a>
+        <a class="service-card" href="/archive/"><span>ПРОИСХОЖДЕНИЕ</span><h3>Архив</h3><p>Версии, даты и материалы, разрешённые к публикации.</p><small>Открыть архив →</small></a>
+      </div>
+    </section>"""
+    return shell(
+        config,
+        body,
+        review=review,
+        title=f"Студия — {config['short_title']}",
+        description="OpenCity Studio: сотрудники, процесс и производственные новости.",
+        current="studio",
+    )
 
 
 def build_characters(config: dict, characters: list[dict], issues: list[dict], review: bool) -> str:
@@ -426,6 +597,7 @@ def build_characters(config: dict, characters: list[dict], issues: list[dict], r
         review=review,
         title=f"Картотека жителей — {config['short_title']}",
         description="Профили героев серийного цифрового комикса «Город Нейросеть».",
+        current="characters",
     )
 
 
@@ -468,6 +640,7 @@ def build_archive(config: dict, archive_assets: list[dict], review: bool) -> str
         review=review,
         title=f"Архив изображений — {config['short_title']}",
         description="Нумерованный архив визуальных материалов OpenCity Studio, от новых к старым.",
+        current="archive",
     )
 
 
@@ -501,6 +674,7 @@ def build_news_index(config: dict, articles: list[dict], review: bool) -> str:
         review=review,
         title=f"Новости студии — {config['short_title']}",
         description="Открытый производственный журнал OpenCity Studio.",
+        current="studio",
     )
 
 
@@ -582,6 +756,7 @@ def build_news_article(config: dict, article: dict, review: bool) -> str:
         title=f"{article['title']} — {config['short_title']}",
         description=article["summary"],
         scripts='<script src="/assets/news-lightbox.js" defer></script>',
+        current="studio",
     )
 
 
@@ -609,6 +784,7 @@ def build_issue(config: dict, issue: dict, previous: dict | None, following: dic
         review=review,
         title=f"Выпуск {issue['number']}. {issue['title']} — {config['short_title']}",
         description=issue["intro"],
+        current="issues",
     )
 
 
@@ -622,9 +798,12 @@ def write_site(output: Path, include_drafts: bool) -> int:
         shutil.rmtree(output)
     (output / "assets/comics").mkdir(parents=True)
     (output / "assets/archive").mkdir(parents=True)
+    (output / "assets/site").mkdir(parents=True)
     shutil.copy2(SITE_SOURCE / "styles.css", output / "assets/styles.css")
     shutil.copy2(SITE_SOURCE / "site-header.css", output / "assets/site-header.css")
     shutil.copy2(SITE_SOURCE / "news-lightbox.js", output / "assets/news-lightbox.js")
+    shutil.copy2(SITE_SOURCE / "home-shell.js", output / "assets/home-shell.js")
+    shutil.copy2(CITY_MAP_ASSET, output / "assets/site/city-map-concept.png")
     for character in characters:
         portrait = character.get("portrait")
         if portrait:
@@ -658,7 +837,18 @@ def write_site(output: Path, include_drafts: bool) -> int:
         source_image = issue["directory"] / issue["canonical_files"]["art_master"]
         shutil.copy2(source_image, output / f"assets/comics/{issue['id']}.png")
     (output / "index.html").write_text(
-        clean_html(build_index(config, issues, news, include_drafts)), encoding="utf-8"
+        clean_html(build_index(config, issues, news, archive_assets, include_drafts)),
+        encoding="utf-8",
+    )
+    city_output = output / "city"
+    city_output.mkdir(parents=True, exist_ok=True)
+    (city_output / "index.html").write_text(
+        clean_html(build_city(config, include_drafts)), encoding="utf-8"
+    )
+    studio_output = output / "studio"
+    studio_output.mkdir(parents=True, exist_ok=True)
+    (studio_output / "index.html").write_text(
+        clean_html(build_studio(config, news, include_drafts)), encoding="utf-8"
     )
     characters_output = output / "characters"
     characters_output.mkdir(parents=True, exist_ok=True)
@@ -724,6 +914,7 @@ def sync_character_catalog(build_output: Path, public_root: Path) -> None:
         Path("assets/styles.css"),
         Path("assets/site-header.css"),
         Path("assets/news-lightbox.js"),
+        Path("assets/home-shell.js"),
     ]
     portrait_dir = build_output / "assets/characters"
     if portrait_dir.is_dir():
