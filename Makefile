@@ -10,6 +10,29 @@ validate:
 test:
 	$(PYTHON) -m unittest discover -s tests -p 'test_*.py'
 
+site:
+	$(PYTHON) platform/publishing/build_site.py
+
+site-preview:
+	$(PYTHON) platform/publishing/build_site.py --include-drafts
+
+site-serve: site-preview
+	$(PYTHON) -m http.server 4173 --bind 127.0.0.1 --directory var/output/site
+
+PUBLIC_SITE ?= ../opencitystudio.ru
+
+site-sync-characters:
+	$(PYTHON) platform/publishing/build_site.py --sync-characters-to $(PUBLIC_SITE)
+
+review-submit:
+	$(PYTHON) platform/publishing/review_bot.py submit $(ISSUE)
+
+review-run:
+	$(PYTHON) platform/publishing/review_bot.py run
+
+review-discover:
+	$(PYTHON) platform/publishing/review_bot.py discover
+
 voices:
 	$(PYTHON) platform/voice/generate.py --list-voices --api-key ${XI_API_KEY}
 

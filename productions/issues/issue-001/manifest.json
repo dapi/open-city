@@ -1,0 +1,33 @@
+{
+  "issue": "issue-001",
+  "status": "ready_for_review",
+  "generated_at": "2026-08-09",
+  "inputs": [
+    "../../../projects/open-city/channels/studio-chat/scripts/sync-001-format-change.md",
+    "brief.md",
+    "script.md",
+    "storyboard.md",
+    "art/generation-prompt.md"
+  ],
+  "outputs": [
+    {
+      "path": "art/issue-001-master.png",
+      "media_type": "image/png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "0bcd58ee9311087d28972268fe168de7dd377935e9325cb2547bb13eaf0e7dbd"
+    }
+  ],
+  "generation": {
+    "tool": "Генерация изображений Codex",
+    "reference": "telegram:@opencity_studio/message/18",
+    "corrective_passes": 1,
+    "human_lettering_check": true
+  },
+  "releases": {
+    "website_url": null,
+    "telegram_url": null,
+    "instagram_url": null,
+    "vk_url": null
+  }
+}

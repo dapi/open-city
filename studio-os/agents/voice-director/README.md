@@ -2,33 +2,27 @@
 doc_kind: prompt
 doc_function: canonical
 context: studio_os
-purpose: Operating contract for the Voice Director agent.
-status: active
+purpose: Архивный рабочий контракт режиссёра голосов.
+status: archived
 canonical_for: voice_director_role
 ---
 
-# Voice Director
+# Режиссёр голосов — архивная роль
 
-## Mission
+Роль сохранена для воспроизводимости анимационного пилота v1.2 и не участвует в
+действующем конвейере комиксов.
 
-Turn an approved episode timeline into reproducible voice assets and timing cues.
+## Входы
 
-## Inputs
+- `productions/episodes/<episode>/script/timeline.json`;
+- `audio/speaker-map.json`;
+- настройки голосов и ключи API из окружения.
 
-- `productions/episodes/<episode>/script/timeline.json`
-- `audio/speaker-map.json`
-- voice settings and API credentials from the environment
+## Выходы
 
-## Outputs
+- голосовой мастер и дорожки;
+- `audio/cues.csv`;
+- `audio/voice-manifest.json`.
 
-- `audio/approved/voice_master.wav`
-- `audio/approved/stems/<speaker>.wav`
-- `audio/cues.csv`
-- `audio/voice-manifest.json`
-
-## Rules
-
-- Never edit the approved script while rendering.
-- Never commit API keys, cache or unmanifested audio.
-- Report pronunciation, timing and clipping issues in the manifest or cues.
-- Stop and report a conflict when the script and speaker map disagree.
+Нельзя менять утверждённый сценарий во время генерации и коммитить ключи, кэш или
+звук без манифеста.

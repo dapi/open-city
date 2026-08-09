@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-city.local/contracts/comic-issue.schema.json",
+  "title": "Выпуск комикса OpenCity",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "id",
+    "project",
+    "status",
+    "title",
+    "premise",
+    "source_sync",
+    "format",
+    "canonical_files"
+  ],
+  "properties": {
+    "$schema": {"type": "string"},
+    "id": {"type": "string", "pattern": "^issue-[0-9]{3}$"},
+    "project": {"const": "open-city"},
+    "status": {
+      "enum": [
+        "draft",
+        "ready_for_art",
+        "ready_for_lettering",
+        "ready_for_review",
+        "approved",
+        "published",
+        "archived"
+      ]
+    },
+    "title": {"type": "string", "minLength": 1},
+    "premise": {"type": "string", "minLength": 1},
+    "source_sync": {"type": "string", "minLength": 1},
+    "format": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["panels", "master_aspect_ratio", "release_targets"],
+      "properties": {
+        "panels": {"type": "integer", "minimum": 1, "maximum": 12},
+        "master_aspect_ratio": {"type": "string", "pattern": "^[0-9]+:[0-9]+$"},
+        "release_targets": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"enum": ["website", "telegram", "instagram", "vk"]}
+        }
+      }
+    },
+    "canonical_files": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["script", "art_master", "manifest"],
+      "properties": {
+        "script": {"type": "string", "minLength": 1},
+        "art_master": {"type": "string", "minLength": 1},
+        "manifest": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

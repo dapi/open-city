@@ -2,18 +2,23 @@
 doc_kind: studio
 doc_function: index
 context: studio_os
-purpose: Index of agent roles and handoff responsibilities.
+purpose: Указатель ролей сотрудников и ответственности при передаче работы.
 status: active
 ---
 
-# Agents
+# Сотрудники студии
 
-Each agent has a bounded role, explicit inputs/outputs and a stop condition.
+У каждого сотрудника есть ограниченная роль, явные входы и выходы и условие остановки.
+
+Действующий конвейер комиксов:
 
 - [Showrunner](showrunner/README.md)
-- [Story Generator](story-generator/README.md)
-- [Script Editor](script-editor/README.md)
-- [Visual Designer](visual-designer/README.md)
-- [Voice Director](voice-director/README.md)
-- [Animator](animator/README.md)
-- [Promo Agent](promo-agent/README.md)
+- [Сотрудник сюжетного отдела](story-generator/README.md)
+- [Редактор сценария](script-editor/README.md)
+- [Визуальный дизайнер](visual-designer/README.md)
+- [Редактор аудитории](promo-agent/README.md)
+
+Архивные роли анимационного пилота:
+
+- [Режиссёр голосов](voice-director/README.md)
+- [Аниматор](animator/README.md)

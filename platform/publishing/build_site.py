@@ -14,6 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 ISSUES_DIR = ROOT / "productions/issues"
 SITE_SOURCE = ROOT / "projects/open-city/site"
+CHARACTERS_SOURCE = ROOT / "projects/open-city/canon/characters/characters.json"
 DEFAULT_OUTPUT = ROOT / "var/output/site"
 PUBLIC_STATUSES = {"published"}
 
@@ -44,6 +45,11 @@ def load_issues(include_drafts: bool) -> list[dict]:
     return issues
 
 
+def load_characters() -> list[dict]:
+    catalog = json.loads(CHARACTERS_SOURCE.read_text(encoding="utf-8"))
+    return catalog["characters"]
+
+
 def shell(config: dict, body: str, *, review: bool, title: str, description: str) -> str:
     robots = '<meta name="robots" content="noindex,nofollow">' if review else ""
     banner = '<div class="review-banner">Закрытый предпросмотр — не опубликовано</div>' if review else ""
@@ -52,6 +58,7 @@ def shell(config: dict, body: str, *, review: bool, title: str, description: str
         f'<a href="{html.escape(github_url)}">Исходный код на GitHub ↗</a>' if github_url else ""
     )
     return f"""<!doctype html>
+<!-- GENERATED FILE. Source of truth: open-city repository. Do not edit published facts here. -->
 <html lang="ru">
 <head>
   <meta charset="utf-8">
@@ -75,6 +82,7 @@ def shell(config: dict, body: str, *, review: bool, title: str, description: str
       <a class="brand" href="/"><span>Город</span> Нейросеть</a>
       <nav class="nav-links" aria-label="Основная навигация">
         <a href="/#issues">Выпуски</a>
+        <a href="/characters/">Картотека</a>
         <a href="{html.escape(config['telegram_url'])}">Telegram</a>
         <a href="{html.escape(config['studio_chat_url'])}">Синхронизация</a>
       </nav>
@@ -108,6 +116,7 @@ def build_index(config: dict, issues: list[dict], review: bool) -> str:
       <p class="lede">{html.escape(config['description'])}</p>
       <div class="hero-actions">
         <a class="button primary" href="#issues">Читать выпуски</a>
+        <a class="button" href="/characters/">Открыть картотеку</a>
         <a class="button" href="{html.escape(config['studio_chat_url'])}">Читать «Синхронизацию»</a>
       </div>
     </section>
@@ -116,6 +125,79 @@ def build_index(config: dict, issues: list[dict], review: bool) -> str:
       <div class="issue-grid">{grid}</div>
     </section>"""
     return shell(config, body, review=review, title=config["title"], description=config["description"])
+
+
+def build_characters(config: dict, characters: list[dict], issues: list[dict], review: bool) -> str:
+    visible_issues = {issue["id"]: issue for issue in issues}
+    cards = []
+    for character in characters:
+        published_appearances = [
+            visible_issues[issue_id]
+            for issue_id in character["appearances"]
+            if issue_id in visible_issues
+        ]
+        if published_appearances:
+            appearance_links = "".join(
+                f'<a href="{html.escape(issue["address"])}/">Выпуск {issue["number"]}</a>'
+                for issue in published_appearances
+            )
+        elif character["profile_status"] == "announced":
+            appearance_links = "<span>Первое появление ещё не зарегистрировано</span>"
+        else:
+            appearance_links = "<span>Материалы дела готовятся к публикации</span>"
+
+        quote = ""
+        if character.get("quote") and (review or published_appearances):
+            quote = f'<blockquote>«{html.escape(character["quote"])}»</blockquote>'
+
+        if character["visual_status"] == "approved":
+            visual_label = "Образ утверждён"
+            visual_class = "is-approved"
+        else:
+            visual_label = "Визуальный мастер готовится"
+            visual_class = "is-pending"
+
+        monogram = character["name"][0].upper()
+        cards.append(f"""
+        <article class="character-card accent-{html.escape(character['accent'])}" id="{html.escape(character['id'])}">
+          <div class="character-visual {visual_class}" aria-label="{html.escape(visual_label)}">
+            <span class="character-monogram" aria-hidden="true">{html.escape(monogram)}</span>
+            <span class="visual-status">{html.escape(visual_label)}</span>
+          </div>
+          <div class="character-copy">
+            <div class="dossier-row">
+              <span>Дело {html.escape(character['dossier_number'])}</span>
+              <span>{'Наблюдается' if character['profile_status'] == 'active' else 'Дело открыто'}</span>
+            </div>
+            <h2>{html.escape(character['name'])}</h2>
+            <p class="character-role">{html.escape(character['role'])}</p>
+            <p class="character-function">{html.escape(character['dramatic_function'])}</p>
+            <dl class="system-note">
+              <dt>Системная пометка</dt>
+              <dd>{html.escape(character['system_note'])}</dd>
+            </dl>
+            {quote}
+            <div class="appearances"><strong>Появления</strong>{appearance_links}</div>
+          </div>
+        </article>""")
+
+    body = f"""
+    <section class="catalog-hero shell">
+      <div class="eyebrow">Муниципальный реестр · доступ открыт</div>
+      <h1>Картотека<br><em>жителей</em></h1>
+      <p class="lede">Герои города, который научился учитывать всё — кроме человеческого смысла.</p>
+      <p class="catalog-context">Здесь собраны жители мира комикса. Одноимённые сотрудники OpenCity Studio существуют в другом контексте.</p>
+    </section>
+    <section class="shell character-list" aria-label="Профили героев">
+      {''.join(cards)}
+    </section>"""
+    return shell(
+        config,
+        body,
+        review=review,
+        title=f"Картотека жителей — {config['short_title']}",
+        description="Профили героев серийного цифрового комикса «Город Нейросеть».",
+    )
 
 
 def build_issue(config: dict, issue: dict, previous: dict | None, following: dict | None, review: bool) -> str:
@@ -148,6 +230,7 @@ def build_issue(config: dict, issue: dict, previous: dict | None, following: dic
 def write_site(output: Path, include_drafts: bool) -> int:
     config = json.loads((SITE_SOURCE / "site.json").read_text(encoding="utf-8"))
     issues = load_issues(include_drafts)
+    characters = load_characters()
     if output.exists():
         shutil.rmtree(output)
     (output / "assets/comics").mkdir(parents=True)
@@ -156,6 +239,11 @@ def write_site(output: Path, include_drafts: bool) -> int:
         source_image = issue["directory"] / issue["canonical_files"]["art_master"]
         shutil.copy2(source_image, output / f"assets/comics/{issue['id']}.png")
     (output / "index.html").write_text(build_index(config, issues, include_drafts), encoding="utf-8")
+    characters_output = output / "characters"
+    characters_output.mkdir(parents=True, exist_ok=True)
+    (characters_output / "index.html").write_text(
+        build_characters(config, characters, issues, include_drafts), encoding="utf-8"
+    )
     for index, issue in enumerate(issues):
         issue_output = output / issue["address"].strip("/")
         issue_output.mkdir(parents=True, exist_ok=True)
@@ -163,16 +251,42 @@ def write_site(output: Path, include_drafts: bool) -> int:
         following = issues[index + 1] if index + 1 < len(issues) else None
         page = build_issue(config, issue, previous, following, include_drafts)
         (issue_output / "index.html").write_text(page, encoding="utf-8")
-    print(f"SITE BUILD OK: {len(issues)} issues -> {output}")
+    print(f"SITE BUILD OK: {len(issues)} issues, {len(characters)} characters -> {output}")
     return len(issues)
+
+
+def sync_character_catalog(build_output: Path, public_root: Path) -> None:
+    public_root = public_root.resolve()
+    if public_root in {Path("/"), Path.home()} or not (public_root / ".git").is_dir():
+        raise SystemExit(f"Refusing to sync to non-repository path: {public_root}")
+    managed_files = (
+        Path("characters/index.html"),
+        Path("assets/styles.css"),
+    )
+    for relative in managed_files:
+        source = build_output / relative
+        destination = public_root / relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, destination)
+    print(f"CHARACTER CATALOG SYNC OK: {len(managed_files)} generated files -> {public_root}")
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--include-drafts", action="store_true")
+    parser.add_argument(
+        "--sync-characters-to",
+        type=Path,
+        help="Copy the public character page and its stylesheet to a checked-out site repository.",
+    )
     args = parser.parse_args()
-    write_site(args.output.resolve(), args.include_drafts)
+    output = args.output.resolve()
+    write_site(output, args.include_drafts)
+    if args.sync_characters_to:
+        if args.include_drafts:
+            raise SystemExit("Refusing to sync a draft preview to the public site repository.")
+        sync_character_catalog(output, args.sync_characters_to)
     return 0
 
 

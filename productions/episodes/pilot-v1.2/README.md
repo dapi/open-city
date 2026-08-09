@@ -3,23 +3,24 @@ doc_kind: episode
 doc_function: index
 context: episode_production
 purpose: Operating index for the Pilot v1.2 production run.
-status: active
-delivery_status: in_progress
+status: archived
+delivery_status: cancelled
 canonical_for: pilot-v1.2
 ---
 
-# Pilot v1.2
+# Пилот v1.2 — архив
 
-This directory is the single working context for the episode. Start with
-`episode.yaml`, then follow the current handoff manifests.
+Этот каталог сохраняет последний анимационный производственный контекст. Он больше
+не является текущей работой студии; исходники и манифесты оставлены для происхождения
+и возможного повторного использования.
 
-- `script/timeline.json` — canonical approved voice timeline for the current run.
-- `audio/` — speaker mapping, task brief and approved voice outputs.
-- `animation/` — animation script and task brief.
-- `render/` — render plan and render outputs.
-- `manifests/` — machine-readable records of inputs, outputs and checksums.
-- `release/` — release metadata and final package references.
+- `script/timeline.json` — утверждённый таймлайн реплик пилота.
+- `audio/` — карта голосов, задание и манифест.
+- `animation/` — сценарий анимации и задание.
+- `render/` — план рендера.
+- `manifests/` — машиночитаемые входы, выходы и контрольные суммы.
+- `release/` — метаданные архивного пакета.
 
-The old placeholder Production Kit script is retained as provenance at
-`knowledge/sources/legacy-production-kit-voice-script-v1.2.json`; it is not an
-alternate source of truth.
+Старый черновик Production Kit сохранён в
+`knowledge/sources/legacy-production-kit-voice-script-v1.2.json` как источник, но не
+как альтернативный канон.

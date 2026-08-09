@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../studio-os/contracts/comic-issue.schema.json",
+  "id": "issue-001",
+  "project": "open-city",
+  "status": "ready_for_review",
+  "title": "Режим энергосбережения",
+  "premise": "Город отключает движение и возвращает его по подписке, случайно превращая реальность в комикс.",
+  "source_sync": "../../../projects/open-city/channels/studio-chat/scripts/sync-001-format-change.md",
+  "format": {
+    "panels": 4,
+    "master_aspect_ratio": "2:3",
+    "release_targets": ["website", "telegram", "instagram", "vk"]
+  },
+  "canonical_files": {
+    "script": "script.md",
+    "art_master": "art/issue-001-master.png",
+    "manifest": "manifest.json"
+  }
+}

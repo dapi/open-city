@@ -1,0 +1,38 @@
+observed_at: "2026-08-09"
+source: tgcli_live_metadata
+
+studio_chat:
+  peer_id: "-1003264677550"
+  current_title: "Синхронизация — чат OpenCity Studio"
+  current_type: supergroup
+  public_username: null
+  invite_link: "https://t.me/+CrpmI4X2BopiNmRi"
+  access_status: invite_link_ready
+  current_message_count: 0
+  target_role: fictional_studio_dialogue
+  rename_completed_at: "2026-08-09"
+  migration_required:
+    - add_fiction_disclosure_to_description
+    - add_approved_persona_accounts
+
+release_channel:
+  peer_id: "-1003148657777"
+  username: "@opencity_studio"
+  current_title: "Город Нейросеть — комиксы"
+  current_type: channel
+  observed_messages: 17
+  target_role: comic_releases
+  target_cadence: "2-3 issues per week"
+  rename_completed_at: "2026-08-09"
+  migration_required:
+    - replace_animation_description_with_comic_description
+    - keep_existing_posts_as_archive
+
+security:
+  credentials_in_repository: forbidden
+  telegram_session_files_in_repository: forbidden
+
+automation_limits:
+  tgcli_can_change_descriptions: false
+  authenticated_browser_available: false
+  manual_step: "Установить подготовленные описания из telegram-setup-checklist.md"

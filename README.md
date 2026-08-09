@@ -1,24 +1,31 @@
 # OpenCity Studio OS
 
-AI-first production system for the OpenCity studio: story development, voice
-production, animation handoff, release and learning.
+AI-first операционная система студии OpenCity: публичная переписка персонажей,
+разработка историй, производство комиксов, выпуск на нескольких площадках и обучение
+на результатах.
 
-## Start here
+## Начать здесь
 
-- [Studio OS](studio-os/README.md) — rules, agents, workflows and contracts.
-- [OpenCity project](projects/open-city/README.md) — canon and reusable assets.
-- [Pilot v1.2 production run](productions/episodes/pilot-v1.2/README.md) — current episode.
-- [Platform](platform/README.md) — reusable automation code.
-- [Knowledge and provenance](knowledge/README.md) — sources, research and decisions.
+- [Операционная система студии](studio-os/README.md) — правила, сотрудники, процессы и контракты.
+- [Проект OpenCity](projects/open-city/README.md) — канон и переиспользуемые материалы.
+- [Сайт проекта](projects/open-city/site/README.md) — статическая сборка каталога комиксов.
+- [Каналы OpenCity](projects/open-city/channels/README.md) — StudioChat и площадки выпуска.
+- [Выпуск 001](productions/issues/issue-001/README.md) — текущий комикс.
+- [Пилот v1.2](productions/episodes/pilot-v1.2/README.md) — архивный анимационный прототип.
+- [Платформа](platform/README.md) — переиспользуемый код автоматизации.
+- [Знания и происхождение](knowledge/README.md) — источники, исследования и решения.
 
-## Common commands
+## Основные команды
 
 ```bash
-make deps       # create .venv and install dependencies
+make deps       # создать .venv и установить зависимости
 make validate
+make site-preview # закрытый локальный предпросмотр выпусков
 make voices
 make generate
 ```
 
-Secrets belong in `XI_API_KEY`/`ELEVENLABS_API_KEY` or a local `.env`; never commit
-them. Generated media belongs outside Git and is recorded by manifests.
+Голосовые команды поддерживают архивный пилот и не входят в основной процесс
+комиксов. Секреты хранятся в переменных окружения или локальном `.env`, но не в Git.
+Утверждённые мастера комиксов можно хранить в Git вместе с происхождением и контрольной
+суммой; одноразовые генерации и экспорты остаются локальными.

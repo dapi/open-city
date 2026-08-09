@@ -2,21 +2,40 @@
 doc_kind: governance
 doc_function: canonical
 context: studio_os
-purpose: Minimum quality gates for production handoffs.
+purpose: Минимальные проверки качества при передаче производственных артефактов.
 derived_from:
   - knowledge-base/principles.md
 status: active
 canonical_for: studio_quality_gates
 ---
 
-# Quality gates
+# Контроль качества
 
-An agent may mark a handoff ready only when the input and output files are listed
-in the relevant manifest.
+Сотрудник может отметить передачу готовой только тогда, когда входы и выходы перечислены
+в соответствующем манифесте.
 
-1. **Script** — approved text, speaker names and timeline are internally consistent.
-2. **Voice** — all speakers resolve, audio is readable, cues and subtitles exist,
-   and no secret or local cache is included.
-3. **Animation** — shot list references approved audio and render settings are explicit.
-4. **Release** — final media, subtitles, metadata and checksums are recorded.
-5. **Retro** — deviations and next actions are captured after release.
+## Действующий конвейер комиксов
+
+1. **StudioChat** — каждое сообщение относится к утверждённой арке, публикуется из
+   разрешённого аккаунта и не скрывает художественную природу переписки.
+2. **Сценарий** — утверждены идея, число панелей, реплики и финальный удар; текст в
+   изображении не является единственным источником истины.
+3. **Визуал** — человек проверил стабильность персонажей, порядок панелей, поля и
+   точность кириллицы на экране телефона.
+4. **Редакторское решение** — в `review.json` записано `approved`, а его SHA-256
+   совпадает с текущим визуальным мастером.
+5. **Дистрибуция** — сайт, Telegram, Instagram и VK используют единый номер выпуска
+   и ссылаются на один мастер.
+6. **Выпуск** — финальные файлы, подписи, alt-текст, контрольные суммы и ссылки на
+   публикации записаны в манифест.
+7. **Ретро** — до планирования следующего пакета записаны время производства,
+   сохранения, репосты, комментарии и следующий эксперимент.
+
+## Архивный анимационный конвейер
+
+1. **Сценарий** — текст, имена спикеров и таймлайн внутренне согласованы.
+2. **Голос** — все спикеры разрешены, звук читаем, есть cues и субтитры, секреты и
+   локальные кэши не включены.
+3. **Анимация** — список кадров ссылается на утверждённый звук, настройки явны.
+4. **Выпуск** — медиа, субтитры, метаданные и контрольные суммы записаны.
+5. **Ретро** — отклонения и следующие действия зафиксированы.

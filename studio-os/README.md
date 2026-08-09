@@ -2,16 +2,16 @@
 doc_kind: studio
 doc_function: index
 context: studio_os
-purpose: Entry point for studio governance, agents, workflows and contracts.
+purpose: Точка входа в управление, роли, процессы и контракты студии.
 status: active
 ---
 
-# Studio OS
+# Операционная система студии
 
-This is the operating layer of the studio. It defines who may do what, how work
-moves between agents and which artifacts are authoritative.
+Этот слой определяет, кто и что может делать, как работа передаётся между ролями и
+какие артефакты считаются авторитетными.
 
-- [Governance](governance/README.md)
-- [Agents](agents/README.md)
-- [Workflows](workflows/README.md)
-- [Contracts](contracts/README.md)
+- [Управление](governance/README.md)
+- [Сотрудники](agents/README.md)
+- [Процессы](workflows/README.md)
+- [Контракты](contracts/README.md)

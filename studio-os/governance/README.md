@@ -2,13 +2,15 @@
 doc_kind: governance
 doc_function: index
 context: studio_os
-purpose: Index of studio rules and decisions.
+purpose: Указатель правил студии и принятых решений.
 status: active
 ---
 
-# Governance
+# Управление студией
 
-- [Studio passport](studio-passport.md) — mission, departments and production roles.
-- [Quality gates](quality-gates.md) — minimum checks before each handoff.
-- [Architecture ADR](adr/0001-hybrid-studio-os-structure.md) — accepted repository structure.
-- [Knowledge-base rules](knowledge-base/README.md) — authority, provenance and lifecycle.
+- [Паспорт студии](studio-passport.md) — миссия, подразделения и роли.
+- [Контроль качества](quality-gates.md) — минимальные проверки перед передачей работы.
+- [ADR 0001](adr/0001-hybrid-studio-os-structure.md) — структура репозитория.
+- [ADR 0002](adr/0002-adopt-comics-and-public-studiochat.md) — переход к комиксам и публичному StudioChat.
+- [ADR 0003](adr/0003-expand-comic-distribution-in-phases.md) — поэтапное расширение дистрибуции.
+- [Правила базы знаний](knowledge-base/README.md) — авторитетность, происхождение и жизненный цикл.

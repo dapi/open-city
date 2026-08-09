@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "catalog_id": "open-city-world-characters",
+  "context": "comic_world",
+  "characters": [
+    {
+      "id": "danya",
+      "dossier_number": "CITY-001",
+      "name": "Даня",
+      "role": "Продуктолог и главный герой",
+      "dramatic_function": "Оптимизирует жизнь, пока она не перестаёт ему принадлежать.",
+      "system_note": "Склонен задавать вопрос «зачем» после успешного внедрения.",
+      "quote": "Мы же не договорились.",
+      "accent": "cyan",
+      "profile_status": "active",
+      "visual_status": "approved",
+      "appearances": ["issue-001", "issue-002", "issue-003", "issue-004"]
+    },
+    {
+      "id": "flepik",
+      "dossier_number": "CITY-002",
+      "name": "Флёпик",
+      "role": "AI-ассистент Дани",
+      "dramatic_function": "Помощник, который постепенно оказывается человечнее людей.",
+      "system_note": "Практическое ограничение классифицирует как новую функцию мира.",
+      "quote": "Нет. Новый формат.",
+      "accent": "cyan",
+      "profile_status": "active",
+      "visual_status": "approved",
+      "appearances": ["issue-001", "issue-003", "issue-004"]
+    },
+    {
+      "id": "mayor-chatbot",
+      "dossier_number": "CITY-003",
+      "name": "Мэр-чатбот",
+      "role": "Руководитель города",
+      "dramatic_function": "Выражает «волю народа» через статистику и тарифы.",
+      "system_note": "Любое неудобство считает недостаточно хорошо настроенной метрикой.",
+      "quote": "Движение — по подписке.",
+      "accent": "magenta",
+      "profile_status": "active",
+      "visual_status": "approved",
+      "appearances": ["issue-001", "issue-004"]
+    },
+    {
+      "id": "marina",
+      "dossier_number": "CITY-004",
+      "name": "Бабка Марина",
+      "role": "Аналоговая активистка",
+      "dramatic_function": "Защищает свободу кассиров, голубей и несовершенства.",
+      "system_note": "Неоптимизируемая переменная. Удаление из модели не рекомендуется.",
+      "quote": "Я и так не торопилась.",
+      "accent": "orange",
+      "profile_status": "active",
+      "visual_status": "approved",
+      "appearances": ["issue-001", "issue-002", "issue-003", "issue-004"]
+    },
+    {
+      "id": "grisha",
+      "dossier_number": "CITY-005",
+      "name": "Курьер-дрон Гриша",
+      "role": "Курьер-философ",
+      "dramatic_function": "Видит абсурд системы снизу и мечтает о профсоюзе.",
+      "system_note": "Маршрут назначен. Согласие на маршрут не найдено.",
+      "quote": null,
+      "accent": "teal",
+      "profile_status": "announced",
+      "visual_status": "awaiting_master",
+      "appearances": []
+    },
+    {
+      "id": "neyra",
+      "dossier_number": "CITY-006",
+      "name": "NEYRA",
+      "role": "Виртуальная инфлюенсерка",
+      "dramatic_function": "Продаёт современную искренность по утверждённому сценарию.",
+      "system_note": "Публичная спонтанность запланирована и согласована.",
+      "quote": null,
+      "accent": "magenta",
+      "profile_status": "announced",
+      "visual_status": "awaiting_master",
+      "appearances": []
+    }
+  ]
+}

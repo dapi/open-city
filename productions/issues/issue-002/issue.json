@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../studio-os/contracts/comic-issue.schema.json",
+  "id": "issue-002",
+  "project": "open-city",
+  "status": "ready_for_review",
+  "title": "Спор, которого не было",
+  "premise": "Даня и Бабка Марина спорят, куда поставить скамейку, но молча собирают решение для обеих потребностей.",
+  "source_sync": "../../../projects/open-city/channels/studio-chat/scripts/sync-002-no-argument.md",
+  "format": {"panels": 5, "master_aspect_ratio": "2:3", "release_targets": ["website", "telegram", "instagram"]},
+  "canonical_files": {"script": "script.md", "art_master": "art/issue-002-master.png", "manifest": "manifest.json"}
+}

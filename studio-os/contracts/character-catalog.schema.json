@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opencitystudio.ru/schemas/character-catalog.schema.json",
+  "title": "OpenCity character catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "catalog_id", "context", "characters"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "catalog_id": { "const": "open-city-world-characters" },
+    "context": { "const": "comic_world" },
+    "characters": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/character" }
+    }
+  },
+  "$defs": {
+    "character": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "dossier_number",
+        "name",
+        "role",
+        "dramatic_function",
+        "system_note",
+        "accent",
+        "profile_status",
+        "visual_status",
+        "appearances"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "dossier_number": { "type": "string", "pattern": "^CITY-[0-9]{3}$" },
+        "name": { "type": "string", "minLength": 1 },
+        "role": { "type": "string", "minLength": 1 },
+        "dramatic_function": { "type": "string", "minLength": 1 },
+        "system_note": { "type": "string", "minLength": 1 },
+        "quote": { "type": ["string", "null"] },
+        "accent": { "enum": ["cyan", "magenta", "orange", "teal"] },
+        "profile_status": { "enum": ["active", "announced"] },
+        "visual_status": { "enum": ["approved", "awaiting_master"] },
+        "appearances": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^issue-[0-9]{3}$" }
+        }
+      }
+    }
+  }
+}

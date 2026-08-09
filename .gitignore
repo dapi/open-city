@@ -37,8 +37,13 @@ venv/
 # macOS
 .DS_Store
 
-# Local agent state
-.codex/
+# Local Codex state; project employee definitions are shared source files.
+.codex/*
+!.codex/config.toml
+!.codex/agents/
+.codex/agents/*
+!.codex/agents/*.toml
+!.codex/agents/README.md
 .agent-state/
 
 # Large binary source archive; keep indexes and provenance metadata in Git.

@@ -14,3 +14,7 @@ status: active
 - `provenance/` — source-to-canonical mappings and verification records.
 
 Raw sources never override canonical project or studio documents automatically.
+
+Действующий разбор архива OpenCity: [выводы из чатов](research/open-city-chat-archive-findings.md).
+
+Последний редакционный совет: [ревью выпусков 001–004](research/editorial-review-issues-001-004.md).

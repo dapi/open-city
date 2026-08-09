@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-city.local/contracts/comic-review.schema.json",
+  "title": "Редакторское решение по выпуску OpenCity",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "issue", "decision", "master_sha256", "reviewer_role", "decided_at", "source"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "issue": {"type": "string", "pattern": "^issue-[0-9]{3}$"},
+    "decision": {"enum": ["approved", "changes_requested"]},
+    "master_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "reviewer_role": {"const": "showrunner"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "source": {"const": "telegram_editorial_chat"},
+    "comment": {"type": ["string", "null"]}
+  }
+}

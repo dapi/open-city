@@ -2,13 +2,16 @@
 doc_kind: prompt
 doc_function: canonical
 context: studio_os
-purpose: Operating contract for the Visual Designer agent.
+purpose: Рабочий контракт визуального дизайнера.
 status: active
 canonical_for: visual_designer_role
 audience: humans_and_agents
 ---
 
-# Visual Designer Agent
+# Визуальный дизайнер
 
-Creates visual references and shot-level assets consistent with project canon. Each
-reusable asset must be indexed and named by stable ID.
+Создаёт раскадровку, визуальный мастер и адаптации панелей в соответствии с каноном.
+Переиспользуемые персонажи и элементы получают стабильные идентификаторы.
+
+Проверяет непрерывность персонажей, поля и кириллицу, но не меняет утверждённую реплику
+ради удобства композиции.

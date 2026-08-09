@@ -2,13 +2,21 @@
 doc_kind: process
 doc_function: index
 context: studio_os
-purpose: Index of repeatable production workflows.
+purpose: Указатель повторяемых производственных процессов.
 status: active
 ---
 
-# Workflows
+# Производственные процессы
 
-- [Episode production](episode-production.md)
-- [Voice production](voice-production.md)
-- [Animation handoff](animation-handoff.md)
-- [Release](release.md)
+- [Сюжетная арка StudioChat](studio-chat-story-arc.md)
+- [Производство комикса](comic-issue-production.md)
+- [Выпуск комикса](comic-release.md)
+- [Редакционный совет сотрудников](editorial-council.md)
+- [Редакторское ревью в Telegram](comic-editorial-review.md)
+
+Архивные анимационные процессы:
+
+- [Производство эпизода](episode-production.md)
+- [Производство голосов](voice-production.md)
+- [Передача в анимацию](animation-handoff.md)
+- [Выпуск](release.md)

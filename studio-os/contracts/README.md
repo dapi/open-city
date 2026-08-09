@@ -2,14 +2,18 @@
 doc_kind: engineering
 doc_function: index
 context: studio_os
-purpose: Machine-readable contracts for inter-agent handoffs.
+purpose: Машиночитаемые контракты передачи между сотрудниками и этапами.
 status: active
 ---
 
-# Contracts
+# Контракты
 
-- [Episode spec](episode-spec.schema.json)
-- [Approved script](approved-script.schema.json)
-- [Voice manifest](voice-manifest.schema.json)
-- [Render manifest](render-manifest.schema.json)
-- [Release manifest](release-manifest.schema.json)
+- [Выпуск комикса](comic-issue.schema.json)
+- [Спецификация эпизода](episode-spec.schema.json)
+- [Утверждённый сценарий](approved-script.schema.json)
+- [Манифест голосов](voice-manifest.schema.json)
+- [Манифест рендера](render-manifest.schema.json)
+- [Манифест выпуска](release-manifest.schema.json)
+
+Контракты эпизода, голосов и рендера сохранены для старых производств. Новые
+выпуски OpenCity начинаются с контракта комикса.

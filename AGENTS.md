@@ -1,51 +1,73 @@
-# Agent instructions for `/Users/danil/code/open-city`
+# Инструкции сотрудникам и автоматизации для `/Users/danil/code/open-city`
 
-## Mission
+## Назначение
 
-This repository is the AI operating system for the OpenCity studio. It coordinates
-story intake, synthetic voice production, animation handoff, release and learning.
-Treat changes as live production updates: preserve provenance and reproducibility.
+Этот репозиторий — операционная система AI-студии OpenCity. Действующий продукт —
+серийный цифровой комикс «Город Нейросеть» и публичный ролевой чат студии.
+Изменения считаются изменениями живого производства: сохраняйте происхождение,
+воспроизводимость и однозначного владельца каждого факта.
 
-## Navigation
+## Навигация
 
-- `studio-os/` — governance, agent roles, workflows and handoff contracts.
-- `projects/open-city/` — project canon and reusable assets.
-- `productions/episodes/<episode-id>/` — one complete production run.
-- `platform/` — reusable automation code.
-- `knowledge/` — raw sources, research, decisions and provenance.
-- `var/` — local cache, output and temporary files; never commit it.
+- `studio-os/` — управление, роли сотрудников, процессы и контракты передачи.
+- `projects/open-city/` — канон проекта, каналы и переиспользуемые материалы.
+- `productions/issues/issue-NNN/` — полный производственный контекст одного комикса.
+- `productions/episodes/` — архив анимационных прототипов, не текущий конвейер.
+- `platform/` — переиспользуемый код автоматизации.
+- `knowledge/` — исходники, исследования, решения и происхождение знаний.
+- `var/` — локальные кэши, результаты и временные файлы; не коммитить.
+- [`opencitystudio.ru`](https://github.com/dapi/opencitystudio.ru) — отдельный репозиторий
+  публичного сайта; локальная копия должна находиться в `/Users/danil/code/opencitystudio.ru`.
 
-Read the nearest `README.md` before changing a governed area. One fact has one
-canonical owner. Raw chats and generated files are evidence or run outputs, not
-automatic canon.
+Перед изменением управляемой области прочитайте ближайший `README.md`. У каждого
+факта один канонический владелец. Чаты и генерации — источники или результаты
+производства, но не канон сами по себе.
 
-## Agent work protocol
+## Рабочий протокол
 
-1. Identify the current episode and read its `episode.yaml` and README.
-2. Check the relevant agent role in `studio-os/agents/`.
-3. Consume the named upstream manifest or contract.
-4. Make the smallest scoped change.
-5. Run `make validate` and the relevant quality gate.
-6. Update the downstream manifest, handoff note or ADR.
-7. Report changed files, validation results and unresolved risks.
+1. Определите текущий `issue-NNN`, прочитайте его `README.md` и `issue.json`.
+2. Проверьте нужную роль в `studio-os/agents/` и канон проекта.
+3. Получите вход через указанный контракт или манифест.
+4. Внесите минимальное изменение в пределах задачи.
+5. Выполните `make validate` и соответствующий контроль качества.
+6. Обновите манифест, пакет публикации или ADR.
+7. Сообщите изменённые файлы, результаты проверки и оставшиеся риски.
 
-Do not silently resolve conflicts between canon, approved scripts and raw sources.
-Report the conflict to the owner named by governance.
+Не разрешайте молча конфликты между каноном, утверждённым сценарием и исходниками.
+Зафиксируйте конфликт и передайте его владельцу, указанному в правилах управления.
 
-## Voice pipeline
+## Цифровые сотрудники студии
 
-The stable voice entry point is `platform/voice/generate.py`; its current implementation
-is kept in `platform/voice/generate_v2.py`. The pilot inputs are:
+Технические конфигурации сотрудников доступны в `.codex/agents/`. Если пользователь
+просит поговорить с Флёпиком, Даней, NEYRA или Бабкой Мариной, вызовите
+соответствующего сотрудника и явно
+отделите его предложение от канона. Для «креативного совета» используйте процесс
+`studio-os/workflows/editorial-council.md`.
 
-- `productions/episodes/pilot-v1.2/script/timeline.json`;
-- `productions/episodes/pilot-v1.2/audio/speaker-map.json`.
+Не создавайте цифрового сотрудника, который изображает Данила или принимает решения от его имени.
+`showrunner-guard` только готовит рекомендацию; утверждение канона и публикация
+остаются за человеком.
 
-Run `make deps` once to create the local `.venv`, then run `make generate` only with a
-local `XI_API_KEY` or `ELEVENLABS_API_KEY`. Generated
-audio goes to `var/output/` and chunks to `var/cache/`; approved outputs are recorded
-by `audio/voice-manifest.json` and are not committed as raw media.
+## Каналы
 
-## Security
+- `Синхронизация — чат OpenCity Studio` — публичная художественная переписка
+  персонажей студии. Она всегда обозначена как постановка.
+- `@opencity_studio`, целевое название `Город Нейросеть — комиксы` — только готовые
+  выпуски и редакционные подводки, два обязательных раза в неделю.
+- Сайт — канонический архив; Instagram — карусельная адаптация.
 
-Never commit API credentials, local `.env` files, cache, temporary exports or
-unmanifested media. Treat generated audio and visual assets as confidential studio IP.
+Никакая публикация, переименование канала или действие от аккаунта персонажа не
+выполняется без явного одобрения человека-оператора.
+
+## Наследие
+
+Голосовой и анимационный конвейеры сохранены для воспроизводимости пилота v1.2.
+Их стабильная точка входа — `platform/voice/generate.py`; они не входят в основной
+процесс новых выпусков.
+
+## Безопасность
+
+Никогда не коммитьте ключи API, Telegram-сессии, локальные `.env`, кэши, временные
+экспорты или материалы без манифеста. Учётные данные персонажей хранятся только вне
+репозитория. Визуальные мастера и сценарии считаются конфиденциальной собственностью
+студии до публикации.

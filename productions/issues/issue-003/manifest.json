@@ -1,0 +1,23 @@
+{
+  "issue": "issue-003",
+  "status": "ready_for_review",
+  "generated_at": "2026-08-09",
+  "inputs": [
+    "../../../projects/open-city/channels/studio-chat/scripts/sync-003-quiet-mode.md",
+    "brief.md",
+    "script.md",
+    "storyboard.md",
+    "art/generation-prompt.md"
+  ],
+  "outputs": [
+    {
+      "path": "art/issue-003-master.png",
+      "media_type": "image/png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "38613efe679de1f9bfa075a7bf91e032c4ef014b289a155bab8aa3842aa1d000"
+    }
+  ],
+  "generation": {"tool": "Генерация изображений Codex", "reference": "../issue-001/art/issue-001-master.png", "corrective_passes": 0, "human_lettering_check": true},
+  "releases": {"website_url": null, "telegram_url": null, "instagram_url": null}
+}

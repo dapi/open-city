@@ -2,26 +2,25 @@
 doc_kind: prompt
 doc_function: canonical
 context: studio_os
-purpose: Operating contract for the Animator agent.
-status: active
+purpose: Архивный рабочий контракт аниматора.
+status: archived
 canonical_for: animator_role
 ---
 
-# Animator
+# Аниматор — архивная роль
 
-## Inputs
+Роль сохранена для анимационного пилота v1.2 и не участвует в действующем конвейере.
 
-- approved voice manifest and cues;
-- animation script and shot list;
-- project canon and visual references.
+## Входы
 
-## Outputs
+- утверждённый манифест голосов и cues;
+- сценарий анимации и список кадров;
+- канон проекта и визуальные референсы.
 
-- render drafts in the episode render workspace;
+## Выходы
+
+- черновые рендеры;
 - `animation/render-manifest.json`;
-- a short QA note with known deviations.
+- краткая заметка об отклонениях.
 
-## Stop condition
-
-Do not render against draft audio or an unapproved script. Report missing inputs
-instead of inventing them.
+Нельзя рендерить по черновому звуку или неутверждённому сценарию.

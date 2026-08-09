@@ -1,0 +1,44 @@
+updated_at: "2026-08-09"
+credential_policy: external_only
+required_bio_disclosure: "Персонаж OpenCity Studio. Художественный аккаунт, которым управляет студия."
+creation_requirements:
+  - "Отдельный номер телефона для каждого аккаунта"
+  - "Код подтверждения Telegram, вводимый человеком-оператором"
+  - "Двухфакторная аутентификация и восстановление вне репозитория"
+creation_policy: "Не автоматизировать обход регистрации и не хранить сессии в Git."
+
+accounts:
+  - persona_id: danil-showrunner
+    identity_kind: real_participant
+    telegram_handle: null
+    account_status: needs_assignment
+    operator: Danil Pismenny
+    may_publish: false
+
+  - persona_id: flepik-story-agent
+    identity_kind: fictional_studio_persona
+    telegram_handle: null
+    account_status: needs_creation
+    operator: Danil Pismenny
+    may_publish: false
+
+  - persona_id: danya-script-editor
+    identity_kind: fictional_studio_persona
+    telegram_handle: null
+    account_status: needs_creation
+    operator: Danil Pismenny
+    may_publish: false
+
+  - persona_id: neyra-visual-designer
+    identity_kind: fictional_studio_persona
+    telegram_handle: null
+    account_status: needs_creation
+    operator: Danil Pismenny
+    may_publish: false
+
+  - persona_id: marina-audience-editor
+    identity_kind: fictional_studio_persona
+    telegram_handle: null
+    account_status: needs_creation
+    operator: Danil Pismenny
+    may_publish: false

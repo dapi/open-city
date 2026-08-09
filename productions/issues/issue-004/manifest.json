@@ -1,0 +1,23 @@
+{
+  "issue": "issue-004",
+  "status": "ready_for_review",
+  "generated_at": "2026-08-09",
+  "inputs": [
+    "../../../projects/open-city/channels/studio-chat/scripts/sync-004-joy-index.md",
+    "brief.md",
+    "script.md",
+    "storyboard.md",
+    "art/generation-prompt.md"
+  ],
+  "outputs": [
+    {
+      "path": "art/issue-004-master.png",
+      "media_type": "image/png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "78d608f852e2cab4afdef5f5a949fd13de4b2dbc7068d91ed63812414096ad4b"
+    }
+  ],
+  "generation": {"tool": "Генерация изображений Codex", "reference": "../issue-001/art/issue-001-master.png", "corrective_passes": 0, "human_lettering_check": true},
+  "releases": {"website_url": null, "telegram_url": null, "instagram_url": null}
+}
