@@ -1,7 +1,17 @@
 {
+  "doc_kind": "canon",
+  "doc_function": "canonical",
+  "context": "open_city_canon",
+  "purpose": "Канонический машиночитаемый каталог публичных профилей героев мира.",
+  "canonical_for": "open_city_world_character_profiles",
+  "derived_from": [
+    "../project-bible.md",
+    "../../brand/visual-system.md"
+  ],
+  "status": "active",
   "schema_version": 1,
   "catalog_id": "open-city-world-characters",
-  "context": "comic_world",
+  "character_context": "comic_world",
   "characters": [
     {
       "id": "danya",
