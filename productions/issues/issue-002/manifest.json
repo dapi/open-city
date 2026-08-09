@@ -18,6 +18,15 @@
       "sha256": "eb00e712ac0e9d9116d4647df0d5aaa53ebc2187942a27f09a618ef374b2806c"
     }
   ],
-  "generation": {"tool": "Генерация изображений Codex", "reference": "../issue-001/art/issue-001-master.png", "corrective_passes": 1, "human_lettering_check": true},
-  "releases": {"website_url": null, "telegram_url": null, "instagram_url": null}
+  "generation": {
+    "tool": "Генерация изображений Codex",
+    "reference": "../issue-001/art/issue-001-master.png",
+    "corrective_passes": 1,
+    "human_lettering_check": true
+  },
+  "releases": {
+    "website_url": null,
+    "telegram_url": null,
+    "instagram_url": null
+  }
 }

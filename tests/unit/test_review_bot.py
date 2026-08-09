@@ -46,7 +46,7 @@ class ReviewBotTests(unittest.TestCase):
             self.assertEqual(issue["status"], "approved")
             self.assertEqual(manifest["status"], "approved")
 
-    def test_changes_request_records_comment_and_reopens_issue(self):
+    def test_changes_request_returns_issue_without_preproduction_to_draft(self):
         with tempfile.TemporaryDirectory() as temporary:
             directory = Path(temporary) / "issue-999"
             self.make_issue(directory)
@@ -60,7 +60,7 @@ class ReviewBotTests(unittest.TestCase):
             self.assertEqual(record["comment"], "Увеличить финальную реплику")
             self.assertEqual(
                 json.loads((directory / "issue.json").read_text(encoding="utf-8"))["status"],
-                "ready_for_review",
+                "draft",
             )
 
     def test_update_local_env_preserves_other_values(self):

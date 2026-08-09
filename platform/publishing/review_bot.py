@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parents[2]
 ISSUES_DIR = ROOT / "productions/issues"
 STATE_PATH = ROOT / "var/review-bot/state.json"
 REVIEW_SCHEMA = "../../../studio-os/contracts/comic-review.schema.json"
+PREPRODUCTION_REVIEW_SCHEMA = "../../../studio-os/contracts/comic-preproduction-review.schema.json"
 
 
 class BotError(RuntimeError):
@@ -97,6 +98,19 @@ def load_issue(issue_id: str) -> tuple[Path, dict[str, Any], dict[str, Any], Pat
     return directory, issue, manifest, master, digest
 
 
+def load_preproduction(issue_id: str) -> tuple[Path, dict[str, Any], dict[str, Any], Path, str]:
+    directory = issue_directory(issue_id)
+    issue = json.loads((directory / "issue.json").read_text(encoding="utf-8"))
+    manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
+    files = issue["canonical_files"]
+    if "preproduction" not in files or "preproduction_review" not in files:
+        raise BotError("Для сценарного ревью укажите preproduction и preproduction_review в issue.json")
+    artifact = directory / files["preproduction"]
+    if not artifact.exists():
+        raise BotError(f"Сценарный пакет не найден: {artifact}")
+    return directory, issue, manifest, artifact, sha256(artifact)
+
+
 def atomic_json(path: Path, value: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix + ".tmp")
@@ -141,7 +155,9 @@ def apply_decision(
     master = directory / issue["canonical_files"]["art_master"]
     digest = sha256(master)
     record = review_record(issue_id, decision, digest, comment, decided_at)
-    new_status = "approved" if decision == "approved" else "ready_for_review"
+    new_status = "approved" if decision == "approved" else (
+        "ready_for_review" if "preproduction" in issue["canonical_files"] else "draft"
+    )
     issue["status"] = new_status
     manifest["status"] = new_status
     atomic_json(directory / "review.json", record)
@@ -150,10 +166,37 @@ def apply_decision(
     return record
 
 
+def apply_preproduction_decision(
+    issue_id: str,
+    decision: str,
+    comment: str | None = None,
+) -> dict[str, Any]:
+    directory, issue, manifest, artifact, digest = load_preproduction(issue_id)
+    record = {
+        "$schema": PREPRODUCTION_REVIEW_SCHEMA,
+        "issue": issue_id,
+        "decision": decision,
+        "preproduction_sha256": digest,
+        "reviewer_role": "showrunner",
+        "decided_at": datetime.now(UTC).isoformat(),
+        "source": "telegram_editorial_chat",
+        "comment": comment,
+    }
+    issue["status"] = "ready_for_art" if decision == "approved" else "draft"
+    manifest["status"] = issue["status"]
+    atomic_json(directory / issue["canonical_files"]["preproduction_review"], record)
+    atomic_json(directory / "issue.json", issue)
+    atomic_json(directory / "manifest.json", manifest)
+    return record
+
+
 def load_state() -> dict[str, Any]:
     if not STATE_PATH.exists():
-        return {"offset": 0, "pending_comments": {}}
-    return json.loads(STATE_PATH.read_text(encoding="utf-8"))
+        return {"offset": 0, "pending_comments": {}, "review_stages": {}}
+    state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
+    state.setdefault("pending_comments", {})
+    state.setdefault("review_stages", {})
+    return state
 
 
 def save_state(state: dict[str, Any]) -> None:
@@ -220,6 +263,22 @@ class TelegramBot:
             raise BotError(f"sendPhoto: {result.get('description', 'неизвестная ошибка')}")
         return result["result"]
 
+    def send_document(self, chat_id: str, document: Path, caption: str, keyboard: dict[str, Any]) -> dict[str, Any]:
+        body, content_type = multipart(
+            {"chat_id": chat_id, "caption": caption, "parse_mode": "HTML", "reply_markup": json.dumps(keyboard, ensure_ascii=False)},
+            "document",
+            document,
+        )
+        request = urllib.request.Request(f"{self.base_url}/sendDocument", data=body, headers={"Content-Type": content_type})
+        try:
+            with urllib.request.urlopen(request, timeout=90) as response:
+                result = json.loads(response.read().decode("utf-8"))
+        except (urllib.error.URLError, TimeoutError) as exc:
+            raise BotError(f"Не удалось отправить сценарный пакет: {exc}") from exc
+        if not result.get("ok"):
+            raise BotError(f"sendDocument: {result.get('description', 'неизвестная ошибка')}")
+        return result["result"]
+
 
 def allowed_reviewers() -> set[int]:
     raw = os.environ.get("TELEGRAM_REVIEWER_USER_IDS", "")
@@ -262,6 +321,38 @@ def submit(bot: TelegramBot, issue_id: str, chat_id: str) -> dict[str, Any]:
     return bot.send_photo(chat_id, master, caption, keyboard)
 
 
+def submit_preproduction(bot: TelegramBot, issue_id: str, chat_id: str) -> dict[str, Any]:
+    _, issue, _, artifact, digest = load_preproduction(issue_id)
+    keyboard = {"inline_keyboard": [[
+        {"text": "✅ Одобрить сценарий", "callback_data": callback_data("approve", issue_id, digest)},
+        {"text": "✏️ Нужны правки", "callback_data": callback_data("changes", issue_id, digest)},
+    ]]}
+    result = bot.send_document(
+        chat_id, artifact,
+        f"<b>Сценарное ревью · выпуск {issue_id[6:]}</b>\n<b>{issue['title']}</b>\n\n"
+        f"SHA-256: <code>{digest[:12]}</code>\n\nОдобрение разрешает только создание визуала; публикацию не запускает.",
+        keyboard,
+    )
+    state = load_state()
+    state["review_stages"][str(result["message_id"])] = {"stage": "preproduction", "issue": issue_id, "digest": digest}
+    save_state(state)
+    return result
+
+
+def submit_retro(bot: TelegramBot, issue_id: str, chat_id: str) -> dict[str, Any]:
+    directory = issue_directory(issue_id)
+    artifact = directory / "retro.md"
+    if not artifact.exists():
+        raise BotError(f"Ретро не найдено: {artifact}")
+    return bot.send_document(
+        chat_id,
+        artifact,
+        f"<b>Ретро · выпуск {issue_id[6:]}</b>\n"
+        "Совместный итог сотрудников; ведущий — Макс Хайпштейн. Сообщение отправлено для сведения Showrunner.",
+        {"inline_keyboard": []},
+    )
+
+
 def authorize(update_user: dict[str, Any], reviewers: set[int]) -> bool:
     return int(update_user.get("id", 0)) in reviewers
 
@@ -276,6 +367,26 @@ def handle_callback(bot: TelegramBot, query: dict[str, Any], reviewers: set[int]
         bot.call("answerCallbackQuery", {"callback_query_id": query["id"], "text": "Это не редакторский чат", "show_alert": "true"})
         return
     action, issue_id, short_digest = parse_callback(query.get("data", ""))
+    review_message_id = str(message.get("message_id", ""))
+    stage = state["review_stages"].get(review_message_id)
+    if stage and stage["stage"] == "preproduction":
+        _, issue, _, _, digest = load_preproduction(issue_id)
+        if not digest.startswith(short_digest):
+            bot.call("answerCallbackQuery", {"callback_query_id": query["id"], "text": "Сценарный пакет уже изменён. Отправьте его на новое ревью.", "show_alert": "true"})
+            return
+        if action == "approve":
+            apply_preproduction_decision(issue_id, "approved")
+            del state["review_stages"][review_message_id]
+            save_state(state)
+            bot.call("answerCallbackQuery", {"callback_query_id": query["id"], "text": "Сценарий одобрен"})
+            bot.call("editMessageReplyMarkup", {"chat_id": chat_id, "message_id": message["message_id"], "reply_markup": json.dumps({"inline_keyboard": []})})
+            bot.call("sendMessage", {"chat_id": chat_id, "reply_to_message_id": message["message_id"], "text": f"✅ Сценарный пакет выпуска {issue_id[6:]} «{issue['title']}» одобрен. Визуал можно создавать; публикация не запущена."})
+            return
+        prompt = bot.call("sendMessage", {"chat_id": chat_id, "reply_to_message_id": message["message_id"], "text": f"✏️ Ответьте на это сообщение и перечислите правки сценарного пакета выпуска {issue_id[6:]}", "reply_markup": json.dumps({"force_reply": True, "selective": True})})
+        state["pending_comments"][str(prompt["message_id"])] = {"stage": "preproduction", "issue": issue_id, "digest": digest, "review_message_id": message["message_id"], "reviewer_id": query["from"]["id"]}
+        save_state(state)
+        bot.call("answerCallbackQuery", {"callback_query_id": query["id"], "text": "Жду список правок ответом"})
+        return
     _, issue, _, _, digest = load_issue(issue_id)
     if not digest.startswith(short_digest):
         bot.call("answerCallbackQuery", {"callback_query_id": query["id"], "text": "Мастер уже изменён. Отправьте его на новое ревью.", "show_alert": "true"})
@@ -314,6 +425,18 @@ def handle_message(bot: TelegramBot, message: dict[str, Any], reviewers: set[int
     pending = state["pending_comments"].get(reply_id)
     comment = (message.get("text") or message.get("caption") or "").strip()
     if not pending or not comment or int(pending["reviewer_id"]) != int(message["from"]["id"]):
+        return
+    if pending and pending.get("stage") == "preproduction":
+        _, issue, _, _, digest = load_preproduction(pending["issue"])
+        if digest != pending["digest"]:
+            bot.call("sendMessage", {"chat_id": chat_id, "reply_to_message_id": message["message_id"], "text": "Сценарный пакет изменился до записи комментария. Отправьте новую версию на ревью."})
+        else:
+            apply_preproduction_decision(pending["issue"], "changes_requested", comment)
+            bot.call("editMessageReplyMarkup", {"chat_id": chat_id, "message_id": pending["review_message_id"], "reply_markup": json.dumps({"inline_keyboard": []})})
+            bot.call("sendMessage", {"chat_id": chat_id, "reply_to_message_id": message["message_id"], "text": f"📝 Правки сценарного пакета выпуска {pending['issue'][6:]} «{issue['title']}» записаны."})
+        del state["pending_comments"][reply_id]
+        state["review_stages"].pop(str(pending["review_message_id"]), None)
+        save_state(state)
         return
     _, issue, _, _, digest = load_issue(pending["issue"])
     if digest != pending["digest"]:
@@ -418,6 +541,10 @@ def main() -> int:
     subparsers = parser.add_subparsers(dest="command", required=True)
     submit_parser = subparsers.add_parser("submit", help="Отправить выпуск на ревью")
     submit_parser.add_argument("issue")
+    script_parser = subparsers.add_parser("submit-script", help="Отправить сценарный пакет на ревью")
+    script_parser.add_argument("issue")
+    retro_parser = subparsers.add_parser("submit-retro", help="Отправить ретро Showrunner")
+    retro_parser.add_argument("issue")
     subparsers.add_parser("run", help="Запустить long polling")
     subparsers.add_parser("discover", help="Показать ID чата и пользователя из последнего сообщения")
     subparsers.add_parser("configure-private", help="Настроить личный диалог по последнему сообщению")
@@ -437,6 +564,14 @@ def main() -> int:
     if args.command == "submit":
         result = submit(bot, args.issue, chat_id)
         print(json.dumps({"ok": True, "message_id": result["message_id"], "issue": args.issue}, ensure_ascii=False))
+        return 0
+    if args.command == "submit-script":
+        result = submit_preproduction(bot, args.issue, chat_id)
+        print(json.dumps({"ok": True, "message_id": result["message_id"], "issue": args.issue, "stage": "preproduction"}, ensure_ascii=False))
+        return 0
+    if args.command == "submit-retro":
+        result = submit_retro(bot, args.issue, chat_id)
+        print(json.dumps({"ok": True, "message_id": result["message_id"], "issue": args.issue, "stage": "retro"}, ensure_ascii=False))
         return 0
     run(bot, chat_id, allowed_reviewers())
     return 0

@@ -35,6 +35,12 @@ site-sync-characters: site-sync-content
 review-submit:
 	$(PYTHON) platform/publishing/review_bot.py submit $(ISSUE)
 
+review-submit-script:
+	$(PYTHON) platform/publishing/review_bot.py submit-script $(ISSUE)
+
+review-submit-retro:
+	$(PYTHON) platform/publishing/review_bot.py submit-retro $(ISSUE)
+
 review-run:
 	$(PYTHON) platform/publishing/review_bot.py run
 

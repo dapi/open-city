@@ -6,6 +6,18 @@
   "title": "Индекс радости",
   "premise": "Город раздаёт обязательные леденцы и объявляет отсутствие слышимых возражений стопроцентным счастьем.",
   "source_sync": "../../../projects/open-city/channels/studio-chat/scripts/sync-004-joy-index.md",
-  "format": {"panels": 4, "master_aspect_ratio": "2:3", "release_targets": ["website", "telegram", "instagram"]},
-  "canonical_files": {"script": "script.md", "art_master": "art/issue-004-master.png", "manifest": "manifest.json"}
+  "format": {
+    "panels": 4,
+    "master_aspect_ratio": "2:3",
+    "release_targets": [
+      "website",
+      "telegram",
+      "instagram"
+    ]
+  },
+  "canonical_files": {
+    "script": "script.md",
+    "art_master": "art/issue-004-master.png",
+    "manifest": "manifest.json"
+  }
 }
