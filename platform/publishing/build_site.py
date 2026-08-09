@@ -47,6 +47,10 @@ def load_issues(include_drafts: bool) -> list[dict]:
 def shell(config: dict, body: str, *, review: bool, title: str, description: str) -> str:
     robots = '<meta name="robots" content="noindex,nofollow">' if review else ""
     banner = '<div class="review-banner">Закрытый предпросмотр — не опубликовано</div>' if review else ""
+    github_url = config.get("github_url")
+    github_link = (
+        f'<a href="{html.escape(github_url)}">Исходный код на GitHub ↗</a>' if github_url else ""
+    )
     return f"""<!doctype html>
 <html lang="ru">
 <head>
@@ -77,7 +81,7 @@ def shell(config: dict, body: str, *, review: bool, title: str, description: str
     </div>
   </header>
   <main id="main">{body}</main>
-  <footer class="site-footer"><div class="shell footer-row"><span>{html.escape(config['publisher'])}</span><span>Город, где оптимизация стала смыслом жизни.</span></div></footer>
+  <footer class="site-footer"><div class="shell footer-row"><span>{html.escape(config['publisher'])}</span><span>Город, где оптимизация стала смыслом жизни.</span>{github_link}</div></footer>
 </body>
 </html>
 """

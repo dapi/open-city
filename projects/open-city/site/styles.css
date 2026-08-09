@@ -113,6 +113,8 @@ h1 em { color: var(--cyan); font-style: normal; }
 
 .site-footer { border-top: 2px solid rgb(241 226 195 / 24%); padding: 34px 0 50px; color: var(--muted); }
 .footer-row { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.footer-row a { font-weight: 800; }
+.footer-row a:hover { color: var(--paper); }
 
 @media (min-width: 1100px) {
   .issue-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
