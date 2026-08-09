@@ -1,3 +1,13 @@
+---
+doc_kind: engineering
+doc_function: reference
+context: studio_os
+purpose: Три варианта структуры репозитория AI OS студии и критерии выбора.
+derived_from:
+  - ../knowledge-base/principles.md
+status: draft
+---
+
 # Варианты структуры репозитория AI OS студии
 
 ## Что именно структурируем

@@ -2,7 +2,7 @@
 // Каноническое расположение: scripts/chatgpt-export/playwriter-long-fetch.cjs
 // у встроенного fetch Node.js. Нужен для длинных playwriter-вызовов (>5 мин).
 // Использование:
-//   NODE_OPTIONS="--require /Users/danil/code/open-city/chatgpt-chat-archive/scripts/playwriter-long-fetch.cjs" \
+//   NODE_OPTIONS="--require /Users/danil/code/open-city/scripts/chatgpt-export/playwriter-long-fetch.cjs" \
 //     playwriter -s 4 -f script.js --timeout 3600000
 const http = require('node:http');
 const https = require('node:https');
