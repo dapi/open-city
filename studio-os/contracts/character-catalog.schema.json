@@ -29,7 +29,7 @@
       "items": { "type": "string", "minLength": 1 }
     },
     "status": { "const": "active" },
-    "schema_version": { "const": 1 },
+    "schema_version": { "const": 2 },
     "catalog_id": { "const": "open-city-world-characters" },
     "character_context": { "const": "comic_world" },
     "characters": {
@@ -44,6 +44,7 @@
       "additionalProperties": false,
       "required": [
         "id",
+        "identity_id",
         "dossier_number",
         "name",
         "role",
@@ -52,10 +53,13 @@
         "accent",
         "profile_status",
         "visual_status",
+        "studio_chat_persona_id",
+        "archive_visual_references",
         "appearances"
       ],
       "properties": {
         "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "identity_id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
         "dossier_number": { "type": "string", "pattern": "^CITY-[0-9]{3}$" },
         "name": { "type": "string", "minLength": 1 },
         "role": { "type": "string", "minLength": 1 },
@@ -65,11 +69,47 @@
         "accent": { "enum": ["cyan", "magenta", "orange", "teal"] },
         "profile_status": { "enum": ["active", "announced"] },
         "visual_status": { "enum": ["approved", "awaiting_master"] },
+        "studio_chat_persona_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "archive_visual_references": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/archiveVisualReference" }
+        },
         "appearances": {
           "type": "array",
           "uniqueItems": true,
           "items": { "type": "string", "pattern": "^issue-[0-9]{3}$" }
         }
+      }
+    },
+    "archiveVisualReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_path",
+        "conversation_id",
+        "context",
+        "reference_type",
+        "status",
+        "note"
+      ],
+      "properties": {
+        "artifact_path": {
+          "type": "string",
+          "pattern": "^knowledge/sources/chatgpt/open-city/archive/artifacts/.+\\.png$"
+        },
+        "conversation_id": {
+          "type": "string",
+          "pattern": "^[a-f0-9-]+$"
+        },
+        "context": { "enum": ["comic_world", "studio_chat", "shared_identity"] },
+        "reference_type": {
+          "enum": ["character_sheet", "mini_avatar", "profile_card", "style_iteration", "ensemble_sheet"]
+        },
+        "status": { "const": "source_only" },
+        "note": { "type": "string", "minLength": 1 }
       }
     }
   }

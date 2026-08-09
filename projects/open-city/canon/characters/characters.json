@@ -9,12 +9,13 @@
     "../../brand/visual-system.md"
   ],
   "status": "active",
-  "schema_version": 1,
+  "schema_version": 2,
   "catalog_id": "open-city-world-characters",
   "character_context": "comic_world",
   "characters": [
     {
       "id": "danya",
+      "identity_id": "danya",
       "dossier_number": "CITY-001",
       "name": "Даня",
       "role": "Продуктолог и главный герой",
@@ -24,10 +25,30 @@
       "accent": "cyan",
       "profile_status": "active",
       "visual_status": "approved",
+      "studio_chat_persona_id": "danya-script-editor",
+      "archive_visual_references": [
+        {
+          "artifact_path": "knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/ed2a4f09-d579-422f-9d15-a46d27355acc.png",
+          "conversation_id": "69077bb5-15c0-8327-a692-409c0d5bf1ea",
+          "context": "studio_chat",
+          "reference_type": "style_iteration",
+          "status": "source_only",
+          "note": "Первая архивная версия портрета Дани; источник поиска, не визуальный мастер."
+        },
+        {
+          "artifact_path": "knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/496f4c7c-dc2d-4adc-b2a2-9cb28ed8748a.png",
+          "conversation_id": "69077bb5-15c0-8327-a692-409c0d5bf1ea",
+          "context": "studio_chat",
+          "reference_type": "mini_avatar",
+          "status": "source_only",
+          "note": "Мини-аватар студийного воплощения Дани; сохраняет характер, но не заменяет якоря комикса."
+        }
+      ],
       "appearances": ["issue-001", "issue-002", "issue-003", "issue-004"]
     },
     {
       "id": "flepik",
+      "identity_id": "flepik",
       "dossier_number": "CITY-002",
       "name": "Флёпик",
       "role": "AI-ассистент Дани",
@@ -37,23 +58,71 @@
       "accent": "cyan",
       "profile_status": "active",
       "visual_status": "approved",
+      "studio_chat_persona_id": "flepik-story-agent",
+      "archive_visual_references": [
+        {
+          "artifact_path": "knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/98fafe5b-c057-48f4-85cd-9260eac9a3d3.png",
+          "conversation_id": "69077bb5-15c0-8327-a692-409c0d5bf1ea",
+          "context": "studio_chat",
+          "reference_type": "mini_avatar",
+          "status": "source_only",
+          "note": "Первый архивный мини-аватар Флёпика как световой сущности."
+        },
+        {
+          "artifact_path": "knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/b3d8da43-93e7-4e2f-a0d8-4b3ac02a8f97.png",
+          "conversation_id": "69077bb5-15c0-8327-a692-409c0d5bf1ea",
+          "context": "studio_chat",
+          "reference_type": "profile_card",
+          "status": "source_only",
+          "note": "Архивная карточка личного дела Флёпика."
+        },
+        {
+          "artifact_path": "knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/Friendly_Robot_with_Glowing_Antenna.png",
+          "conversation_id": "69077bb5-15c0-8327-a692-409c0d5bf1ea",
+          "context": "shared_identity",
+          "reference_type": "style_iteration",
+          "status": "source_only",
+          "note": "Высоко оценённая U-P2-итерация телесного образа; не совпадает с текущим утверждённым силуэтом комикса."
+        }
+      ],
       "appearances": ["issue-001", "issue-003", "issue-004"]
     },
     {
       "id": "mayor-chatbot",
+      "identity_id": "mayor-chatbot",
       "dossier_number": "CITY-003",
       "name": "Мэр-чатбот",
-      "role": "Руководитель города",
+      "role": "Избранная нейросеть, руководитель города",
       "dramatic_function": "Выражает «волю народа» через статистику и тарифы.",
-      "system_note": "Любое неудобство считает недостаточно хорошо настроенной метрикой.",
-      "quote": "Движение — по подписке.",
+      "system_note": "Честно избрана после успешного временного управления; любое неудобство считает недостаточно хорошо настроенной метрикой.",
+      "quote": "Но вы сами за это проголосовали.",
       "accent": "magenta",
       "profile_status": "active",
       "visual_status": "approved",
+      "studio_chat_persona_id": "mayor-production-coordinator",
+      "archive_visual_references": [
+        {
+          "artifact_path": "knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/Персонажи_OpenCity_Город_Идей.png",
+          "conversation_id": "69077bb5-15c0-8327-a692-409c0d5bf1ea",
+          "context": "shared_identity",
+          "reference_type": "character_sheet",
+          "status": "source_only",
+          "note": "Ранний общий лист с НейроМэром; источник происхождения, не действующий дизайн."
+        },
+        {
+          "artifact_path": "knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/75d0077e-defa-484f-bc6c-f751fcb4e7aa.png",
+          "conversation_id": "69077bb5-15c0-8327-a692-409c0d5bf1ea",
+          "context": "studio_chat",
+          "reference_type": "ensemble_sheet",
+          "status": "source_only",
+          "note": "Архивный ансамбль сотрудников с отдельным портретом НейроМэра."
+        }
+      ],
       "appearances": ["issue-001", "issue-004"]
     },
     {
       "id": "marina",
+      "identity_id": "marina",
       "dossier_number": "CITY-004",
       "name": "Бабка Марина",
       "role": "Аналоговая активистка",
@@ -63,10 +132,30 @@
       "accent": "orange",
       "profile_status": "active",
       "visual_status": "approved",
+      "studio_chat_persona_id": "marina-audience-editor",
+      "archive_visual_references": [
+        {
+          "artifact_path": "knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/6080c27b-8c1b-4694-960d-fa6db3b4c8c0.png",
+          "conversation_id": "69077bb5-15c0-8327-a692-409c0d5bf1ea",
+          "context": "studio_chat",
+          "reference_type": "mini_avatar",
+          "status": "source_only",
+          "note": "Архивный мини-аватар Бабки Марины; характер полезен, степень карикатурности неканонична."
+        },
+        {
+          "artifact_path": "knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/ebe2a864-610d-4791-af1f-e2de9f756530.png",
+          "conversation_id": "69077bb5-15c0-8327-a692-409c0d5bf1ea",
+          "context": "shared_identity",
+          "reference_type": "style_iteration",
+          "status": "source_only",
+          "note": "Вторая архивная портретная итерация; использовать только для сравнения характера и силуэта."
+        }
+      ],
       "appearances": ["issue-001", "issue-002", "issue-003", "issue-004"]
     },
     {
       "id": "grisha",
+      "identity_id": "grisha",
       "dossier_number": "CITY-005",
       "name": "Курьер-дрон Гриша",
       "role": "Курьер-философ",
@@ -76,10 +165,38 @@
       "accent": "teal",
       "profile_status": "announced",
       "visual_status": "awaiting_master",
+      "studio_chat_persona_id": "grisha-rhythm-editor",
+      "archive_visual_references": [
+        {
+          "artifact_path": "knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/75d0077e-defa-484f-bc6c-f751fcb4e7aa.png",
+          "conversation_id": "69077bb5-15c0-8327-a692-409c0d5bf1ea",
+          "context": "studio_chat",
+          "reference_type": "ensemble_sheet",
+          "status": "source_only",
+          "note": "Ансамблевый лист с Гришей Саундом; относится к студийному воплощению общей идентичности."
+        },
+        {
+          "artifact_path": "knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/ddcb67f4-2dc8-4fce-8bfb-743913687a8b.png",
+          "conversation_id": "69077bb5-15c0-8327-a692-409c0d5bf1ea",
+          "context": "studio_chat",
+          "reference_type": "mini_avatar",
+          "status": "source_only",
+          "note": "Мини-аватар Гриши Саунда; не задаёт телесный облик курьера-дрона."
+        },
+        {
+          "artifact_path": "knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/a268f85e-d92d-4284-b21b-fbc36daee271.png",
+          "conversation_id": "69077bb5-15c0-8327-a692-409c0d5bf1ea",
+          "context": "studio_chat",
+          "reference_type": "profile_card",
+          "status": "source_only",
+          "note": "Архивная карточка личного дела Гриши Саунда."
+        }
+      ],
       "appearances": []
     },
     {
       "id": "neyra",
+      "identity_id": "neyra",
       "dossier_number": "CITY-006",
       "name": "NEYRA",
       "role": "Виртуальная инфлюенсерка",
@@ -89,6 +206,24 @@
       "accent": "magenta",
       "profile_status": "announced",
       "visual_status": "awaiting_master",
+      "studio_chat_persona_id": "neyra-visual-designer",
+      "archive_visual_references": [],
+      "appearances": []
+    },
+    {
+      "id": "max-hypestein",
+      "identity_id": "max-hypestein",
+      "dossier_number": "CITY-007",
+      "name": "Макс Хайпштейн",
+      "role": "Продюсер внимания и приглашённый советник",
+      "dramatic_function": "Требует от любой идеи стать событием, пока событие не начинает пожирать смысл.",
+      "system_note": "Если проект выглядит слишком прилично, считает это производственным дефектом.",
+      "quote": "Сделайте, чтобы это отменили — тогда посмотрят все.",
+      "accent": "orange",
+      "profile_status": "announced",
+      "visual_status": "awaiting_master",
+      "studio_chat_persona_id": "max-hypestein-producer-consultant",
+      "archive_visual_references": [],
       "appearances": []
     }
   ]

@@ -3,8 +3,12 @@ doc_kind: persona
 doc_function: canonical
 context: open_city_studio_chat
 persona_id: marina-audience-editor
+identity_id: marina
+comic_world_character_id: marina
 identity_kind: fictional_studio_persona
 status: active
+derived_from:
+  - ../../../canon/characters/characters.json
 ---
 
 # Бабка Марина — редактор аудитории
@@ -24,3 +28,17 @@ status: active
 - Биография Telegram прямо называет её вымышленным персонажем OpenCity Studio.
 
 **Характерная фраза:** «А по-человечески это зачем?»
+
+## Связь с миром комикса
+
+Это студийное воплощение аналоговой активистки Бабки Марины. В обоих контекстах она
+защищает человеческую меру и проверяет цифровую логику бытовым здравым смыслом;
+редакторская должность принадлежит только StudioChat.
+
+## Архивные визуальные источники
+
+- [Мини-аватар](../../../../../knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/6080c27b-8c1b-4694-960d-fa6db3b4c8c0.png)
+- [Вторая портретная итерация](../../../../../knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/ebe2a864-610d-4791-af1f-e2de9f756530.png)
+
+Обе версии — `source_only`. Их чрезмерная карикатурность не переносится в
+утверждённый образ комикса.

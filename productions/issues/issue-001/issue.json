@@ -9,7 +9,12 @@
   "format": {
     "panels": 4,
     "master_aspect_ratio": "2:3",
-    "release_targets": ["website", "telegram", "instagram", "vk"]
+    "release_targets": [
+      "website",
+      "telegram",
+      "instagram",
+      "vk"
+    ]
   },
   "canonical_files": {
     "script": "script.md",

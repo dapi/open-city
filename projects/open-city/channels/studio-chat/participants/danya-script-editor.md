@@ -3,8 +3,12 @@ doc_kind: persona
 doc_function: canonical
 context: open_city_studio_chat
 persona_id: danya-script-editor
+identity_id: danya
+comic_world_character_id: danya
 identity_kind: fictional_studio_persona
 status: active
+derived_from:
+  - ../../../canon/characters/characters.json
 ---
 
 # Даня — редактор сценария
@@ -23,3 +27,16 @@ status: active
 - Биография Telegram прямо называет его вымышленным персонажем OpenCity Studio.
 
 **Характерная фраза:** «А теперь уберём всё, без чего шутка всё ещё работает.»
+
+## Связь с миром комикса
+
+Это студийное воплощение того же Дани, который в городе работает продуктологом и
+главным героем. Скепсис, продуктовое мышление и привычка проверять смысл общие;
+должность редактора сценария относится только к StudioChat.
+
+## Архивные визуальные источники
+
+- [Первая портретная версия](../../../../../knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/ed2a4f09-d579-422f-9d15-a46d27355acc.png)
+- [Мини-аватар](../../../../../knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/496f4c7c-dc2d-4adc-b2a2-9cb28ed8748a.png)
+
+Оба изображения имеют статус `source_only` и не заменяют утверждённый образ комикса.

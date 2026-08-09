@@ -3,8 +3,12 @@ doc_kind: persona
 doc_function: canonical
 context: open_city_studio_chat
 persona_id: neyra-visual-designer
+identity_id: neyra
+comic_world_character_id: neyra
 identity_kind: fictional_studio_persona
 status: active
+derived_from:
+  - ../../../canon/characters/characters.json
 ---
 
 # NEYRA — визуальный дизайнер
@@ -23,3 +27,12 @@ status: active
 - Биография Telegram прямо называет её вымышленным персонажем OpenCity Studio.
 
 **Характерная фраза:** «Если это нельзя узнать без подписи, образ ещё не готов.»
+
+## Связь с миром комикса
+
+Это студийное воплощение виртуальной инфлюенсерки NEYRA. В мире она продаёт
+утверждённую искренность, а в StudioChat защищает утверждённый визуальный язык — это
+две роли одной идентичности, построенной на контроле публичного образа.
+
+Отдельного надёжно идентифицированного архивного портрета NEYRA в выгруженных чатах
+не найдено; её визуальный мастер по-прежнему ожидает утверждения.

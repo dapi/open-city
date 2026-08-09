@@ -3,8 +3,12 @@ doc_kind: persona
 doc_function: canonical
 context: open_city_studio_chat
 persona_id: flepik-story-agent
+identity_id: flepik
+comic_world_character_id: flepik
 identity_kind: fictional_studio_persona
 status: active
+derived_from:
+  - ../../../canon/characters/characters.json
 ---
 
 # Флёпик — сотрудник сюжетного отдела
@@ -23,3 +27,18 @@ status: active
 - Биография Telegram прямо называет его вымышленным персонажем OpenCity Studio.
 
 **Характерная фраза:** «Это не сбой. Я уже добавил его в мир.»
+
+## Связь с миром комикса
+
+Это студийное воплощение AI-ассистента Дани. В обоих контекстах Флёпик буквально
+понимает ограничения, заботится через действие и постепенно оказывается человечнее
+системы вокруг него; должность сюжетного сотрудника существует только в StudioChat.
+
+## Архивные визуальные источники
+
+- [Первый мини-аватар](../../../../../knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/98fafe5b-c057-48f4-85cd-9260eac9a3d3.png)
+- [Карточка личного дела](../../../../../knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/b3d8da43-93e7-4e2f-a0d8-4b3ac02a8f97.png)
+- [U-P2-итерация телесного образа](../../../../../knowledge/sources/chatgpt/open-city/archive/artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/Friendly_Robot_with_Glowing_Antenna.png)
+
+Это `source_only`: последняя итерация важна для характера, но не совпадает с
+действующим силуэтом Флёпика в комиксе.

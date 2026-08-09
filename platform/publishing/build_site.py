@@ -191,7 +191,7 @@ def build_characters(config: dict, characters: list[dict], issues: list[dict], r
       <div class="eyebrow">Муниципальный реестр · доступ открыт</div>
       <h1>Картотека<br><em>жителей</em></h1>
       <p class="lede">Герои города, который научился учитывать всё — кроме человеческого смысла.</p>
-      <p class="catalog-context">Здесь собраны жители мира комикса. Одноимённые сотрудники OpenCity Studio существуют в другом контексте.</p>
+      <p class="catalog-context">Здесь собраны воплощения героев в мире комикса. Одноимённые сотрудники OpenCity Studio — те же творческие идентичности в другом контексте.</p>
     </section>
     <section class="shell character-list" aria-label="Профили героев">
       {''.join(cards)}

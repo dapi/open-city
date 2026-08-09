@@ -21,6 +21,8 @@ status: active
    и production pipeline.
 5. [Паспорт проекта](../projects/open-city/canon/project-bible.md) — мир, персонажи и
    творческий канон.
+6. [Словарь сценарных терминов](script-glossary.md) — понятные определения логлайна,
+   лора, канона, арки, бита и других слов сценарного производства.
 
 Raw-архив разговоров находится в `../knowledge/sources/chatgpt/open-city/archive/`. Он является source/provenance,
 но не подменяет канон или утверждённые решения.

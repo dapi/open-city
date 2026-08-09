@@ -4,8 +4,7 @@
   "decision": "changes_requested",
   "master_sha256": "0bcd58ee9311087d28972268fe168de7dd377935e9325cb2547bb13eaf0e7dbd",
   "reviewer_role": "showrunner",
-  "decided_at": "2026-08-09T23:10:05+05:00",
-  "source": "codex_editorial_chat",
-  "comment": "Выпуск отклонён целиком; эту концепцию и мастер не продолжать.",
-  "disposition": "discard"
+  "decided_at": "2026-08-09T18:36:20.429241+00:00",
+  "source": "telegram_editorial_chat",
+  "comment": "вобще фигня какая-то, давй сначала идеи утверждать, потом картинки кидать"
 }

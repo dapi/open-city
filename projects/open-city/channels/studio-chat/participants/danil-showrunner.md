@@ -3,6 +3,8 @@ doc_kind: persona
 doc_function: canonical
 context: open_city_studio_chat
 persona_id: danil-showrunner
+identity_id: danil-showrunner
+comic_world_character_id: null
 identity_kind: real_participant
 status: active
 ---
@@ -23,3 +25,9 @@ status: active
 - Это реальная личность, поэтому каждая публикация требует прямого согласия Данила.
 
 **Характерная фраза:** «Что из этого выйдет в пятницу?»
+
+## Граница контекста
+
+Данил — реальный участник и владелец решений, а не вымышленное воплощение героя
+комикса. Правило общей идентичности применяется к вымышленным сотрудникам StudioChat;
+оно не создаёт персонажа, изображающего Данила или принимающего решения от его имени.
