@@ -33,6 +33,9 @@ review-run:
 review-discover:
 	$(PYTHON) platform/publishing/review_bot.py discover
 
+review-configure-private:
+	$(PYTHON) platform/publishing/review_bot.py configure-private
+
 voices:
 	$(PYTHON) platform/voice/generate.py --list-voices --api-key ${XI_API_KEY}
 

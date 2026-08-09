@@ -44,6 +44,30 @@ def load_local_env(path: Path) -> None:
             os.environ[key] = value
 
 
+def update_local_env(path: Path, values: dict[str, str]) -> None:
+    """Обновляет выбранные значения .env, сохраняя остальные строки без изменений."""
+    lines = path.read_text(encoding="utf-8").splitlines() if path.exists() else []
+    pending = dict(values)
+    updated: list[str] = []
+    for raw_line in lines:
+        stripped = raw_line.strip()
+        candidate = stripped[7:].lstrip() if stripped.startswith("export ") else stripped
+        key = candidate.split("=", 1)[0].strip() if "=" in candidate else ""
+        if key in pending:
+            prefix = "export " if stripped.startswith("export ") else ""
+            updated.append(f"{prefix}{key}={pending.pop(key)}")
+        else:
+            updated.append(raw_line)
+    if pending and updated and updated[-1]:
+        updated.append("")
+    updated.extend(f"{key}={value}" for key, value in pending.items())
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text("\n".join(updated) + "\n", encoding="utf-8")
+    if path.exists():
+        temporary.chmod(path.stat().st_mode)
+    temporary.replace(path)
+
+
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -354,6 +378,40 @@ def discover(bot: TelegramBot) -> None:
         print("Сообщения не найдены. Добавьте бота в чат, отправьте /review_setup и повторите discover.", file=sys.stderr)
 
 
+def latest_private_sender(updates: list[dict[str, Any]]) -> tuple[str, str, str]:
+    """Возвращает chat ID, user ID и безопасное отображаемое имя последнего личного сообщения."""
+    for update in reversed(updates):
+        message = update.get("message") or {}
+        chat = message.get("chat") or {}
+        sender = message.get("from") or {}
+        if chat.get("type") != "private" or sender.get("is_bot"):
+            continue
+        chat_id = chat.get("id")
+        user_id = sender.get("id")
+        if chat_id is None or user_id is None or int(chat_id) != int(user_id):
+            continue
+        name = f"@{sender['username']}" if sender.get("username") else " ".join(
+            filter(None, [sender.get("first_name"), sender.get("last_name")])
+        )
+        return str(chat_id), str(user_id), name or "пользователь Telegram"
+    raise BotError("Личное сообщение боту не найдено. Отправьте ему /start и повторите команду.")
+
+
+def configure_private(bot: TelegramBot, env_path: Path) -> str:
+    updates = bot.call("getUpdates", {"timeout": 0, "allowed_updates": json.dumps(["message"])})
+    chat_id, user_id, display_name = latest_private_sender(updates)
+    update_local_env(
+        env_path,
+        {
+            "TELEGRAM_REVIEW_CHAT_ID": chat_id,
+            "TELEGRAM_REVIEWER_USER_IDS": user_id,
+        },
+    )
+    os.environ["TELEGRAM_REVIEW_CHAT_ID"] = chat_id
+    os.environ["TELEGRAM_REVIEWER_USER_IDS"] = user_id
+    return display_name
+
+
 def main() -> int:
     load_local_env(ROOT / ".env")
     parser = argparse.ArgumentParser(description=__doc__)
@@ -362,18 +420,23 @@ def main() -> int:
     submit_parser.add_argument("issue")
     subparsers.add_parser("run", help="Запустить long polling")
     subparsers.add_parser("discover", help="Показать ID чата и пользователя из последнего сообщения")
+    subparsers.add_parser("configure-private", help="Настроить личный диалог по последнему сообщению")
     args = parser.parse_args()
     token = os.environ.get("TELEGRAM_REVIEW_BOT_TOKEN", "")
     bot = TelegramBot(token)
     if args.command == "discover":
         discover(bot)
         return 0
+    if args.command == "configure-private":
+        display_name = configure_private(bot, ROOT / ".env")
+        print(f"Личный режим настроен для {display_name}; идентификаторы сохранены только в локальном .env.")
+        return 0
     chat_id = os.environ.get("TELEGRAM_REVIEW_CHAT_ID", "")
     if not chat_id:
         raise BotError("Не задан TELEGRAM_REVIEW_CHAT_ID")
     if args.command == "submit":
         result = submit(bot, args.issue, chat_id)
-        print(json.dumps({"ok": True, "chat_id": chat_id, "message_id": result["message_id"], "issue": args.issue}, ensure_ascii=False))
+        print(json.dumps({"ok": True, "message_id": result["message_id"], "issue": args.issue}, ensure_ascii=False))
         return 0
     run(bot, chat_id, allowed_reviewers())
     return 0

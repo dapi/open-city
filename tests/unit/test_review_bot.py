@@ -63,6 +63,38 @@ class ReviewBotTests(unittest.TestCase):
                 "ready_for_review",
             )
 
+    def test_update_local_env_preserves_other_values(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            env_path = Path(temporary) / ".env"
+            env_path.write_text(
+                "SECRET=keep\nTELEGRAM_REVIEW_CHAT_ID=old\n# примечание\n",
+                encoding="utf-8",
+            )
+            REVIEW_BOT.update_local_env(
+                env_path,
+                {
+                    "TELEGRAM_REVIEW_CHAT_ID": "123",
+                    "TELEGRAM_REVIEWER_USER_IDS": "123",
+                },
+            )
+            result = env_path.read_text(encoding="utf-8")
+            self.assertIn("SECRET=keep", result)
+            self.assertIn("TELEGRAM_REVIEW_CHAT_ID=123", result)
+            self.assertIn("TELEGRAM_REVIEWER_USER_IDS=123", result)
+            self.assertIn("# примечание", result)
+
+    def test_latest_private_sender_uses_latest_human_direct_message(self):
+        updates = [
+            {"message": {"chat": {"id": -100, "type": "group"}, "from": {"id": 1}}},
+            {
+                "message": {
+                    "chat": {"id": 42, "type": "private"},
+                    "from": {"id": 42, "username": "danil", "is_bot": False},
+                }
+            },
+        ]
+        self.assertEqual(REVIEW_BOT.latest_private_sender(updates), ("42", "42", "@danil"))
+
 
 if __name__ == "__main__":
     unittest.main()
