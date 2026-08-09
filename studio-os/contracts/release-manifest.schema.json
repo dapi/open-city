@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opencity.local/contracts/release-manifest.schema.json",
+  "title": "Release manifest",
+  "type": "object",
+  "required": ["episode", "status", "artifacts"],
+  "properties": {
+    "episode": {"type": "string"},
+    "status": {"enum": ["draft", "approved", "published"]},
+    "artifacts": {"type": "array", "items": {"type": "object"}}
+  },
+  "additionalProperties": true
+}

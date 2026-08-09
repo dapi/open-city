@@ -1,0 +1,15 @@
+{
+  "episode": "pilot-v1.2",
+  "status": "pending",
+  "inputs": [
+    "../audio/voice-manifest.json",
+    "animation-script.md",
+    "../render/render-plan.md"
+  ],
+  "outputs": [],
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  }
+}

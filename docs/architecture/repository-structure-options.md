@@ -4,7 +4,7 @@ doc_function: reference
 context: studio_os
 purpose: Три варианта структуры репозитория AI OS студии и критерии выбора.
 derived_from:
-  - ../knowledge-base/principles.md
+  - ../../studio-os/governance/knowledge-base/principles.md
 status: draft
 ---
 
@@ -162,7 +162,7 @@ open-city/
 | `docs/паспорт_студии_*.md` | `studio-os/governance/studio-passport.md` |
 | `docs/паспорт_проекта_*.md` | `projects/open-city/canon/project-bible.md` |
 | `Pilot_v1.2_Vertical_ProductionKit/` | `productions/episodes/pilot-v1.2/` |
-| `voice_script_v1.2_extended.json` | `productions/episodes/pilot-v1.2/audio/` |
+| `voice_script_v1.2_extended.json` | `productions/episodes/pilot-v1.2/script/timeline.json` |
 | `speakers*.json` | project voice profile либо episode override |
 | `generate_voice*.py` | `platform/voice/` |
 | `prepare_russian_voices*.py` | `platform/voice/tools/` |
@@ -177,6 +177,6 @@ open-city/
 4. Перенести паспорта в governance/canon и оставить временные redirect-файлы.
 5. Последним переместить архив разговоров в knowledge и проверить все относительные ссылки.
 
-До выбора варианта текущий архив и экспортёр изолированы соответственно в
-`chatgpt-project-archive/` и `scripts/chatgpt-export/`; они не меняют существующий
-voice/animation pipeline.
+Архив и экспортёр изолированы соответственно в
+`knowledge/sources/chatgpt/open-city/archive/` и `scripts/chatgpt-export/`; они не
+меняют voice/animation pipeline.

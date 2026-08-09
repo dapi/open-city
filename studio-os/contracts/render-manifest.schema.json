@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opencity.local/contracts/render-manifest.schema.json",
+  "title": "Render manifest",
+  "type": "object",
+  "required": ["episode", "inputs", "outputs", "format"],
+  "properties": {
+    "episode": {"type": "string"},
+    "inputs": {"type": "array", "items": {"type": "string"}},
+    "outputs": {"type": "array", "items": {"type": "string"}},
+    "format": {"type": "object"}
+  },
+  "additionalProperties": true
+}

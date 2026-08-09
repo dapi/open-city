@@ -1,0 +1,14 @@
+{
+  "episode": "pilot-v1.2",
+  "status": "pending",
+  "inputs": [
+    "../script/timeline.json",
+    "speaker-map.json"
+  ],
+  "outputs": [],
+  "tool": {
+    "name": "platform/voice/generate.py",
+    "model": "eleven_multilingual_v2"
+  },
+  "notes": "Populate after a successful approved voice render and QA."
+}

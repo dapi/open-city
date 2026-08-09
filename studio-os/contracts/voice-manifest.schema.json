@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opencity.local/contracts/voice-manifest.schema.json",
+  "title": "Voice production manifest",
+  "type": "object",
+  "required": ["episode", "inputs", "outputs", "tool"],
+  "properties": {
+    "episode": {"type": "string"},
+    "inputs": {"type": "array", "items": {"type": "string"}},
+    "outputs": {"type": "array", "items": {"type": "string"}},
+    "tool": {"type": "object"}
+  },
+  "additionalProperties": true
+}

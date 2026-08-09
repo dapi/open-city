@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opencity.local/contracts/episode-spec.schema.json",
+  "title": "Episode specification",
+  "type": "object",
+  "required": ["id", "project", "status", "format"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "project": {"type": "string"},
+    "status": {"enum": ["planned", "in_progress", "done", "cancelled"]},
+    "format": {"type": "object", "required": ["width", "height", "fps"]}
+  },
+  "additionalProperties": true
+}
