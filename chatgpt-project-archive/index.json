@@ -1,0 +1,74 @@
+{
+  "projectUrl": "https://chatgpt.com/g/g-p-69077ed3b480819187025a0a7e47c0b5/project",
+  "projectTitle": "OpenCity. Сатирический мульт-сериал",
+  "gizmoId": "g-p-69077ed3b480819187025a0a7e47c0b5",
+  "extractedAt": "2026-08-09T07:53:13.429Z",
+  "chatCount": 3,
+  "chats": [
+    {
+      "conversationId": "69077bb5-15c0-8327-a692-409c0d5bf1ea",
+      "chatUrl": "https://chatgpt.com/c/69077bb5-15c0-8327-a692-409c0d5bf1ea",
+      "title": "Главная",
+      "create_time": 1762098211.312638,
+      "update_time": 1786211884.962669,
+      "extractedAt": "2026-08-09T07:51:58.240Z",
+      "messageCount": 583,
+      "textChars": 444384,
+      "artifactsOk": 25,
+      "artifactsFailed": [
+        {
+          "file_id": "file-45dSMrGbZESFvswfEAE3Jz",
+          "status": "error: no download_url: {\"status\":\"error\",\"error_code\":\"file_not_found\",\"error_type\":\"GetDownloadLin"
+        },
+        {
+          "file_id": "file_00000000a4f871f58037ffe5dffe0705",
+          "status": "error: HTTP 404"
+        }
+      ],
+      "files": {
+        "messages": "chats/69077bb5-15c0-8327-a692-409c0d5bf1ea.json",
+        "raw": "chats/69077bb5-15c0-8327-a692-409c0d5bf1ea.raw.json",
+        "artifactsDir": "artifacts/69077bb5-15c0-8327-a692-409c0d5bf1ea/"
+      }
+    },
+    {
+      "conversationId": "69078091-5838-8333-8e33-e18b3a431b33",
+      "chatUrl": "https://chatgpt.com/c/69078091-5838-8333-8e33-e18b3a431b33",
+      "title": "Эпотажный продюсер-консультант",
+      "create_time": 1762099507.668063,
+      "update_time": 1786211954.529611,
+      "extractedAt": "2026-08-09T07:53:00.061Z",
+      "messageCount": 113,
+      "textChars": 85047,
+      "artifactsOk": 23,
+      "artifactsFailed": [
+        {
+          "file_id": "file_0000000049f071f58263e09b36fd65ac",
+          "status": "error: HTTP 404"
+        }
+      ],
+      "files": {
+        "messages": "chats/69078091-5838-8333-8e33-e18b3a431b33.json",
+        "raw": "chats/69078091-5838-8333-8e33-e18b3a431b33.raw.json",
+        "artifactsDir": "artifacts/69078091-5838-8333-8e33-e18b3a431b33/"
+      }
+    },
+    {
+      "conversationId": "69086e59-db2c-8325-b5c2-da4d3bf58181",
+      "chatUrl": "https://chatgpt.com/c/69086e59-db2c-8325-b5c2-da4d3bf58181",
+      "title": "Роли сотрудников OpenCity",
+      "create_time": 1762160225.870399,
+      "update_time": 1786211941.732527,
+      "extractedAt": "2026-08-09T07:53:13.429Z",
+      "messageCount": 27,
+      "textChars": 28475,
+      "artifactsOk": 1,
+      "artifactsFailed": [],
+      "files": {
+        "messages": "chats/69086e59-db2c-8325-b5c2-da4d3bf58181.json",
+        "raw": "chats/69086e59-db2c-8325-b5c2-da4d3bf58181.raw.json",
+        "artifactsDir": "artifacts/69086e59-db2c-8325-b5c2-da4d3bf58181/"
+      }
+    }
+  ]
+}
