@@ -124,6 +124,10 @@ def write_srt(items, path: Path):
             t1, t2 = parse_time_range(it["time"])
             f.write(f"{i}\n{fmt(t1)} --> {fmt(t2)}\n{it.get('speaker','')}: {it.get('text','')}\n\n")
 
+
+def resolve_api_key(explicit=None):
+    return explicit or os.getenv("XI_API_KEY") or os.getenv("ELEVENLABS_API_KEY")
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("json_path", nargs="?", help="Path to voice_script.json")
@@ -151,9 +155,9 @@ def main():
             f"(missing: {exc.name})."
         ) from exc
 
-    api_key = args.api_key or os.getenv("XI_API_KEY")
+    api_key = resolve_api_key(args.api_key)
     if not api_key:
-        raise SystemExit("Provide --api-key or set env XI_API_KEY")
+        raise SystemExit("Provide --api-key or set env XI_API_KEY or ELEVENLABS_API_KEY")
 
     # List voices and exit
     voices = fetch_voices(api_key)

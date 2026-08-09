@@ -11,6 +11,7 @@ _MODULE = importlib.util.module_from_spec(_SPEC)
 _SPEC.loader.exec_module(_MODULE)
 
 parse_time_range = _MODULE.parse_time_range
+resolve_api_key = _MODULE.resolve_api_key
 
 
 def main():

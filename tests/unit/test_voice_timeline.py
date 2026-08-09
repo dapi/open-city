@@ -20,6 +20,15 @@ class VoiceTimelineTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             MODULE.parse_time_range("0:03-0:02")
 
+    def test_api_key_fallback_order(self):
+        from unittest.mock import patch
+
+        with patch.dict("os.environ", {"XI_API_KEY": "xi", "ELEVENLABS_API_KEY": "eleven"}):
+            self.assertEqual(MODULE.resolve_api_key(), "xi")
+        with patch.dict("os.environ", {"ELEVENLABS_API_KEY": "eleven"}, clear=True):
+            self.assertEqual(MODULE.resolve_api_key(), "eleven")
+        self.assertEqual(MODULE.resolve_api_key("explicit"), "explicit")
+
 
 if __name__ == "__main__":
     unittest.main()
