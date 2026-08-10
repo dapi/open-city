@@ -1,0 +1,63 @@
+{
+  "doc_kind": "visual_development_manifest",
+  "context": "open_city_brand",
+  "status": "published_editorial_examples",
+  "published_at": "2026-08-10",
+  "publication_authority": "Данил Письменный",
+  "generator": "Codex built-in image_gen",
+  "style_system": "projects/open-city/brand/visual-system.md",
+  "prompt_manifest": "projects/open-city/assets/visual-development/style-testing-v1/PROMPTS.md",
+  "article_id": "news-009",
+  "master_status": "diagnostic_only",
+  "assets": [
+    {
+      "id": "style-test-character-corrections-v1",
+      "role": "editorial_contact_sheet",
+      "file": "01-character-corrections-contact-sheet-v1.png",
+      "width": 1328,
+      "height": 1968,
+      "sha256": "3e00eb84bd2f9f408a2cc3f291678d687fa06d5075c3cdfb036ad39eb442f7fc"
+    },
+    {
+      "id": "style-test-municipal-ab-v1",
+      "role": "tone_comparison",
+      "file": "02-municipal-deadpan-warm-v1.png",
+      "width": 1328,
+      "height": 984,
+      "sha256": "9cc1c04e8e034947772622ac1fe98fc761ba8501f30f64e906e34f5c4b99ac66"
+    },
+    {
+      "id": "style-test-studio-ab-v1",
+      "role": "tone_comparison",
+      "file": "03-studio-deadpan-warm-v1.png",
+      "width": 1328,
+      "height": 984,
+      "sha256": "344020db3c2a0fa861e43a01f52d8bcb21f8a00936a07c224a5c3a766ff98f6d"
+    },
+    {
+      "id": "style-test-courtyard-ab-v1",
+      "role": "tone_comparison",
+      "file": "04-courtyard-deadpan-warm-v1.png",
+      "width": 1328,
+      "height": 984,
+      "sha256": "ec7b57f2b37ffbd37e3ea0f15432ed8cc276c478412525b9eb7a9e1609fed770"
+    },
+    {
+      "id": "style-test-ensemble-ab-v1",
+      "role": "article_cover",
+      "file": "05-ensemble-deadpan-warm-v1.png",
+      "width": 1584,
+      "height": 536,
+      "sha256": "eb5281a3d4e94b699e5bbfa86af7a8438591aadde0d88f2146e6c7a398cf75cf"
+    },
+    {
+      "id": "grisha-city-005-model-v1",
+      "role": "editorial_model_sheet",
+      "character_id": "grisha",
+      "file": "06-grisha-city-005-model-v1.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "0bbc065c8e513849e3e2e54fce5c45664533e5dee4d17dc55dd4656b916868dd"
+    }
+  ]
+}
